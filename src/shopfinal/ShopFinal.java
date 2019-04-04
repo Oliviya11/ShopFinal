@@ -5,10 +5,6 @@
  */
 package shopfinal;
 
-/**
- *
- * @author User
- */
 public class ShopFinal {
 
     /**
@@ -17,5 +13,5 @@ public class ShopFinal {
     public static void main(String[] args) {
         // TODO code application logic here
     }
-    
+
 }
