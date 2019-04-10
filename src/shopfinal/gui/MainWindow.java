@@ -155,6 +155,11 @@ public class MainWindow extends javax.swing.JFrame {
         jMenuBar1.add(Reckoning);
 
         Settings.setText("Налаштування");
+        Settings.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SettingsMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(Settings);
 
         setJMenuBar(jMenuBar1);
@@ -181,6 +186,13 @@ public class MainWindow extends javax.swing.JFrame {
     private void ShowAllGoodsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllGoodsActionPerformed
         addShowAllPanel();
     }//GEN-LAST:event_ShowAllGoodsActionPerformed
+
+    private void SettingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SettingsMouseClicked
+        removeLeftPanel();
+        leftPanel = new Settings();
+        add(leftPanel);
+        refresh();
+    }//GEN-LAST:event_SettingsMouseClicked
 
     private void addShowAllPanel() {
         removeLeftPanel();
