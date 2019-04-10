@@ -5,12 +5,12 @@
  */
 package shopfinal.gui;
 
-public class FindById extends javax.swing.JPanel {
+public class ShowAll extends javax.swing.JPanel {
 
     /**
-     * Creates new form FindById
+     * Creates new form ShowAll
      */
-    public FindById() {
+    public ShowAll() {
         initComponents();
     }
 
@@ -24,34 +24,19 @@ public class FindById extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.darkGray));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setMaximumSize(new java.awt.Dimension(200, 32767));
         setMinimumSize(new java.awt.Dimension(200, 293));
-        setPreferredSize(new java.awt.Dimension(200, 293));
+        setName(""); // NOI18N
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Знайти за id");
+        jLabel2.setText("Показати всі");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 140, 30));
-
-        jLabel1.setText("id:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 30, 20));
-        jLabel1.getAccessibleContext().setAccessibleName("id");
-
-        jTextField2.setMinimumSize(new java.awt.Dimension(80, 20));
-        jTextField2.setPreferredSize(new java.awt.Dimension(80, 20));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 80, 20));
 
         jButton1.setText("Виконати");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -59,14 +44,8 @@ public class FindById extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 140, -1));
-
-        getAccessibleContext().setAccessibleParent(this);
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 140, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -75,8 +54,6 @@ public class FindById extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

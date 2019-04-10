@@ -321,4 +321,14 @@ public class ActionManager {
 
         return "(" + dates.toString();
     }
+    
+    private static ActionManager instance;
+	
+    public static synchronized ActionManager getInstance() throws ClassNotFoundException {
+        if (instance == null) {
+            instance = new ActionManager();
+	}
+	return instance;
+    }
+    
 }

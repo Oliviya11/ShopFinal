@@ -6,25 +6,34 @@
 package shopfinal.gui;
 
 import java.awt.*;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
+import shopfinal.managers.ActionManager;
+import shopfinal.managers.ActionManager.ActionParams;
+import shopfinal.managers.ActionManager.Result;
 
 /**
  *
  * @author User
  */
 public class MainWindow extends javax.swing.JFrame {
+
     /**
      * Creates new form MainWindow
      */
+    private JPanel leftPanel;
+
     public MainWindow() {
         initComponents();
         setUpOnFirstLaunch();
     }
-    
+
     private void setUpOnFirstLaunch() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = (int) (screenSize.getWidth() / 2);
-	int height = (int) (screenSize.getHeight() / 2);
+        int height = (int) (screenSize.getHeight() / 2);
         setSize(width, height);
         setLocationRelativeTo(null);
     }
@@ -43,7 +52,6 @@ public class MainWindow extends javax.swing.JFrame {
         FindGoodsById = new javax.swing.JMenuItem();
         ShowAllGoods = new javax.swing.JMenuItem();
         AddGoods = new javax.swing.JMenuItem();
-        EditGoods = new javax.swing.JMenuItem();
         RemoveGoods = new javax.swing.JMenuItem();
         Employee = new javax.swing.JMenu();
         Purchase = new javax.swing.JMenu();
@@ -52,8 +60,7 @@ public class MainWindow extends javax.swing.JFrame {
         ShowPurchase = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        EditPurchase = new javax.swing.JMenuItem();
+        ShowAllPurchases = new javax.swing.JMenuItem();
         RemovePurchase = new javax.swing.JMenuItem();
         Provider = new javax.swing.JMenu();
         Analysis = new javax.swing.JMenu();
@@ -73,17 +80,17 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         Goods.add(FindGoodsById);
-        FindGoodsById.getAccessibleContext().setAccessibleName("Знайти за id");
 
         ShowAllGoods.setText("Показати усі");
+        ShowAllGoods.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowAllGoodsActionPerformed(evt);
+            }
+        });
         Goods.add(ShowAllGoods);
-        ShowAllGoods.getAccessibleContext().setAccessibleName("Показати усі");
 
         AddGoods.setText("Додати");
         Goods.add(AddGoods);
-
-        EditGoods.setText("Редагувати");
-        Goods.add(EditGoods);
 
         RemoveGoods.setText("Видалити");
         Goods.add(RemoveGoods);
@@ -96,6 +103,11 @@ public class MainWindow extends javax.swing.JFrame {
         Purchase.setText("Покупка");
 
         FindPurchaseById.setText("Знайти за id");
+        FindPurchaseById.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FindPurchaseByIdActionPerformed(evt);
+            }
+        });
         Purchase.add(FindPurchaseById);
 
         AddPurchase.setText("Додати");
@@ -109,13 +121,15 @@ public class MainWindow extends javax.swing.JFrame {
         jMenuItem6.setText("З дати D1 по дату D2");
         ShowPurchase.add(jMenuItem6);
 
-        jMenuItem7.setText("Усі");
-        ShowPurchase.add(jMenuItem7);
+        ShowAllPurchases.setText("Усі");
+        ShowAllPurchases.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowAllPurchasesActionPerformed(evt);
+            }
+        });
+        ShowPurchase.add(ShowAllPurchases);
 
         Purchase.add(ShowPurchase);
-
-        EditPurchase.setText("Редагувати");
-        Purchase.add(EditPurchase);
 
         RemovePurchase.setText("Видалити");
         RemovePurchase.addActionListener(new java.awt.event.ActionListener() {
@@ -153,11 +167,47 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_RemovePurchaseActionPerformed
 
     private void FindGoodsByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FindGoodsByIdActionPerformed
-        add(new FindById());
-        add(new NewPanel());
-        revalidate();
-	repaint();
+        addFindByIdPanel();
     }//GEN-LAST:event_FindGoodsByIdActionPerformed
+
+    private void ShowAllPurchasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllPurchasesActionPerformed
+        addShowAllPanel();
+    }//GEN-LAST:event_ShowAllPurchasesActionPerformed
+
+    private void FindPurchaseByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FindPurchaseByIdActionPerformed
+        addFindByIdPanel();
+    }//GEN-LAST:event_FindPurchaseByIdActionPerformed
+
+    private void ShowAllGoodsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllGoodsActionPerformed
+        addShowAllPanel();
+    }//GEN-LAST:event_ShowAllGoodsActionPerformed
+
+    private void addShowAllPanel() {
+        removeLeftPanel();
+        leftPanel = new ShowAll();
+        add(leftPanel);
+        //add right panel here;
+        refresh();
+    }
+
+    private void addFindByIdPanel() {
+        removeLeftPanel();
+        leftPanel = new FindById();
+        add(leftPanel);
+        //add right panel here
+        refresh();
+    }
+
+    private void removeLeftPanel() {
+        if (leftPanel != null) {
+            remove(leftPanel);
+        }
+    }
+
+    private void refresh() {
+        revalidate();
+        repaint();
+    }
 
     /**
      * @param args the command line arguments
@@ -198,8 +248,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem AddGoods;
     private javax.swing.JMenuItem AddPurchase;
     private javax.swing.JMenu Analysis;
-    private javax.swing.JMenuItem EditGoods;
-    private javax.swing.JMenuItem EditPurchase;
     private javax.swing.JMenu Employee;
     private javax.swing.JMenuItem FindGoodsById;
     private javax.swing.JMenuItem FindPurchaseById;
@@ -211,11 +259,11 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem RemovePurchase;
     private javax.swing.JMenu Settings;
     private javax.swing.JMenuItem ShowAllGoods;
+    private javax.swing.JMenuItem ShowAllPurchases;
     private javax.swing.JMenu ShowPurchase;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     // End of variables declaration//GEN-END:variables
 }

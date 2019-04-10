@@ -5,16 +5,12 @@
  */
 package shopfinal.gui;
 
-/**
- *
- * @author User
- */
-public class NewPanel extends javax.swing.JPanel {
+public class AddPurchase extends javax.swing.JPanel {
 
     /**
-     * Creates new form NewPanel
+     * Creates new form AddPurchase
      */
-    public NewPanel() {
+    public AddPurchase() {
         initComponents();
     }
 
