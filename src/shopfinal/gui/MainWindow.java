@@ -111,6 +111,11 @@ public class MainWindow extends javax.swing.JFrame {
         Purchase.add(FindPurchaseById);
 
         AddPurchase.setText("Додати");
+        AddPurchase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddPurchaseActionPerformed(evt);
+            }
+        });
         Purchase.add(AddPurchase);
 
         ShowPurchase.setText("Показати");
@@ -194,6 +199,15 @@ public class MainWindow extends javax.swing.JFrame {
         refresh();
     }//GEN-LAST:event_SettingsMouseClicked
 
+    private void AddPurchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPurchaseActionPerformed
+        removeLeftPanel();
+        leftPanel = new AddPurchase();
+        add(leftPanel);
+        //leftPanel.add(new GoodsItem());
+        //add right panel here;
+        refresh();
+    }//GEN-LAST:event_AddPurchaseActionPerformed
+
     private void addShowAllPanel() {
         removeLeftPanel();
         leftPanel = new ShowAll();
@@ -216,7 +230,7 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }
 
-    private void refresh() {
+    public void refresh() {
         revalidate();
         repaint();
     }

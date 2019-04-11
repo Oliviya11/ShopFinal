@@ -8,7 +8,7 @@ package shopfinal.gui;
 public class AddPurchase extends javax.swing.JPanel {
 
     /**
-     * Creates new form AddPurchase
+     * Creates new form FindById
      */
     public AddPurchase() {
         initComponents();
@@ -23,19 +23,109 @@ public class AddPurchase extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        scroll = new javax.swing.JScrollPane();
+        content = new javax.swing.JPanel();
+        GoodsNumber = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        okButton = new javax.swing.JButton();
+
+        setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.darkGray));
+        setMaximumSize(new java.awt.Dimension(303, 32767));
+        setMinimumSize(new java.awt.Dimension(303, 359));
+        setPreferredSize(new java.awt.Dimension(303, 359));
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
+
+        jLabel1.setText("Товар:");
+        jLayeredPane1.add(jLabel1);
+        jLabel1.setBounds(30, 40, 70, 20);
+        jLabel1.getAccessibleContext().setAccessibleName("id");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Додати покупку");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLayeredPane1.add(jLabel2);
+        jLabel2.setBounds(80, 10, 140, 20);
+
+        jTextField2.setMinimumSize(new java.awt.Dimension(80, 20));
+        jTextField2.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        jLayeredPane1.add(jTextField2);
+        jTextField2.setBounds(110, 60, 100, 30);
+
+        jButton1.setText("Виконати");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jLayeredPane1.add(jButton1);
+        jButton1.setBounds(110, 280, 81, 23);
+
+        scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        content.setLayout(new javax.swing.BoxLayout(content, javax.swing.BoxLayout.Y_AXIS));
+        scroll.setViewportView(content);
+
+        jLayeredPane1.add(scroll);
+        scroll.setBounds(20, 100, 260, 170);
+
+        GoodsNumber.setText("Кількість:");
+        jLayeredPane1.add(GoodsNumber);
+        GoodsNumber.setBounds(30, 70, 70, 20);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLayeredPane1.add(jComboBox1);
+        jComboBox1.setBounds(110, 40, 100, 20);
+
+        okButton.setText("+");
+        okButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okButtonActionPerformed(evt);
+            }
+        });
+        jLayeredPane1.add(okButton);
+        okButton.setBounds(240, 40, 40, 40);
+
+        add(jLayeredPane1);
+
+        getAccessibleContext().setAccessibleParent(this);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+        content.add(new GoodsItem());
+        content.repaint();
+        content.revalidate();
+    }//GEN-LAST:event_okButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel GoodsNumber;
+    private javax.swing.JPanel content;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton okButton;
+    private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
 }
