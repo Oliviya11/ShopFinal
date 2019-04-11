@@ -27,29 +27,35 @@ public class PurchaseItem extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        weekDayLabel = new javax.swing.JLabel();
+        weekDay = new javax.swing.JLabel();
+        id = new javax.swing.JLabel();
         idLabel = new javax.swing.JLabel();
-        dateLabel = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        dateLabel1 = new javax.swing.JLabel();
+        date = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         purchaseGoods = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(weekDayLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 80, 20));
 
-        jLabel1.setText("Дата:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 60, 20));
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 60, 20));
+        weekDay.setText("День тижня:");
+        add(weekDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 80, 20));
+        add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 60, 20));
 
         idLabel.setText("id:");
         add(idLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 30, 20));
-        add(dateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 60, 20));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Покупка");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 130, 30));
+        dateLabel1.setText("Дата:");
+        add(dateLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 60, 20));
+        add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 60, 20));
+
+        title.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("Покупка");
+        title.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 130, 30));
 
         purchaseGoods.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -77,12 +83,14 @@ public class PurchaseItem extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel dateLabel;
+    private javax.swing.JLabel date;
+    private javax.swing.JLabel dateLabel1;
+    private javax.swing.JLabel id;
     private javax.swing.JLabel idLabel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable purchaseGoods;
+    private javax.swing.JLabel title;
+    private javax.swing.JLabel weekDay;
+    private javax.swing.JLabel weekDayLabel;
     // End of variables declaration//GEN-END:variables
 }

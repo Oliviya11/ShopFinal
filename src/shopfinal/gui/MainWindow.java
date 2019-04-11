@@ -48,8 +48,9 @@ public class MainWindow extends javax.swing.JFrame {
         FindPurchaseById = new javax.swing.JMenuItem();
         AddPurchase = new javax.swing.JMenuItem();
         ShowAllPurchases = new javax.swing.JMenuItem();
-        ShowByWeekDay = new javax.swing.JMenuItem();
         Ordering = new javax.swing.JMenu();
+        AddOrdering = new javax.swing.JMenuItem();
+        ShowAllOrderings = new javax.swing.JMenuItem();
         Provider = new javax.swing.JMenu();
         Settings = new javax.swing.JMenu();
 
@@ -68,7 +69,7 @@ public class MainWindow extends javax.swing.JFrame {
         });
         Goods.add(FindGoodsById);
 
-        ShowAllGoods.setText("Показати усі");
+        ShowAllGoods.setText("Показати всі");
         ShowAllGoods.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ShowAllGoodsActionPerformed(evt);
@@ -102,7 +103,7 @@ public class MainWindow extends javax.swing.JFrame {
         });
         Purchase.add(AddPurchase);
 
-        ShowAllPurchases.setText("Показати усі");
+        ShowAllPurchases.setText("Показати всі");
         ShowAllPurchases.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ShowAllPurchasesActionPerformed(evt);
@@ -110,17 +111,26 @@ public class MainWindow extends javax.swing.JFrame {
         });
         Purchase.add(ShowAllPurchases);
 
-        ShowByWeekDay.setText("Показати за днем тижня");
-        ShowByWeekDay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShowByWeekDayActionPerformed(evt);
-            }
-        });
-        Purchase.add(ShowByWeekDay);
-
         jMenuBar1.add(Purchase);
 
         Ordering.setText("Замовлення");
+
+        AddOrdering.setText("Додати");
+        AddOrdering.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddOrderingActionPerformed(evt);
+            }
+        });
+        Ordering.add(AddOrdering);
+
+        ShowAllOrderings.setText("Показати всі");
+        ShowAllOrderings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowAllOrderingsActionPerformed(evt);
+            }
+        });
+        Ordering.add(ShowAllOrderings);
+
         jMenuBar1.add(Ordering);
 
         Provider.setText("Постачальник");
@@ -166,14 +176,21 @@ public class MainWindow extends javax.swing.JFrame {
         removeLeftPanel();
         leftPanel = new AddPurchase();
         add(leftPanel);
-        //add right panel here;
         adjsutRightPanel();
         refresh();
     }//GEN-LAST:event_AddPurchaseActionPerformed
 
-    private void ShowByWeekDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowByWeekDayActionPerformed
+    private void AddOrderingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddOrderingActionPerformed
+        removeLeftPanel();
+        leftPanel = new AddOrdering();
+        add(leftPanel);
+        adjsutRightPanel();
+        refresh();
+    }//GEN-LAST:event_AddOrderingActionPerformed
+
+    private void ShowAllOrderingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllOrderingsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ShowByWeekDayActionPerformed
+    }//GEN-LAST:event_ShowAllOrderingsActionPerformed
 
     private void addShowAllPanel() {
         removeLeftPanel();
@@ -257,6 +274,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AddGoods;
+    private javax.swing.JMenuItem AddOrdering;
     private javax.swing.JMenuItem AddPurchase;
     private javax.swing.JMenu Employee;
     private javax.swing.JMenuItem FindGoodsById;
@@ -267,8 +285,8 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenu Purchase;
     private javax.swing.JMenu Settings;
     private javax.swing.JMenuItem ShowAllGoods;
+    private javax.swing.JMenuItem ShowAllOrderings;
     private javax.swing.JMenuItem ShowAllPurchases;
-    private javax.swing.JMenuItem ShowByWeekDay;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
