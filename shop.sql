@@ -255,9 +255,9 @@ insert into Goods (GoodsName, Provider, Num, Minimum, DepartmentId)
 insert into Goods (GoodsName, Provider, Num, Minimum, DepartmentId)
 			values ('Сік морквяно-яблучний 1,0 л', 'ТМ Владам', 1080, 500, 1);
 insert into Goods (GoodsName, Provider, Num, Minimum, DepartmentId)
-            values ('Томати натуральні у томатному соку очищені 0,87 кг', 'ТМ Владам', 1083, 500, 1);
+            values ('Томати натуральні у томатному соку', 'ТМ Владам', 1083, 500, 1);
 insert into Goods (GoodsName, Provider, Num, Minimum, DepartmentId)
-            values ('Пакети д/сміття "Ваш бюджет" 60л, 15шт, 60*70, чор', 'ПОМІЧНИЦЯ', 671, 200, 2);
+            values ('Пакети д/сміття "Ваш бюджет" 60л, 15шт', 'ПОМІЧНИЦЯ', 671, 200, 2);
 insert into Goods (GoodsName, Provider, Num, Minimum, DepartmentId)
             values ('Мило господарське 72% 200гр', 'ПОМІЧНИЦЯ', 9005, 1000, 2);
 insert into Goods (GoodsName, Provider, Num, Minimum, DepartmentId)

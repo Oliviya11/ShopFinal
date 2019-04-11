@@ -18,6 +18,7 @@ public class DbResources {
     public static final String GoodsPurchases = "GoodsPurchases";
     public static final String GoodsId = "GoodsId";
     public static final String Number = "Num";
+    public static final String Minimum = "Minimum";
     public static final String GoodsPrices = "GoodsPrices";
     public static final String Price = "Price";
     public static final String GoodsPricesDate = "GoodsPricesDate";
@@ -35,4 +36,5 @@ public class DbResources {
     public static final String PurveyancesCosts = "PurveyancesCosts";
     public static final String GoodsPurveyances = "GoodsPurveyances";
     public static final String CashFlowDate = "CashFlowDate";
+    public static final String Provider = "Provider";
 }

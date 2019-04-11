@@ -31,11 +31,8 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     private void setUpOnFirstLaunch() {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int width = (int) (screenSize.getWidth() / 2);
-        int height = (int) (screenSize.getHeight() / 2);
-        setSize(width, height);
-        setLocationRelativeTo(null);
+       setResizable(false);
+       setLocationRelativeTo(null);
     }
 
     /**
@@ -69,6 +66,8 @@ public class MainWindow extends javax.swing.JFrame {
         Settings = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(900, 600));
+        setMinimumSize(new java.awt.Dimension(900, 600));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         Goods.setText("Товар");

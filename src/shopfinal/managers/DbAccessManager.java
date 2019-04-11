@@ -7,8 +7,7 @@ package shopfinal.managers;
 
 import java.sql.*;
 import java.util.ArrayList;
-import shopfinal.models.Purchase;
-import shopfinal.models.PurchaseGoods;
+import shopfinal.models.*;
 import shopfinal.res.DbResources;
 
 public class DbAccessManager {
@@ -371,6 +370,11 @@ public class DbAccessManager {
         ResultSet rs = s.getResultSet();
         return rs;
     }
+    
+    private void executSql(String sql) throws SQLException {
+        Statement s = conn.createStatement();
+        s.execute(sql);
+    }
 
     private void getPurchase(ResultSet rs, ArrayList<Purchase> purchases) throws SQLException {
         while ((rs != null) && (rs.next())) {
@@ -382,5 +386,36 @@ public class DbAccessManager {
             Purchase purchase = new Purchase(id, date, goods, cost);
             purchases.add(purchase);
         }
+    }
+    
+    public ArrayList getAllGoods() throws SQLException {
+        ArrayList goods = new ArrayList();
+        String sql = "select * from " + DbResources.Goods;
+        ResultSet rs = getResultSet(sql);
+        while ((rs != null) && (rs.next())) {
+            Goods goodsItem = new Goods(
+                    rs.getInt(DbResources.GoodsId),
+                    rs.getString(DbResources.GoodsName),
+                    rs.getString(DbResources.Provider),
+                    rs.getInt(DbResources.Number),
+                    rs.getInt(DbResources.Minimum),
+                    rs.getInt(DbResources.DepartmentId)
+            );
+            goods.add(goodsItem);
+        }
+        return goods;
+    }
+    
+    private void updateGoods(ArrayList<Goods> goods) throws SQLException {
+        for (int i = 0; i < goods.size(); ++i) {
+            String sql = "update " + DbResources.Goods + " set " 
+            + DbResources.Number + " = '" + goods.get(i).number + "' where " +
+             DbResources.GoodsId + " = '" + goods.get(i).id + "'";
+            executSql(sql);
+        }
+    }
+    
+    public void createPurchase(ArrayList<Goods> goods) throws SQLException {
+        updateGoods(goods);
     }
 }

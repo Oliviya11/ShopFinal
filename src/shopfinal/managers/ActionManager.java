@@ -29,7 +29,9 @@ public class ActionManager {
         GET_SALES_VOLUME_BY_NAME,
         GET_SALES_VOLUME_BY_NAME_DATE,
         GET_SALES_VOLUME,
-        GET_SALES_VOLUME_BY_WEEK_DAY_MONTH_YEAR
+        GET_SALES_VOLUME_BY_WEEK_DAY_MONTH_YEAR,
+        GET_ALL_GOODS,
+        ADD_PURCHASE
     }
 
     public class Result {
@@ -37,6 +39,7 @@ public class ActionManager {
         public Object[][][] data3;
         public Object[][] data2;
         public Object[] data1;
+        public Object data;
     }
 
     public static class ActionParams {
@@ -44,12 +47,14 @@ public class ActionManager {
         public int intValue;
         public String strValue1;
         public String strValue2;
+        public Object data;
     }
 
     private DbAccessManager db = null;
 
     public ActionManager() throws ClassNotFoundException {
         db = new DbAccessManager();
+        setSettings("Admin", "1111", null);
     }
 
     public void setSettings(String userName, String password, String connectionStr) {
@@ -102,6 +107,14 @@ public class ActionManager {
                 case GET_SALES_VOLUME_BY_WEEK_DAY_MONTH_YEAR:
                     if (params != null) {
                         result = getSalesVolumeByWeekDayMonthYear(params);
+                    }
+                    break;
+                case GET_ALL_GOODS:
+                    result = getAllGoods();
+                    break;
+                case ADD_PURCHASE:
+                    if (params != null) {
+                        break;
                     }
                 default:
                     break;
@@ -228,6 +241,13 @@ public class ActionManager {
         return result;
     }
 
+    
+    private Result getAllGoods() throws SQLException {
+        Result result = new Result();
+        result.data = db.getAllGoods();
+        return result;
+    }
+    
     private int getWeekDayNumber(String day) {
         // Saturday = 1, Monday = 2, ... Sunday = 7
         switch (day) {
