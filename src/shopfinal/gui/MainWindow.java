@@ -52,6 +52,11 @@ public class MainWindow extends javax.swing.JFrame {
         AddOrdering = new javax.swing.JMenuItem();
         ShowAllOrderings = new javax.swing.JMenuItem();
         Provider = new javax.swing.JMenu();
+        AddProvider = new javax.swing.JMenuItem();
+        ShowAllProviders = new javax.swing.JMenuItem();
+        Purveyance = new javax.swing.JMenu();
+        AddPurveyance = new javax.swing.JMenuItem();
+        ShowAllPurveyances = new javax.swing.JMenuItem();
         Settings = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -134,7 +139,44 @@ public class MainWindow extends javax.swing.JFrame {
         jMenuBar1.add(Ordering);
 
         Provider.setText("Постачальник");
+
+        AddProvider.setText("Додати");
+        AddProvider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddProviderActionPerformed(evt);
+            }
+        });
+        Provider.add(AddProvider);
+
+        ShowAllProviders.setText("Показати всіх");
+        ShowAllProviders.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowAllProvidersActionPerformed(evt);
+            }
+        });
+        Provider.add(ShowAllProviders);
+
         jMenuBar1.add(Provider);
+
+        Purveyance.setText("Поставка");
+
+        AddPurveyance.setText("Додати");
+        AddPurveyance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddPurveyanceActionPerformed(evt);
+            }
+        });
+        Purveyance.add(AddPurveyance);
+
+        ShowAllPurveyances.setText("Показати всі");
+        ShowAllPurveyances.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowAllPurveyancesActionPerformed(evt);
+            }
+        });
+        Purveyance.add(ShowAllPurveyances);
+
+        jMenuBar1.add(Purveyance);
 
         Settings.setText("Налаштування");
         Settings.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -189,8 +231,28 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_AddOrderingActionPerformed
 
     private void ShowAllOrderingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllOrderingsActionPerformed
-        // TODO add your handling code here:
+        removeLeftPanel();
+        leftPanel = new ShowAllOrderings();
+        add(leftPanel);
+        adjsutRightPanel();
+        refresh();
     }//GEN-LAST:event_ShowAllOrderingsActionPerformed
+
+    private void AddProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProviderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddProviderActionPerformed
+
+    private void ShowAllProvidersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllProvidersActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ShowAllProvidersActionPerformed
+
+    private void AddPurveyanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPurveyanceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddPurveyanceActionPerformed
+
+    private void ShowAllPurveyancesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllPurveyancesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ShowAllPurveyancesActionPerformed
 
     private void addShowAllPanel() {
         removeLeftPanel();
@@ -275,7 +337,9 @@ public class MainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AddGoods;
     private javax.swing.JMenuItem AddOrdering;
+    private javax.swing.JMenuItem AddProvider;
     private javax.swing.JMenuItem AddPurchase;
+    private javax.swing.JMenuItem AddPurveyance;
     private javax.swing.JMenu Employee;
     private javax.swing.JMenuItem FindGoodsById;
     private javax.swing.JMenuItem FindPurchaseById;
@@ -283,10 +347,13 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenu Ordering;
     private javax.swing.JMenu Provider;
     private javax.swing.JMenu Purchase;
+    private javax.swing.JMenu Purveyance;
     private javax.swing.JMenu Settings;
     private javax.swing.JMenuItem ShowAllGoods;
     private javax.swing.JMenuItem ShowAllOrderings;
+    private javax.swing.JMenuItem ShowAllProviders;
     private javax.swing.JMenuItem ShowAllPurchases;
+    private javax.swing.JMenuItem ShowAllPurveyances;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
