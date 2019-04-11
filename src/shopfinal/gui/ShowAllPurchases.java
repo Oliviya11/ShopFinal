@@ -5,12 +5,12 @@
  */
 package shopfinal.gui;
 
-public class ShowAll extends javax.swing.JPanel {
+public class ShowAllPurchases extends javax.swing.JPanel {
 
     /**
      * Creates new form ShowAll
      */
-    public ShowAll() {
+    public ShowAllPurchases() {
         initComponents();
     }
 
@@ -26,17 +26,18 @@ public class ShowAll extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        setMaximumSize(new java.awt.Dimension(200, 32767));
-        setMinimumSize(new java.awt.Dimension(200, 293));
+        setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        setMaximumSize(new java.awt.Dimension(435, 600));
+        setMinimumSize(new java.awt.Dimension(435, 600));
         setName(""); // NOI18N
+        setPreferredSize(new java.awt.Dimension(435, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Показати всі");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 140, 30));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 140, 30));
 
         jButton1.setText("Виконати");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -44,7 +45,7 @@ public class ShowAll extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 140, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 140, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

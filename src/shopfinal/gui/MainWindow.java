@@ -5,14 +5,7 @@
  */
 package shopfinal.gui;
 
-import java.awt.*;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JPanel;
-import shopfinal.managers.ActionManager;
-import shopfinal.managers.ActionManager.ActionParams;
-import shopfinal.managers.ActionManager.Result;
 
 /**
  *
@@ -24,6 +17,7 @@ public class MainWindow extends javax.swing.JFrame {
      * Creates new form MainWindow
      */
     private JPanel leftPanel;
+    private JPanel rightPanel;
 
     public MainWindow() {
         initComponents();
@@ -49,20 +43,14 @@ public class MainWindow extends javax.swing.JFrame {
         FindGoodsById = new javax.swing.JMenuItem();
         ShowAllGoods = new javax.swing.JMenuItem();
         AddGoods = new javax.swing.JMenuItem();
-        RemoveGoods = new javax.swing.JMenuItem();
         Employee = new javax.swing.JMenu();
         Purchase = new javax.swing.JMenu();
         FindPurchaseById = new javax.swing.JMenuItem();
         AddPurchase = new javax.swing.JMenuItem();
-        ShowPurchase = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
         ShowAllPurchases = new javax.swing.JMenuItem();
-        RemovePurchase = new javax.swing.JMenuItem();
+        ShowByWeekDay = new javax.swing.JMenuItem();
+        Ordering = new javax.swing.JMenu();
         Provider = new javax.swing.JMenu();
-        Analysis = new javax.swing.JMenu();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        Reckoning = new javax.swing.JMenu();
         Settings = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,9 +79,6 @@ public class MainWindow extends javax.swing.JFrame {
         AddGoods.setText("Додати");
         Goods.add(AddGoods);
 
-        RemoveGoods.setText("Видалити");
-        Goods.add(RemoveGoods);
-
         jMenuBar1.add(Goods);
 
         Employee.setText("Працівник");
@@ -117,46 +102,29 @@ public class MainWindow extends javax.swing.JFrame {
         });
         Purchase.add(AddPurchase);
 
-        ShowPurchase.setText("Показати");
-
-        jMenuItem5.setText("За дату D");
-        ShowPurchase.add(jMenuItem5);
-
-        jMenuItem6.setText("З дати D1 по дату D2");
-        ShowPurchase.add(jMenuItem6);
-
-        ShowAllPurchases.setText("Усі");
+        ShowAllPurchases.setText("Показати усі");
         ShowAllPurchases.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ShowAllPurchasesActionPerformed(evt);
             }
         });
-        ShowPurchase.add(ShowAllPurchases);
+        Purchase.add(ShowAllPurchases);
 
-        Purchase.add(ShowPurchase);
-
-        RemovePurchase.setText("Видалити");
-        RemovePurchase.addActionListener(new java.awt.event.ActionListener() {
+        ShowByWeekDay.setText("Показати за днем тижня");
+        ShowByWeekDay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RemovePurchaseActionPerformed(evt);
+                ShowByWeekDayActionPerformed(evt);
             }
         });
-        Purchase.add(RemovePurchase);
+        Purchase.add(ShowByWeekDay);
 
         jMenuBar1.add(Purchase);
 
+        Ordering.setText("Замовлення");
+        jMenuBar1.add(Ordering);
+
         Provider.setText("Постачальник");
         jMenuBar1.add(Provider);
-
-        Analysis.setText("Аналіз");
-
-        jMenuItem13.setText("Надходження товарів");
-        Analysis.add(jMenuItem13);
-
-        jMenuBar1.add(Analysis);
-
-        Reckoning.setText("Облік");
-        jMenuBar1.add(Reckoning);
 
         Settings.setText("Налаштування");
         Settings.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -171,12 +139,8 @@ public class MainWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RemovePurchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemovePurchaseActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RemovePurchaseActionPerformed
-
     private void FindGoodsByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FindGoodsByIdActionPerformed
-        addFindByIdPanel();
+        
     }//GEN-LAST:event_FindGoodsByIdActionPerformed
 
     private void ShowAllPurchasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllPurchasesActionPerformed
@@ -188,7 +152,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_FindPurchaseByIdActionPerformed
 
     private void ShowAllGoodsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllGoodsActionPerformed
-        addShowAllPanel();
+
     }//GEN-LAST:event_ShowAllGoodsActionPerformed
 
     private void SettingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SettingsMouseClicked
@@ -202,25 +166,47 @@ public class MainWindow extends javax.swing.JFrame {
         removeLeftPanel();
         leftPanel = new AddPurchase();
         add(leftPanel);
-        //leftPanel.add(new GoodsItem());
         //add right panel here;
+        adjsutRightPanel();
         refresh();
     }//GEN-LAST:event_AddPurchaseActionPerformed
 
+    private void ShowByWeekDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowByWeekDayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ShowByWeekDayActionPerformed
+
     private void addShowAllPanel() {
         removeLeftPanel();
-        leftPanel = new ShowAll();
+        leftPanel = new ShowAllPurchases();
         add(leftPanel);
-        //add right panel here;
+        adjsutRightPanel();
         refresh();
     }
 
     private void addFindByIdPanel() {
         removeLeftPanel();
-        leftPanel = new FindById();
+        leftPanel = new FindByIdPurchase();
         add(leftPanel);
-        //add right panel here
+        adjsutRightPanel();
         refresh();
+    }
+    
+    private void adjsutRightPanel() {
+        System.out.println("adjust right panel");
+        removeRightPanel();
+        addRightPanel();
+        rightPanel.add(new PurchaseItem());
+    }
+    
+    private void addRightPanel() {
+        rightPanel = new ContentPanel();
+        add(rightPanel);
+    }
+    
+    private void removeRightPanel() {
+        if (rightPanel != null) {
+            remove(rightPanel);
+        }
     }
 
     private void removeLeftPanel() {
@@ -272,23 +258,17 @@ public class MainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AddGoods;
     private javax.swing.JMenuItem AddPurchase;
-    private javax.swing.JMenu Analysis;
     private javax.swing.JMenu Employee;
     private javax.swing.JMenuItem FindGoodsById;
     private javax.swing.JMenuItem FindPurchaseById;
     private javax.swing.JMenu Goods;
+    private javax.swing.JMenu Ordering;
     private javax.swing.JMenu Provider;
     private javax.swing.JMenu Purchase;
-    private javax.swing.JMenu Reckoning;
-    private javax.swing.JMenuItem RemoveGoods;
-    private javax.swing.JMenuItem RemovePurchase;
     private javax.swing.JMenu Settings;
     private javax.swing.JMenuItem ShowAllGoods;
     private javax.swing.JMenuItem ShowAllPurchases;
-    private javax.swing.JMenu ShowPurchase;
+    private javax.swing.JMenuItem ShowByWeekDay;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     // End of variables declaration//GEN-END:variables
 }

@@ -66,7 +66,7 @@ public class AddPurchase extends javax.swing.JPanel {
         GoodsNumber1 = new javax.swing.JLabel();
         textNumber = new javax.swing.JTextField();
 
-        setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.darkGray));
+        setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setMaximumSize(new java.awt.Dimension(435, 600));
         setMinimumSize(new java.awt.Dimension(435, 600));
         setPreferredSize(new java.awt.Dimension(435, 600));
@@ -82,7 +82,7 @@ public class AddPurchase extends javax.swing.JPanel {
         jLabel2.setText("Додати покупку");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLayeredPane1.add(jLabel2);
-        jLabel2.setBounds(80, 10, 140, 20);
+        jLabel2.setBounds(140, 10, 140, 20);
 
         textDate.setMinimumSize(new java.awt.Dimension(80, 20));
         textDate.setPreferredSize(new java.awt.Dimension(80, 20));
