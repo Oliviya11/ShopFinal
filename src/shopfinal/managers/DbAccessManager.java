@@ -449,6 +449,12 @@ public class DbAccessManager {
         }
     }
     
+    public void addProvider(String name) throws SQLException {
+        String sql = "insert into " + DbResources.Providers + " (" + DbResources.ProviderName + ") "
+                +" values ('" + name + "')";
+        executSql(sql);
+    }
+    
     public void createPurchase(ArrayList<Goods> goods) throws SQLException {
         updateGoods(goods);
     }

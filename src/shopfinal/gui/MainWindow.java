@@ -270,7 +270,28 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_ShowAllOrderingsActionPerformed
 
     private void AddProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProviderActionPerformed
-        // TODO add your handling code here:
+        removeLeftPanel();
+        AddProvider addProvider = new AddProvider();
+        class RealButtonActionHolder extends ButtonActionHolder {
+
+            @Override
+            public void performAction() {
+                try {
+                    ActionManager.ActionParams params = new ActionManager.ActionParams();
+                    params.strValue1 = addProvider.getLabelName();
+                    ActionManager.getInstance().performAction(ActionManager.Action.ADD_PROVIDER, params);
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+        }
+        RealButtonActionHolder actionHolder = new RealButtonActionHolder();
+        addProvider.actionHolder = actionHolder;
+        leftPanel = addProvider;
+        add(leftPanel);
+        adjsutRightPanel();
+        refresh();
     }//GEN-LAST:event_AddProviderActionPerformed
 
     private void ShowAllProvidersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllProvidersActionPerformed

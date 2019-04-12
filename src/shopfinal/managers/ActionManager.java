@@ -29,7 +29,8 @@ public class ActionManager {
         GET_ALL_GOODS,
         ADD_PURCHASE,
         ADD_ORDERING,
-        GET_SELECTED_PROVIDER_GOODS
+        GET_SELECTED_PROVIDER_GOODS,
+        ADD_PROVIDER
     }
 
     public class Result {
@@ -104,6 +105,11 @@ public class ActionManager {
                         result = getSelectedProviderGoods(params);
                         break;
                     }
+                case ADD_PROVIDER:
+                    if (params != null) {
+                        addProvider(params);
+                        break;
+                    }     
                 default:
                     break;
             }
@@ -114,6 +120,10 @@ public class ActionManager {
         }
 
         return result;
+    }
+    
+    private void addProvider(ActionParams params) throws SQLException {
+        db.addProvider(params.strValue1);
     }
 
     private Result getPurchasesByDate(String date) throws SQLException {
