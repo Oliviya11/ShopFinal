@@ -5,8 +5,10 @@
  */
 package shopfinal.gui;
 
-public class FindByIdPurchase extends javax.swing.JPanel {
+import shopfinal.ButtonActionHolder;
 
+public class FindByIdPurchase extends javax.swing.JPanel {
+     public ButtonActionHolder actionHolder = null;
     /**
      * Creates new form FindById
      */
@@ -24,9 +26,9 @@ public class FindByIdPurchase extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        idLabel = new javax.swing.JLabel();
+        id = new javax.swing.JTextField();
+        performButton = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setMaximumSize(new java.awt.Dimension(435, 600));
@@ -40,43 +42,53 @@ public class FindByIdPurchase extends javax.swing.JPanel {
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 140, 30));
 
-        jLabel1.setText("id:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 30, 20));
-        jLabel1.getAccessibleContext().setAccessibleName("id");
+        idLabel.setText("id:");
+        add(idLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 30, 20));
+        idLabel.getAccessibleContext().setAccessibleName("id");
 
-        jTextField2.setMinimumSize(new java.awt.Dimension(80, 20));
-        jTextField2.setPreferredSize(new java.awt.Dimension(80, 20));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        id.setMinimumSize(new java.awt.Dimension(80, 20));
+        id.setPreferredSize(new java.awt.Dimension(80, 20));
+        id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                idActionPerformed(evt);
             }
         });
-        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 80, 20));
+        add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 80, 30));
 
-        jButton1.setText("Виконати");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        performButton.setText("Виконати");
+        performButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                performButtonActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 140, -1));
+        add(performButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 140, -1));
 
         getAccessibleContext().setAccessibleParent(this);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_idActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void performButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_performButtonActionPerformed
+        if (actionHolder != null) {
+            actionHolder.performAction();
+        }
+    }//GEN-LAST:event_performButtonActionPerformed
 
-
+    public int getId() {
+        if (id.getText() != null && id.getText() != "") {
+            return Integer.parseInt(id.getText());
+        }
+        
+        return 1;
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField id;
+    private javax.swing.JLabel idLabel;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton performButton;
     // End of variables declaration//GEN-END:variables
 }

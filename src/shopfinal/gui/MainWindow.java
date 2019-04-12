@@ -5,7 +5,16 @@
  */
 package shopfinal.gui;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
+import shopfinal.ButtonActionHolder;
+import shopfinal.managers.ActionManager;
+import shopfinal.managers.ActionManager.Result;
+import shopfinal.models.Goods;
+import shopfinal.models.Purchase;
 
 /**
  *
@@ -17,7 +26,7 @@ public class MainWindow extends javax.swing.JFrame {
      * Creates new form MainWindow
      */
     private JPanel leftPanel;
-    private JPanel rightPanel;
+    private ContentPanel rightPanel;
 
     public MainWindow() {
         initComponents();
@@ -196,11 +205,32 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_FindGoodsByIdActionPerformed
 
     private void ShowAllPurchasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllPurchasesActionPerformed
-        addShowAllPanel();
+        removeLeftPanel();
+        ShowAllPurchases showAllPurchases = new ShowAllPurchases();
+        class RealButtonActionHolder extends ButtonActionHolder {
+
+            @Override
+            public void performAction() {
+                try {
+                    Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_ALL_PURCHASES, null);
+                    ArrayList<Purchase> purchases = (ArrayList<Purchase>) result.data;
+                    addPurchasesItems(purchases);
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+        }
+        RealButtonActionHolder actionHolder = new RealButtonActionHolder();
+        showAllPurchases.actionHolder = actionHolder;
+        leftPanel = showAllPurchases;
+        add(leftPanel);
+        adjsutRightPanel();
+        refresh();
     }//GEN-LAST:event_ShowAllPurchasesActionPerformed
 
     private void FindPurchaseByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FindPurchaseByIdActionPerformed
-        addFindByIdPanel();
+        addFindByIdPurchasePanel();
     }//GEN-LAST:event_FindPurchaseByIdActionPerformed
 
     private void ShowAllGoodsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllGoodsActionPerformed
@@ -254,26 +284,55 @@ public class MainWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ShowAllPurveyancesActionPerformed
 
-    private void addShowAllPanel() {
+    private void addFindByIdPurchasePanel() {
         removeLeftPanel();
-        leftPanel = new ShowAllPurchases();
+        FindByIdPurchase p = new FindByIdPurchase();
+        class RealButtonActionHolder extends ButtonActionHolder {
+
+            @Override
+            public void performAction() {
+                try {
+                    ActionManager.ActionParams params = new ActionManager.ActionParams();
+                    params.intValue = p.getId();
+                    Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_PURCHASE_BY_ID, params);
+                    ArrayList<Purchase> purchases = (ArrayList<Purchase>) result.data;
+                    addPurchasesItems(purchases);
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+        }
+        RealButtonActionHolder actionHolder = new RealButtonActionHolder();
+        p.actionHolder = actionHolder;
+        leftPanel = p;
         add(leftPanel);
         adjsutRightPanel();
         refresh();
     }
-
-    private void addFindByIdPanel() {
-        removeLeftPanel();
-        leftPanel = new FindByIdPurchase();
-        add(leftPanel);
-        adjsutRightPanel();
+    
+    private void addPurchaseItem(Purchase purchase) {
+        PurchaseItem purchaseItem = new PurchaseItem();
+        purchaseItem.setLabelDate(purchase.date.toString());
+        purchaseItem.setDayOfTheWeek(purchase.dayOfTheWeek);
+        purchaseItem.setLabelId(purchase.id+"");
+        for (int i = 0; i < purchase.goods.size(); ++i) {
+            Goods goods = purchase.goods.get(i);
+            purchaseItem.createRowInTable(goods.name, goods.price, goods.number, goods.totalPrice);
+        }
+        rightPanel.addPanel(purchaseItem);
+    }
+    
+    private void addPurchasesItems(ArrayList<Purchase> purchases) {
+        for (int i = 0; i < purchases.size(); ++i) {
+          addPurchaseItem(purchases.get(i));
+        }
         refresh();
     }
     
     private void adjsutRightPanel() {
         removeRightPanel();
         addRightPanel();
-        rightPanel.add(new PurchaseItem());
     }
     
     private void addRightPanel() {

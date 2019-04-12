@@ -13,6 +13,8 @@ public class Goods {
     public int number;
     public int minNumber;
     public int departmentId;
+    public double price;
+    public double totalPrice;
 
     public Goods(int id,
             String name,
@@ -28,4 +30,13 @@ public class Goods {
         this.minNumber = minNumber;
         this.departmentId = departmentId;
     }
+    
+    public Goods(int id, String name, int number, double price) {
+        this.id = id;
+        this.name = name;
+        this.number = number;
+        this.price = price;
+        this.totalPrice = number * price;
+    }
+        
 }

@@ -5,8 +5,10 @@
  */
 package shopfinal.gui;
 
-public class ShowAllPurchases extends javax.swing.JPanel {
+import shopfinal.ButtonActionHolder;
 
+public class ShowAllPurchases extends javax.swing.JPanel {
+    public ButtonActionHolder actionHolder = null;
     /**
      * Creates new form ShowAll
      */
@@ -24,7 +26,7 @@ public class ShowAllPurchases extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        performButton = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setMaximumSize(new java.awt.Dimension(435, 600));
@@ -39,22 +41,24 @@ public class ShowAllPurchases extends javax.swing.JPanel {
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 140, 30));
 
-        jButton1.setText("Виконати");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        performButton.setText("Виконати");
+        performButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                performButtonActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 140, -1));
+        add(performButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 140, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void performButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_performButtonActionPerformed
+        if (actionHolder != null) {
+            actionHolder.performAction();
+        }
+    }//GEN-LAST:event_performButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton performButton;
     // End of variables declaration//GEN-END:variables
 }

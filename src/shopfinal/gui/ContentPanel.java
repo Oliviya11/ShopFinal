@@ -5,6 +5,8 @@
  */
 package shopfinal.gui;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author User
@@ -17,6 +19,10 @@ public class ContentPanel extends javax.swing.JPanel {
     public ContentPanel() {
         initComponents();
     }
+    
+    public void addPanel(JPanel child) {
+        contentPanel.add(child);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,10 +33,20 @@ public class ContentPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
+        jScrollPane1 = new javax.swing.JScrollPane();
+        contentPanel = new javax.swing.JPanel();
+
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
+
+        contentPanel.setLayout(new javax.swing.BoxLayout(contentPanel, javax.swing.BoxLayout.Y_AXIS));
+        jScrollPane1.setViewportView(contentPanel);
+
+        add(jScrollPane1);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel contentPanel;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

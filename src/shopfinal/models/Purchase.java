@@ -7,25 +7,23 @@ package shopfinal.models;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import shopfinal.Utils;
 import shopfinal.managers.DbAccessManager;
 
 public class Purchase {
 
-    private int id;
-    private Date date;
-    private ArrayList<PurchaseGoods> goods = new ArrayList<PurchaseGoods>();
-    private double cost;
+    public int id;
+    public Date date;
+    public ArrayList<Goods> goods = new ArrayList<Goods>();
+    public double cost;
+    public String dayOfTheWeek;
 
-    public Purchase(int id, Date date, ArrayList<PurchaseGoods> goods, double cost) {
+    public Purchase(int id, Date date, ArrayList<Goods> goods, double cost) {
         this.id = id;
         this.date = date;
         this.goods = goods;
         this.cost = cost;
-    }
-
-    public Purchase(DbAccessManager db, Date date) {
-        this.date = date;
-        //TODO: add to db
+        this.dayOfTheWeek = Utils.getDayOfTheWeek(date);
     }
 
     public int getId() {
@@ -36,7 +34,7 @@ public class Purchase {
         return date;
     }
 
-    public ArrayList<PurchaseGoods> getGoods() {
+    public ArrayList<Goods> getGoods() {
         return goods;
     }
 

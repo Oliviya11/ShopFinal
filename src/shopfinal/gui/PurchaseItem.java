@@ -5,17 +5,22 @@
  */
 package shopfinal.gui;
 
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author User
  */
 public class PurchaseItem extends javax.swing.JPanel {
-
+    private DefaultTableModel  model;
     /**
      * Creates new form PurchaseItem
      */
     public PurchaseItem() {
         initComponents();
+        model = (DefaultTableModel) purchaseGoods.getModel();
+        model.setRowCount(0);
     }
 
     /**
@@ -37,19 +42,23 @@ public class PurchaseItem extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         purchaseGoods = new javax.swing.JTable();
 
+        setMaximumSize(new java.awt.Dimension(488, 300));
+        setMinimumSize(new java.awt.Dimension(488, 300));
+        setName(""); // NOI18N
+        setPreferredSize(new java.awt.Dimension(488, 300));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(weekDayLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 80, 20));
+        add(weekDayLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 140, 20));
 
         weekDay.setText("День тижня:");
         add(weekDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 80, 20));
-        add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 60, 20));
+        add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 100, 20));
 
         idLabel.setText("id:");
         add(idLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 30, 20));
 
         dateLabel1.setText("Дата:");
         add(dateLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 60, 20));
-        add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 60, 20));
+        add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 110, 20));
 
         title.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -78,9 +87,28 @@ public class PurchaseItem extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(purchaseGoods);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 510, 180));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 470, 180));
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setLabelDate(String d) {
+        date.setText(d);
+    }
+    
+    public void setLabelId(String d) {
+        id.setText(d);
+    }
+    
+    public void setLabelWeekDay(String wd) {
+        weekDay.setText(wd);
+    }
+    
+    public void setDayOfTheWeek(String day) {
+        weekDay.setText(day);
+    }
+
+    public void createRowInTable(String name, double price, int number, double totalPrice) {
+       model.addRow(new Object[] { name, price, number, totalPrice});
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel date;

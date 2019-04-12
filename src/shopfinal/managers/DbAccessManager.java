@@ -310,8 +310,8 @@ public class DbAccessManager {
         return price;
     }
 
-    private ArrayList<PurchaseGoods> getGoodsIds(int id, Date date) throws SQLException {
-        ArrayList<PurchaseGoods> purchasesGoods = new ArrayList<PurchaseGoods>();
+    private ArrayList<Goods> getGoodsIds(int id, Date date) throws SQLException {
+        ArrayList<Goods> listGoods = new ArrayList<Goods>();
         String sql = "select * from " + DbResources.GoodsPurchases + " where " + DbResources.PurchaseId + "=" + id;
         ResultSet rs = getResultSet(sql);
         while ((rs != null) && (rs.next())) {
@@ -319,11 +319,11 @@ public class DbAccessManager {
             int number = rs.getInt(DbResources.Number);
             double price = getActualGoodsPriceByDateAndId(date, goodsId);
             String name = getGoodsNameById(goodsId);
-            PurchaseGoods purchaseGoods = new PurchaseGoods(goodsId, name, price, number);
-            purchasesGoods.add(purchaseGoods);
+            Goods goods = new Goods(goodsId, name, number, price);
+            listGoods.add(goods);
         }
 
-        return purchasesGoods;
+        return listGoods;
     }
 
     public ArrayList<Purchase> getAllPurchases() throws SQLException {
@@ -380,7 +380,7 @@ public class DbAccessManager {
         while ((rs != null) && (rs.next())) {
             Date date = rs.getDate(DbResources.PurchaseDate);
             int id = rs.getInt(DbResources.PurchaseId);
-            ArrayList<PurchaseGoods> goods = getGoodsIds(id, date);
+            ArrayList<Goods> goods = getGoodsIds(id, date);
             int cashFlowId = getCashFlowIdByPurchaseId(id);
             double cost = getCostByCashFlowId(cashFlowId);
             Purchase purchase = new Purchase(id, date, goods, cost);
