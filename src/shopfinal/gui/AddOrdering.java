@@ -89,7 +89,6 @@ public class AddOrdering extends javax.swing.JPanel {
         providerLabel1 = new javax.swing.JLabel();
         showSelectedProviderGoods = new javax.swing.JButton();
 
-        setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setMaximumSize(new java.awt.Dimension(435, 600));
         setMinimumSize(new java.awt.Dimension(435, 600));
         setPreferredSize(new java.awt.Dimension(435, 600));
@@ -123,7 +122,7 @@ public class AddOrdering extends javax.swing.JPanel {
         scroll.setViewportView(content);
 
         jLayeredPane1.add(scroll);
-        scroll.setBounds(10, 210, 410, 290);
+        scroll.setBounds(10, 210, 410, 280);
 
         dateLabel.setText("Дата:");
         jLayeredPane1.add(dateLabel);
@@ -158,7 +157,7 @@ public class AddOrdering extends javax.swing.JPanel {
             }
         });
         jLayeredPane1.add(performButton);
-        performButton.setBounds(130, 510, 180, 30);
+        performButton.setBounds(130, 500, 180, 30);
 
         numberLabel.setText("Кількість:");
         jLayeredPane1.add(numberLabel);

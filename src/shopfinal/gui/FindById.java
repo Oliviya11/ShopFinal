@@ -30,7 +30,6 @@ public class FindById extends javax.swing.JPanel {
         id = new javax.swing.JTextField();
         performButton = new javax.swing.JButton();
 
-        setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setMaximumSize(new java.awt.Dimension(435, 600));
         setMinimumSize(new java.awt.Dimension(435, 600));
         setPreferredSize(new java.awt.Dimension(435, 600));

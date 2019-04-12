@@ -64,7 +64,6 @@ public class AddPurchase extends javax.swing.JPanel {
         GoodsNumber1 = new javax.swing.JLabel();
         textNumber = new javax.swing.JTextField();
 
-        setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setMaximumSize(new java.awt.Dimension(435, 600));
         setMinimumSize(new java.awt.Dimension(435, 600));
         setPreferredSize(new java.awt.Dimension(435, 600));

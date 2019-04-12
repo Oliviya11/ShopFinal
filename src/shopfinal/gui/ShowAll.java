@@ -28,7 +28,6 @@ public class ShowAll extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         performButton = new javax.swing.JButton();
 
-        setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setMaximumSize(new java.awt.Dimension(435, 600));
         setMinimumSize(new java.awt.Dimension(435, 600));
         setName(""); // NOI18N

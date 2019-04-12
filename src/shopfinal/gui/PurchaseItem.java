@@ -42,6 +42,7 @@ public class PurchaseItem extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         purchaseGoods = new javax.swing.JTable();
 
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setMaximumSize(new java.awt.Dimension(488, 300));
         setMinimumSize(new java.awt.Dimension(488, 300));
         setName(""); // NOI18N
