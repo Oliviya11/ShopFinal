@@ -359,6 +359,7 @@ public class MainWindow extends javax.swing.JFrame {
         purchaseItem.setLabelDate(purchase.date.toString());
         purchaseItem.setDayOfTheWeek(purchase.dayOfTheWeek);
         purchaseItem.setLabelId(purchase.id+"");
+        purchaseItem.setPurchasePrice(purchase.getTotalPrice());
         for (int i = 0; i < purchase.goods.size(); ++i) {
             Goods goods = purchase.goods.get(i);
             purchaseItem.createRowInTable(goods.name, goods.price, goods.number, goods.totalPrice);

@@ -41,4 +41,12 @@ public class Purchase {
     public double getCost() {
         return cost;
     }
+    
+    public double getTotalPrice() {
+        double totalPrice = 0;
+        for (int i = 0; i < goods.size(); ++i) {
+            totalPrice = goods.get(i).totalPrice;
+        }
+        return totalPrice;
+    }
 }

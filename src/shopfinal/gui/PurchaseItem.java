@@ -32,33 +32,33 @@ public class PurchaseItem extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        weekDayLabel = new javax.swing.JLabel();
         weekDay = new javax.swing.JLabel();
+        weekDayLabel = new javax.swing.JLabel();
         id = new javax.swing.JLabel();
         idLabel = new javax.swing.JLabel();
-        dateLabel1 = new javax.swing.JLabel();
+        purchasePrice = new javax.swing.JLabel();
         date = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         purchaseGoods = new javax.swing.JTable();
+        dateLabel2 = new javax.swing.JLabel();
+        purchasePriceLabel = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        setMaximumSize(new java.awt.Dimension(488, 300));
-        setMinimumSize(new java.awt.Dimension(488, 300));
+        setMaximumSize(new java.awt.Dimension(488, 337));
+        setMinimumSize(new java.awt.Dimension(488, 337));
         setName(""); // NOI18N
-        setPreferredSize(new java.awt.Dimension(488, 300));
+        setPreferredSize(new java.awt.Dimension(488, 337));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(weekDayLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 140, 20));
+        add(weekDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 140, 20));
 
-        weekDay.setText("День тижня:");
-        add(weekDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 80, 20));
+        weekDayLabel.setText("День тижня:");
+        add(weekDayLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 80, 20));
         add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 100, 20));
 
         idLabel.setText("id:");
         add(idLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 30, 20));
-
-        dateLabel1.setText("Дата:");
-        add(dateLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 60, 20));
+        add(purchasePrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 110, 20));
         add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 110, 20));
 
         title.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -88,7 +88,13 @@ public class PurchaseItem extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(purchaseGoods);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 470, 180));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 470, 170));
+
+        dateLabel2.setText("Дата:");
+        add(dateLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 60, 20));
+
+        purchasePriceLabel.setText("Загальна ціна:");
+        add(purchasePriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 110, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     public void setLabelDate(String d) {
@@ -100,7 +106,7 @@ public class PurchaseItem extends javax.swing.JPanel {
     }
     
     public void setLabelWeekDay(String wd) {
-        weekDay.setText(wd);
+        weekDayLabel.setText(wd);
     }
     
     public void setDayOfTheWeek(String day) {
@@ -110,14 +116,20 @@ public class PurchaseItem extends javax.swing.JPanel {
     public void createRowInTable(String name, double price, int number, double totalPrice) {
        model.addRow(new Object[] { name, price, number, totalPrice});
     }
+    
+    public void setPurchasePrice(double price) {
+        purchasePrice.setText(price + "(грн)");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel date;
-    private javax.swing.JLabel dateLabel1;
+    private javax.swing.JLabel dateLabel2;
     private javax.swing.JLabel id;
     private javax.swing.JLabel idLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable purchaseGoods;
+    private javax.swing.JLabel purchasePrice;
+    private javax.swing.JLabel purchasePriceLabel;
     private javax.swing.JLabel title;
     private javax.swing.JLabel weekDay;
     private javax.swing.JLabel weekDayLabel;
