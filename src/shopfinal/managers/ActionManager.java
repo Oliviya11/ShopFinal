@@ -153,34 +153,7 @@ public class ActionManager {
         result.data = purchases;
         return result;
     }
-
-    private Result getSalesVolume() throws SQLException {
-        Result result = new Result();
-
-        ArrayList<String> names = db.getDepartmentsNames();
-
-        result.data2 = new Object[names.size() + 1][3];
-        java.util.Date utilDate = new java.util.Date();
-        Date date = new Date(utilDate.getTime());
-        String dateStr = date.toString();
-        double totalVolume = 0;
-
-        for (int i = 0; i < names.size(); ++i) {
-            String name = names.get(i);
-            result.data2[i][0] = name;
-            result.data2[i][1] = dateStr;
-            double res = db.getSalesVolumeByName(name);
-            result.data2[i][2] = res;
-            totalVolume += res;
-        }
-
-        result.data2[names.size()][0] = StringResources.allDepartments;
-        result.data2[names.size()][1] = dateStr;
-        result.data2[names.size()][2] = totalVolume;
-
-        return result;
-    }
-
+    
     private Result getAllGoods() throws SQLException {
         Result result = new Result();
         result.data = db.getAllGoods();

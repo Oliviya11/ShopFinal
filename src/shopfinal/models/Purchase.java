@@ -15,14 +15,12 @@ public class Purchase {
     public int id;
     public Date date;
     public ArrayList<Goods> goods = new ArrayList<Goods>();
-    public double cost;
     public String dayOfTheWeek;
 
-    public Purchase(int id, Date date, ArrayList<Goods> goods, double cost) {
+    public Purchase(int id, Date date, ArrayList<Goods> goods) {
         this.id = id;
         this.date = date;
         this.goods = goods;
-        this.cost = cost;
         this.dayOfTheWeek = Utils.getDayOfTheWeek(date);
     }
 
@@ -36,10 +34,6 @@ public class Purchase {
 
     public ArrayList<Goods> getGoods() {
         return goods;
-    }
-
-    public double getCost() {
-        return cost;
     }
     
     public double getTotalPrice() {
