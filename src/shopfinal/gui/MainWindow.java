@@ -14,6 +14,7 @@ import shopfinal.ButtonActionHolder;
 import shopfinal.managers.ActionManager;
 import shopfinal.managers.ActionManager.Result;
 import shopfinal.models.Goods;
+import shopfinal.models.Provider;
 import shopfinal.models.Purchase;
 
 /**
@@ -206,7 +207,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void ShowAllPurchasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllPurchasesActionPerformed
         removeLeftPanel();
-        ShowAllPurchases showAllPurchases = new ShowAllPurchases();
+        ShowAll showAllPurchases = new ShowAll();
         class RealButtonActionHolder extends ButtonActionHolder {
 
             @Override
@@ -262,7 +263,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void ShowAllOrderingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllOrderingsActionPerformed
         removeLeftPanel();
-        leftPanel = new ShowAllOrderings();
+        leftPanel = new FindById();
         add(leftPanel);
         adjsutRightPanel();
         refresh();
@@ -273,7 +274,28 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_AddProviderActionPerformed
 
     private void ShowAllProvidersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllProvidersActionPerformed
-        // TODO add your handling code here:
+        removeLeftPanel();
+        ShowAll showAllProviders = new ShowAll();
+        class RealButtonActionHolder extends ButtonActionHolder {
+
+            @Override
+            public void performAction() {
+                try {
+                    Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_ALL_PROVIDERS, null);
+                    ArrayList<Provider> providers = (ArrayList<Provider>) result.data;
+                    addProviderItems(providers);
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+        }
+        RealButtonActionHolder actionHolder = new RealButtonActionHolder();
+        showAllProviders.actionHolder = actionHolder;
+        leftPanel = showAllProviders;
+        add(leftPanel);
+        adjsutRightPanel();
+        refresh();
     }//GEN-LAST:event_ShowAllProvidersActionPerformed
 
     private void AddPurveyanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPurveyanceActionPerformed
@@ -286,7 +308,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void addFindByIdPurchasePanel() {
         removeLeftPanel();
-        FindByIdPurchase p = new FindByIdPurchase();
+        FindById p = new FindById();
         class RealButtonActionHolder extends ButtonActionHolder {
 
             @Override
@@ -326,6 +348,20 @@ public class MainWindow extends javax.swing.JFrame {
     private void addPurchasesItems(ArrayList<Purchase> purchases) {
         for (int i = 0; i < purchases.size(); ++i) {
           addPurchaseItem(purchases.get(i));
+        }
+        refresh();
+    }
+    
+    private void addProviderItem(Provider p) {
+        ProviderItem providerItem = new ProviderItem();
+        providerItem.setLabelId(p.id + "");
+        providerItem.setLabelName(p.name);
+        rightPanel.addPanel(providerItem);
+    }
+    
+    private void addProviderItems(ArrayList<Provider> providers) {
+        for (int i = 0; i < providers.size(); ++i) {
+            addProviderItem(providers.get(i));
         }
         refresh();
     }

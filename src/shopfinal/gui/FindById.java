@@ -7,12 +7,12 @@ package shopfinal.gui;
 
 import shopfinal.ButtonActionHolder;
 
-public class FindByIdPurchase extends javax.swing.JPanel {
+public class FindById extends javax.swing.JPanel {
      public ButtonActionHolder actionHolder = null;
     /**
      * Creates new form FindById
      */
-    public FindByIdPurchase() {
+    public FindById() {
         initComponents();
     }
 

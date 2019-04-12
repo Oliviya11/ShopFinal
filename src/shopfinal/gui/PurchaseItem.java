@@ -64,7 +64,7 @@ public class PurchaseItem extends javax.swing.JPanel {
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title.setText("Покупка");
         title.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 130, 30));
+        add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 180, 30));
 
         purchaseGoods.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

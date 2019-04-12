@@ -6,11 +6,11 @@
 package shopfinal.models;
 
 public class Provider {
-    public int providerId;
+    public int id;
     public String name;
     
-    public Provider(int providerId, String name) {
-        this.providerId = providerId;
+    public Provider(int id, String name) {
+        this.id = id;
         this.name = name;
     }
 }
