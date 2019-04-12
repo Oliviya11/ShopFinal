@@ -37,4 +37,7 @@ public class DbResources {
     public static final String GoodsPurveyances = "GoodsPurveyances";
     public static final String CashFlowDate = "CashFlowDate";
     public static final String Provider = "Provider";
+    public static final String ProviderName = "ProviderName";
+    public static final String Providers = "Providers";
+    public static final String ProviderId = "ProviderId";
 }

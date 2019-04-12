@@ -30,8 +30,11 @@ public class ActionManager {
         GET_SALES_VOLUME_BY_NAME_DATE,
         GET_SALES_VOLUME,
         GET_SALES_VOLUME_BY_WEEK_DAY_MONTH_YEAR,
+        GET_ALL_PROVIDERS,
         GET_ALL_GOODS,
-        ADD_PURCHASE
+        ADD_PURCHASE,
+        ADD_ORDERING,
+        GET_SELECTED_PROVIDER_GOODS
     }
 
     public class Result {
@@ -112,8 +115,16 @@ public class ActionManager {
                 case GET_ALL_GOODS:
                     result = getAllGoods();
                     break;
+                case GET_ALL_PROVIDERS:
+                    result = getAllProviders();
+                    break;
                 case ADD_PURCHASE:
                     if (params != null) {
+                        break;
+                    }
+                case GET_SELECTED_PROVIDER_GOODS:
+                    if (params != null) {
+                        result = getSelectedProviderGoods(params);
                         break;
                     }
                 default:
@@ -245,6 +256,18 @@ public class ActionManager {
     private Result getAllGoods() throws SQLException {
         Result result = new Result();
         result.data = db.getAllGoods();
+        return result;
+    }
+    
+    private Result getSelectedProviderGoods(ActionParams params) throws SQLException {
+        Result result = new Result();
+        result.data = db.getSelectedProviderGoods(params.strValue1);
+        return result;
+    }
+    
+    private Result getAllProviders() throws SQLException {
+        Result result = new Result();
+        result.data = db.getAllProviders();
         return result;
     }
     

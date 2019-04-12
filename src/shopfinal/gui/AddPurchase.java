@@ -11,15 +11,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JPanel;
 import shopfinal.managers.ActionManager;
 import shopfinal.managers.ActionManager.Result;
 import shopfinal.models.Goods;
-import shopfinal.models.Purchase;
 
 public class AddPurchase extends javax.swing.JPanel {
 
-    private HashMap<String, Goods> goodsMap = new HashMap<String, Goods>();
+    private final HashMap<String, Goods> goodsMap = new HashMap<String, Goods>();
 
     /**
      * Creates new form FindById
@@ -29,7 +27,7 @@ public class AddPurchase extends javax.swing.JPanel {
         addAvailableGoods();
     }
 
-    void addAvailableGoods() {
+    private void addAvailableGoods() {
         try {
             Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_ALL_GOODS, null);
             availableGoods.removeAllItems();
@@ -159,7 +157,6 @@ public class AddPurchase extends javax.swing.JPanel {
 
     private void performButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_performButtonActionPerformed
         ArrayList<Goods> goods = new ArrayList<Goods>();
-        System.out.println("perform button");
         Component[] children = content.getComponents();
         for (int i = 0; i < children.length; ++i) {
             if (children[i].isVisible()) {
@@ -178,7 +175,8 @@ public class AddPurchase extends javax.swing.JPanel {
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         String goodsName = String.valueOf(availableGoods.getSelectedItem());
         Goods goodsItem = goodsMap.get(goodsName);
-        if (textDate.getText() != null && !"".equals(textDate.getText())) {
+        if (textDate.getText() != null && !"".equals(textDate.getText())
+            && textNumber.getText() != null && !"".equals(textNumber.getText())) {
             GoodsItem item = new GoodsItem();
             item.setLabelName(goodsItem.name);
             item.setLabelNumber(textDate.getText());

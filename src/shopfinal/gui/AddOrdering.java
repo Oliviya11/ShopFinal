@@ -11,32 +11,52 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JPanel;
 import shopfinal.managers.ActionManager;
+import shopfinal.managers.ActionManager.ActionParams;
 import shopfinal.managers.ActionManager.Result;
 import shopfinal.models.Goods;
-import shopfinal.models.Purchase;
+import shopfinal.models.Provider;
 
 public class AddOrdering extends javax.swing.JPanel {
 
-    private HashMap<String, Goods> goodsMap = new HashMap<String, Goods>();
-
+    private final HashMap<String, Goods> goodsMap = new HashMap<String, Goods>();
+    private String selectedProvider;
     /**
      * Creates new form FindById
      */
     public AddOrdering() {
         initComponents();
+        addAvailableProviders();
         addAvailableGoods();
     }
 
-    void addAvailableGoods() {
+    private void addAvailableGoods() {
         try {
-            Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_ALL_GOODS, null);
+            ActionParams params = new ActionParams();
+            params.strValue1 = String.valueOf(availableProviders.getSelectedItem());
+            Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_SELECTED_PROVIDER_GOODS, params);
             availableGoods.removeAllItems();
             ArrayList<Goods> goods = (ArrayList<Goods>) result.data;
             for (int i = 0; i < goods.size(); ++i) {
-                goodsMap.put(goods.get(i).name, goods.get(i));
-                availableGoods.addItem(goods.get(i).name);
+                String goodsName = goods.get(i).name;
+                if (!goodsMap.containsKey(goodsName)) {
+                    goodsMap.put(goodsName, goods.get(i));
+                }
+                availableGoods.addItem(goodsName);
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(AddOrdering.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    private void addAvailableProviders() {
+        try {
+            Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_ALL_PROVIDERS, null);
+            availableProviders.removeAllItems();
+            ArrayList<Provider> providers = (ArrayList<Provider>) result.data;
+            for (int i = 0; i < providers.size(); ++i) {
+                availableProviders.addItem(providers.get(i).name);
             }
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AddOrdering.class.getName()).log(Level.SEVERE, null, ex);
@@ -67,7 +87,7 @@ public class AddOrdering extends javax.swing.JPanel {
         number = new javax.swing.JTextField();
         availableProviders = new javax.swing.JComboBox<>();
         providerLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        showSelectedProviderGoods = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setMaximumSize(new java.awt.Dimension(435, 600));
@@ -95,7 +115,7 @@ public class AddOrdering extends javax.swing.JPanel {
             }
         });
         jLayeredPane1.add(date);
-        date.setBounds(110, 170, 100, 30);
+        date.setBounds(120, 170, 100, 30);
 
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -116,7 +136,7 @@ public class AddOrdering extends javax.swing.JPanel {
             }
         });
         jLayeredPane1.add(availableGoods);
-        availableGoods.setBounds(120, 110, 260, 20);
+        availableGoods.setBounds(120, 110, 280, 20);
 
         okButton.setText("+");
         okButton.addActionListener(new java.awt.event.ActionListener() {
@@ -152,19 +172,24 @@ public class AddOrdering extends javax.swing.JPanel {
             }
         });
         jLayeredPane1.add(number);
-        number.setBounds(110, 140, 100, 30);
+        number.setBounds(120, 140, 100, 30);
 
         availableProviders.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jLayeredPane1.add(availableProviders);
-        availableProviders.setBounds(120, 40, 260, 20);
+        availableProviders.setBounds(120, 40, 280, 20);
 
         providerLabel1.setText("Постачальник:");
         jLayeredPane1.add(providerLabel1);
         providerLabel1.setBounds(20, 40, 90, 20);
 
-        jButton1.setText("Переглянути товари обраного постачальника");
-        jLayeredPane1.add(jButton1);
-        jButton1.setBounds(70, 70, 300, 23);
+        showSelectedProviderGoods.setText("Переглянути товари обраного постачальника");
+        showSelectedProviderGoods.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showSelectedProviderGoodsActionPerformed(evt);
+            }
+        });
+        jLayeredPane1.add(showSelectedProviderGoods);
+        showSelectedProviderGoods.setBounds(70, 70, 300, 23);
 
         add(jLayeredPane1);
 
@@ -216,6 +241,10 @@ public class AddOrdering extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_availableGoodsActionPerformed
 
+    private void showSelectedProviderGoodsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showSelectedProviderGoodsActionPerformed
+        addAvailableGoods();
+    }//GEN-LAST:event_showSelectedProviderGoodsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> availableGoods;
@@ -224,7 +253,6 @@ public class AddOrdering extends javax.swing.JPanel {
     private javax.swing.JTextField date;
     private javax.swing.JLabel dateLabel;
     private javax.swing.JLabel goodsLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JTextField number;
@@ -233,6 +261,7 @@ public class AddOrdering extends javax.swing.JPanel {
     private javax.swing.JButton performButton;
     private javax.swing.JLabel providerLabel1;
     private javax.swing.JScrollPane scroll;
+    private javax.swing.JButton showSelectedProviderGoods;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

@@ -60,8 +60,8 @@ public class MainWindow extends javax.swing.JFrame {
         Settings = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(900, 600));
-        setMinimumSize(new java.awt.Dimension(900, 600));
+        setMaximumSize(new java.awt.Dimension(950, 600));
+        setMinimumSize(new java.awt.Dimension(950, 600));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         Goods.setText("Товар");
@@ -271,7 +271,6 @@ public class MainWindow extends javax.swing.JFrame {
     }
     
     private void adjsutRightPanel() {
-        System.out.println("adjust right panel");
         removeRightPanel();
         addRightPanel();
         rightPanel.add(new PurchaseItem());

@@ -65,7 +65,7 @@ public class PurchaseItem extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Назва товару", "Ціна за одиницю", "Кількість", "Загальна ціна"
+                "Назва товару", "Ціна за одиницю", "Кількість (од)", "Загальна ціна (грн)"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -78,7 +78,7 @@ public class PurchaseItem extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(purchaseGoods);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 450, 180));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 510, 180));
     }// </editor-fold>//GEN-END:initComponents
 
 

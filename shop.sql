@@ -194,26 +194,9 @@ create table PurveyancesCosts (
 -- insert Providers (Пстачальники)
 insert into Providers (ProviderName) values ('TTO-ФУД');
 insert into Providers (ProviderName) values ('ТОВ Фабрика Здорово');
-insert into Providers (ProviderName) values ('Сімейний бюджет');
 insert into Providers (ProviderName) values ('ТМ Владам');
-insert into Providers (ProviderName) values ('Агроника "ЗДОРОВА РОДИНА"');
-insert into Providers (ProviderName) values ('VITOLIO"');
-insert into Providers (ProviderName) values ('VIGILANTE"');
-insert into Providers (ProviderName) values ('KALIMERA"');
-insert into Providers (ProviderName) values ('PRIMO GUSTO"');
-insert into Providers (ProviderName) values ('Асабай (Турція)"');
-insert into Providers (ProviderName) values ("Ямчан (В'єтнам)");
-insert into Providers (ProviderName) values ("ELEON");
-insert into Providers (ProviderName) values ("JAMAR");
-insert into Providers (ProviderName) values ("КАРПАТИ");
-insert into Providers (ProviderName) values ("Морячка");
-insert into Providers (ProviderName) values ("ТМ Клева");
-insert into Providers (ProviderName) values ("ТМ КОЛУМБ");
 insert into Providers (ProviderName) values ("ПОМІЧНИЦЯ");
 insert into Providers (ProviderName) values ("Crystals Health");
-insert into Providers (ProviderName) values ("HOZZI");
-insert into Providers (ProviderName) values ("АЛЄС");
-
 
 -- Дані для тестування
 
@@ -221,11 +204,11 @@ insert into Departments (DepartmentName) values ('Продукти харчув�
 insert into Departments (DepartmentName) values ('Промтовари');
 
 insert into Goods (GoodsName, Provider, Num, Minimum, DepartmentId)
-			values ('Аджика 80г', 'ТТО-ФУД', 9845, 1000, 1);
+			values ('Аджика 80г', 'TTO-ФУД', 9845, 1000, 1);
 insert into Goods (GoodsName, Provider, Num, Minimum, DepartmentId)
-			values ('Приправа Мисливська 55г', 'ТТО-ФУД', 9846, 800, 1);
+			values ('Приправа Мисливська 55г', 'TTO-ФУД', 9846, 800, 1);
 insert into Goods (GoodsName, Provider, Num, Minimum, DepartmentId)
-			values ('Сванська сіль 80г', 'ТТО-ФУД', 9848, 600, 1);
+			values ('Сванська сіль 80г', 'TTO-ФУД', 9848, 600, 1);
 insert into Goods (GoodsName, Provider, Num, Minimum, DepartmentId)
 			values ('Яловичина тушкована 525г', 'ТОВ Фабрика Здорово', 9801, 1500, 1);
 insert into Goods (GoodsName, Provider, Num, Minimum, DepartmentId)
@@ -497,7 +480,7 @@ insert into GoodsPrices (GoodsId, GoodsPricesDate, Price) values(25, "2018-07-15
 insert into GoodsPrices (GoodsId, GoodsPricesDate, Price) values(25, "2018-07-16", 119);
 
 -- purveyance id 1
-insert into Purveyances (ProviderId) values (18);
+insert into Purveyances (ProviderId) values (3);
 insert into GoodsPurveyances (Num, Price, GoodsId, PurveyanceId) values (2000, 120, 19, 1);
 insert into GoodsPurveyances (Num, Price, GoodsId, PurveyanceId) values (1200, 112, 20, 1);
 insert into GoodsPurveyances (Num, Price, GoodsId, PurveyanceId) values (900, 115, 21, 1);

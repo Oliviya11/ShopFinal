@@ -406,6 +406,40 @@ public class DbAccessManager {
         return goods;
     }
     
+    public ArrayList getSelectedProviderGoods(String providerName) throws SQLException {
+        ArrayList goods = new ArrayList();
+        String sql = "select * from " + DbResources.Goods + " where "
+                + DbResources.Provider + "='"+providerName+"'";
+        ResultSet rs = getResultSet(sql);
+        System.out.println("sql: " + sql);
+        while ((rs != null) && (rs.next())) {
+            Goods goodsItem = new Goods(
+                    rs.getInt(DbResources.GoodsId),
+                    rs.getString(DbResources.GoodsName),
+                    rs.getString(DbResources.Provider),
+                    rs.getInt(DbResources.Number),
+                    rs.getInt(DbResources.Minimum),
+                    rs.getInt(DbResources.DepartmentId)
+            );
+            goods.add(goodsItem);
+        }
+        return goods;
+    }
+  
+    public ArrayList getAllProviders() throws SQLException {
+        ArrayList providers = new ArrayList();
+        String sql = "select * from " + DbResources.Providers;
+        ResultSet rs = getResultSet(sql);
+        while ((rs != null) && (rs.next())) {
+            Provider providerItem = new Provider(
+                    rs.getInt(DbResources.ProviderId),
+                    rs.getString(DbResources.ProviderName)
+            );
+            providers.add(providerItem);
+        }
+        return providers;
+    }
+    
     private void updateGoods(ArrayList<Goods> goods) throws SQLException {
         for (int i = 0; i < goods.size(); ++i) {
             String sql = "update " + DbResources.Goods + " set " 
