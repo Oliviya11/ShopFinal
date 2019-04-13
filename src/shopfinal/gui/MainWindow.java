@@ -50,8 +50,8 @@ public class MainWindow extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         Goods = new javax.swing.JMenu();
         FindGoodsById = new javax.swing.JMenuItem();
-        ShowAllGoods = new javax.swing.JMenuItem();
         AddGoods = new javax.swing.JMenuItem();
+        ShowAllGoods = new javax.swing.JMenuItem();
         Employee = new javax.swing.JMenu();
         AddEmployee = new javax.swing.JMenuItem();
         ShowAllEmployees = new javax.swing.JMenuItem();
@@ -67,6 +67,9 @@ public class MainWindow extends javax.swing.JFrame {
         ShowAllProviders = new javax.swing.JMenuItem();
         Purveyance = new javax.swing.JMenu();
         ShowAllPurveyances = new javax.swing.JMenuItem();
+        Department = new javax.swing.JMenu();
+        AddDepartment = new javax.swing.JMenuItem();
+        ShowAllDepartments = new javax.swing.JMenuItem();
         Settings = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,14 +87,6 @@ public class MainWindow extends javax.swing.JFrame {
         });
         Goods.add(FindGoodsById);
 
-        ShowAllGoods.setText("Показати всі");
-        ShowAllGoods.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShowAllGoodsActionPerformed(evt);
-            }
-        });
-        Goods.add(ShowAllGoods);
-
         AddGoods.setText("Додати");
         AddGoods.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +94,14 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         Goods.add(AddGoods);
+
+        ShowAllGoods.setText("Показати всі");
+        ShowAllGoods.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowAllGoodsActionPerformed(evt);
+            }
+        });
+        Goods.add(ShowAllGoods);
 
         jMenuBar1.add(Goods);
 
@@ -201,6 +204,31 @@ public class MainWindow extends javax.swing.JFrame {
         Purveyance.add(ShowAllPurveyances);
 
         jMenuBar1.add(Purveyance);
+
+        Department.setText("Відділ");
+        Department.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DepartmentActionPerformed(evt);
+            }
+        });
+
+        AddDepartment.setText("Додати");
+        AddDepartment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddDepartmentActionPerformed(evt);
+            }
+        });
+        Department.add(AddDepartment);
+
+        ShowAllDepartments.setText("Показати всі");
+        ShowAllDepartments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowAllDepartmentsActionPerformed(evt);
+            }
+        });
+        Department.add(ShowAllDepartments);
+
+        jMenuBar1.add(Department);
 
         Settings.setText("Налаштування");
         Settings.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -456,6 +484,26 @@ public class MainWindow extends javax.swing.JFrame {
         refresh();
     }//GEN-LAST:event_AddGoodsActionPerformed
 
+    private void ShowAllDepartmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllDepartmentsActionPerformed
+        removeLeftPanel();
+        leftPanel = new ShowAll();
+        add(leftPanel);
+        adjsutRightPanel();
+        refresh();
+    }//GEN-LAST:event_ShowAllDepartmentsActionPerformed
+
+    private void AddDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddDepartmentActionPerformed
+        removeLeftPanel();
+        leftPanel = new AddDepartment();
+        add(leftPanel);
+        adjsutRightPanel();
+        refresh();
+    }//GEN-LAST:event_AddDepartmentActionPerformed
+
+    private void DepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepartmentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DepartmentActionPerformed
+
     private void addFindByIdPurchasePanel() {
         removeLeftPanel();
         FindById p = new FindById();
@@ -658,11 +706,13 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem AddDepartment;
     private javax.swing.JMenuItem AddEmployee;
     private javax.swing.JMenuItem AddGoods;
     private javax.swing.JMenuItem AddOrdering;
     private javax.swing.JMenuItem AddProvider;
     private javax.swing.JMenuItem AddPurchase;
+    private javax.swing.JMenu Department;
     private javax.swing.JMenu Employee;
     private javax.swing.JMenuItem FindGoodsById;
     private javax.swing.JMenuItem FindPurchaseById;
@@ -672,6 +722,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenu Purchase;
     private javax.swing.JMenu Purveyance;
     private javax.swing.JMenu Settings;
+    private javax.swing.JMenuItem ShowAllDepartments;
     private javax.swing.JMenuItem ShowAllEmployees;
     private javax.swing.JMenuItem ShowAllGoods;
     private javax.swing.JMenuItem ShowAllOrderings;
