@@ -450,7 +450,11 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_AddEmployeeActionPerformed
 
     private void AddGoodsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddGoodsActionPerformed
-        // TODO add your handling code here:
+        removeLeftPanel();
+        leftPanel = new AddGoods();
+        add(leftPanel);
+        adjsutRightPanel();
+        refresh();
     }//GEN-LAST:event_AddGoodsActionPerformed
 
     private void addFindByIdPurchasePanel() {
