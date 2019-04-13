@@ -15,6 +15,7 @@ public class Goods {
     public int departmentId;
     public double price;
     public double totalPrice;
+    public int numberInPurchase;
 
     public Goods(int id,
             String name,

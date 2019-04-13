@@ -8,6 +8,7 @@ package shopfinal.managers;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import shopfinal.models.Goods;
 import shopfinal.models.Purchase;
 import shopfinal.res.DbResources;
 import shopfinal.res.StringResources;
@@ -103,7 +104,7 @@ public class ActionManager {
                     break;
                 case ADD_PURCHASE:
                     if (params != null) {
-                        
+                        addPurchase(params);
                     }
                     break;
                 case GET_SELECTED_PROVIDER_GOODS:
@@ -243,40 +244,15 @@ public class ActionManager {
         int depId = (int) params.dataArr[3];
         int price = (int) params.dataArr[4];
         String date = (String) params.dataArr[5];
-        db.addGoods(name, provider, number, depId);
-        int id = db.getGoodsIdByName(name);
+        int id = db.addGoods(name, provider, number, depId);
         db.addToGoodsPrices(id, date, price);
     }
 
-    private int getMonthNumber(String month) {
-        switch (month) {
-            case StringResources.January:
-                return 1;
-            case StringResources.February:
-                return 2;
-            case StringResources.March:
-                return 3;
-            case StringResources.April:
-                return 4;
-            case StringResources.May:
-                return 5;
-            case StringResources.June:
-                return 6;
-            case StringResources.July:
-                return 7;
-            case StringResources.August:
-                return 8;
-            case StringResources.September:
-                return 9;
-            case StringResources.October:
-                return 10;
-            case StringResources.November:
-                return 11;
-            case StringResources.December:
-                return 12;
-            default:
-                return 0;
-        }
+    private void addPurchase(ActionParams params) throws SQLException {
+        String date = (String) params.dataArr[0];
+        ArrayList<Goods> goods = (ArrayList<Goods>) params.dataArr[1];
+        int id = db.addPurchase(date);
+        db.addItemsToPurchasesGoods(goods, id);
     }
 
     private static ActionManager instance;

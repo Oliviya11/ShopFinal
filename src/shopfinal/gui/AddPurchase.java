@@ -165,11 +165,21 @@ public class AddPurchase extends javax.swing.JPanel {
                     Goods goodsItem = goodsMap.get(item.getLabelName());
                     System.out.println(goodsItem);
                     if (goodsItem.number > item.getLabelNumber()) {
-                        goodsItem.number -= item.getLabelNumber();
+                        goodsItem.numberInPurchase = item.getLabelNumber();
                         goods.add(goodsItem);
                     }
                 }
             }
+        }
+        
+        ActionManager.ActionParams params = new ActionManager.ActionParams();
+        params.dataArr = new Object[2];
+        params.dataArr[0] = date.getText();
+        params.dataArr[1] = goods;
+        try {
+            ActionManager.getInstance().performAction(ActionManager.Action.ADD_PURCHASE, params);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(AddPurchase.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_performButtonActionPerformed
 

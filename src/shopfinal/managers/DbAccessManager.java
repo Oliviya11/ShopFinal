@@ -357,6 +357,16 @@ public class DbAccessManager {
         Statement s = conn.createStatement();
         s.execute(sql);
     }
+    
+    private int executSqlWithId(String sql) throws SQLException {
+        Statement s = conn.createStatement();
+        s.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+        ResultSet generatedKeys = s.getGeneratedKeys();
+        if (generatedKeys.next()) {
+            return generatedKeys.getInt(1);
+        }        
+        return 0;
+    }
 
     private void getPurchaseFromSet(ResultSet rs, ArrayList<Purchase> purchases) throws SQLException {
         while ((rs != null) && (rs.next())) {
@@ -428,13 +438,13 @@ public class DbAccessManager {
         updateGoods(goods);
     }
     
-    public void addGoods(String name, String providerName, int number, int depId) throws SQLException {
+    public int addGoods(String name, String providerName, int number, int depId) throws SQLException {
         String sql = "insert into " + DbResources.Goods + " (" + DbResources.GoodsName + ", " +
                 DbResources.Provider + ", " + DbResources.Number + ", " + DbResources.Minimum + ", "
                 + DbResources.DepartmentId + ") values ('" + name + "', " + "'" + providerName +"', "
                 + number + ", 0, " + depId +")";
         
-        executSql(sql);     
+        return executSqlWithId(sql);     
     }
     
     public void addToGoodsPrices(int goodsId, String date, int price) throws SQLException {
@@ -442,5 +452,24 @@ public class DbAccessManager {
                 DbResources.GoodsPricesDate + ", " + DbResources.Price + ") values (" +
                 + goodsId + ", '" + date + "', " + price + ")";
         executSql(sql);
+    }
+    
+    public int addPurchase(String date) throws SQLException {
+        String sql = "insert into " + DbResources.Purchases + " (" + DbResources.PurchaseDate + ") "
+                +"values ('" + date + "')";
+        return executSqlWithId(sql);
+    }
+    
+    public void addItemToPurchaseGoods(Goods goods, int purchaseId) throws SQLException {
+        String sql = "insert into " + DbResources.GoodsPurchases + " (" + DbResources.GoodsId + ", "
+                + DbResources.PurchaseId + ", " + DbResources.Number + ") values (" +
+                goods.id + ", " + purchaseId + ", " + goods.numberInPurchase + ")" ;
+        executSql(sql);
+    }
+    
+    public void addItemsToPurchasesGoods(ArrayList<Goods> goods, int purchaseId) throws SQLException {
+        for (int i = 0; i < goods.size(); ++i) {
+            addItemToPurchaseGoods(goods.get(i), purchaseId);
+        }
     }
 }
