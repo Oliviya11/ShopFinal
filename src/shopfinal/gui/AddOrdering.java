@@ -76,10 +76,10 @@ public class AddOrdering extends javax.swing.JPanel {
         jLayeredPane1 = new javax.swing.JLayeredPane();
         goodsLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        date = new javax.swing.JTextField();
+        price = new javax.swing.JTextField();
         scroll = new javax.swing.JScrollPane();
         content = new javax.swing.JPanel();
-        dateLabel = new javax.swing.JLabel();
+        priceLabel = new javax.swing.JLabel();
         availableGoods = new javax.swing.JComboBox<>();
         okButton = new javax.swing.JButton();
         performButton = new javax.swing.JButton();
@@ -88,6 +88,8 @@ public class AddOrdering extends javax.swing.JPanel {
         availableProviders = new javax.swing.JComboBox<>();
         providerLabel1 = new javax.swing.JLabel();
         showSelectedProviderGoods = new javax.swing.JButton();
+        dateLabel1 = new javax.swing.JLabel();
+        date1 = new javax.swing.JTextField();
 
         setMaximumSize(new java.awt.Dimension(435, 600));
         setMinimumSize(new java.awt.Dimension(435, 600));
@@ -106,15 +108,10 @@ public class AddOrdering extends javax.swing.JPanel {
         jLayeredPane1.add(jLabel2);
         jLabel2.setBounds(140, 10, 140, 20);
 
-        date.setMinimumSize(new java.awt.Dimension(80, 20));
-        date.setPreferredSize(new java.awt.Dimension(80, 20));
-        date.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dateActionPerformed(evt);
-            }
-        });
-        jLayeredPane1.add(date);
-        date.setBounds(120, 170, 100, 30);
+        price.setMinimumSize(new java.awt.Dimension(80, 20));
+        price.setPreferredSize(new java.awt.Dimension(80, 20));
+        jLayeredPane1.add(price);
+        price.setBounds(120, 200, 100, 30);
 
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -122,11 +119,11 @@ public class AddOrdering extends javax.swing.JPanel {
         scroll.setViewportView(content);
 
         jLayeredPane1.add(scroll);
-        scroll.setBounds(10, 210, 410, 280);
+        scroll.setBounds(10, 240, 420, 240);
 
-        dateLabel.setText("Дата:");
-        jLayeredPane1.add(dateLabel);
-        dateLabel.setBounds(20, 170, 70, 30);
+        priceLabel.setText("Ціна:");
+        jLayeredPane1.add(priceLabel);
+        priceLabel.setBounds(20, 200, 70, 30);
 
         availableGoods.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         availableGoods.addActionListener(new java.awt.event.ActionListener() {
@@ -157,7 +154,7 @@ public class AddOrdering extends javax.swing.JPanel {
             }
         });
         jLayeredPane1.add(performButton);
-        performButton.setBounds(130, 500, 180, 30);
+        performButton.setBounds(130, 490, 180, 30);
 
         numberLabel.setText("Кількість:");
         jLayeredPane1.add(numberLabel);
@@ -165,11 +162,6 @@ public class AddOrdering extends javax.swing.JPanel {
 
         number.setMinimumSize(new java.awt.Dimension(80, 20));
         number.setPreferredSize(new java.awt.Dimension(80, 20));
-        number.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numberActionPerformed(evt);
-            }
-        });
         jLayeredPane1.add(number);
         number.setBounds(120, 140, 100, 30);
 
@@ -190,6 +182,15 @@ public class AddOrdering extends javax.swing.JPanel {
         jLayeredPane1.add(showSelectedProviderGoods);
         showSelectedProviderGoods.setBounds(70, 70, 300, 23);
 
+        dateLabel1.setText("Дата:");
+        jLayeredPane1.add(dateLabel1);
+        dateLabel1.setBounds(20, 170, 70, 30);
+
+        date1.setMinimumSize(new java.awt.Dimension(80, 20));
+        date1.setPreferredSize(new java.awt.Dimension(80, 20));
+        jLayeredPane1.add(date1);
+        date1.setBounds(120, 170, 100, 30);
+
         add(jLayeredPane1);
 
         getAccessibleContext().setAccessibleParent(this);
@@ -197,17 +198,13 @@ public class AddOrdering extends javax.swing.JPanel {
         bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dateActionPerformed
-
     private void performButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_performButtonActionPerformed
         ArrayList<Goods> goods = new ArrayList<Goods>();
         System.out.println("perform button");
         Component[] children = content.getComponents();
         for (int i = 0; i < children.length; ++i) {
             if (children[i].isVisible()) {
-                GoodsItem item = (GoodsItem) children[i];
+                GoodsPreviewItem item = (GoodsPreviewItem) children[i];
                 if (item != null) {
                     Goods goodsItem = goodsMap.get(item.getName());
                     if (goodsItem.number > item.getNumber()) {
@@ -222,19 +219,15 @@ public class AddOrdering extends javax.swing.JPanel {
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         String goodsName = String.valueOf(availableGoods.getSelectedItem());
         Goods goodsItem = goodsMap.get(goodsName);
-        if (date.getText() != null && !"".equals(date.getText())) {
-            GoodsItem item = new GoodsItem();
+        if (price.getText() != null && !"".equals(price.getText())) {
+            GoodsPreviewItem item = new GoodsPreviewItem();
             item.setLabelName(goodsItem.name);
-            item.setLabelNumber(date.getText());
+            item.setLabelNumber(price.getText());
             content.add(item);
             content.repaint();
             content.revalidate();
         }
     }//GEN-LAST:event_okButtonActionPerformed
-
-    private void numberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_numberActionPerformed
 
     private void availableGoodsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availableGoodsActionPerformed
         // TODO add your handling code here:
@@ -244,13 +237,16 @@ public class AddOrdering extends javax.swing.JPanel {
         addAvailableGoods();
     }//GEN-LAST:event_showSelectedProviderGoodsActionPerformed
 
+    public int getPrice() {
+        return Integer.parseInt(price.getText());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> availableGoods;
     private javax.swing.JComboBox<String> availableProviders;
     private javax.swing.JPanel content;
-    private javax.swing.JTextField date;
-    private javax.swing.JLabel dateLabel;
+    private javax.swing.JTextField date1;
+    private javax.swing.JLabel dateLabel1;
     private javax.swing.JLabel goodsLabel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
@@ -258,6 +254,8 @@ public class AddOrdering extends javax.swing.JPanel {
     private javax.swing.JLabel numberLabel;
     private javax.swing.JButton okButton;
     private javax.swing.JButton performButton;
+    private javax.swing.JTextField price;
+    private javax.swing.JLabel priceLabel;
     private javax.swing.JLabel providerLabel1;
     private javax.swing.JScrollPane scroll;
     private javax.swing.JButton showSelectedProviderGoods;

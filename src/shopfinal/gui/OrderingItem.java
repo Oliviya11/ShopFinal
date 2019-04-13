@@ -31,8 +31,8 @@ public class OrderingItem extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        providerName = new javax.swing.JLabel();
-        providerNameLabel = new javax.swing.JLabel();
+        status = new javax.swing.JLabel();
+        statusLabel = new javax.swing.JLabel();
         id = new javax.swing.JLabel();
         idLabel = new javax.swing.JLabel();
         employee = new javax.swing.JLabel();
@@ -44,17 +44,20 @@ public class OrderingItem extends javax.swing.JPanel {
         employeeLabel = new javax.swing.JLabel();
         weekDayLabel = new javax.swing.JLabel();
         weekDay = new javax.swing.JLabel();
+        providerNameLabel1 = new javax.swing.JLabel();
+        providerName = new javax.swing.JLabel();
+        performOrdering = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        setMaximumSize(new java.awt.Dimension(488, 337));
-        setMinimumSize(new java.awt.Dimension(488, 337));
+        setMaximumSize(new java.awt.Dimension(488, 460));
+        setMinimumSize(new java.awt.Dimension(488, 460));
         setName(""); // NOI18N
-        setPreferredSize(new java.awt.Dimension(488, 337));
+        setPreferredSize(new java.awt.Dimension(488, 460));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(providerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 350, 20));
+        add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 180, 20));
 
-        providerNameLabel.setText("Постачальник:");
-        add(providerNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 90, 20));
+        statusLabel.setText("Статус:");
+        add(statusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 60, 20));
         add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 100, 20));
 
         idLabel.setText("id:");
@@ -100,7 +103,23 @@ public class OrderingItem extends javax.swing.JPanel {
         weekDayLabel.setText("День тижня:");
         add(weekDayLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 80, 20));
         add(weekDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 140, 20));
+
+        providerNameLabel1.setText("Постачальник:");
+        add(providerNameLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 90, 20));
+        add(providerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 350, 20));
+
+        performOrdering.setText("Виконати замовлення");
+        performOrdering.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                performOrderingActionPerformed(evt);
+            }
+        });
+        add(performOrdering, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 210, 30));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void performOrderingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_performOrderingActionPerformed
+        setStatus(true);
+    }//GEN-LAST:event_performOrderingActionPerformed
 
     public void setLabelDate(String d) {
         date.setText(d);
@@ -126,7 +145,14 @@ public class OrderingItem extends javax.swing.JPanel {
         providerName.setText(pn);
     }
     
-    //public void 
+    public void setStatus(boolean isPerformed) {
+        if (isPerformed) {
+            status.setText("Виконано");
+            performOrdering.setVisible(false);
+        } else {
+            status.setText("Не виконано");
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel date;
@@ -136,9 +162,12 @@ public class OrderingItem extends javax.swing.JPanel {
     private javax.swing.JLabel id;
     private javax.swing.JLabel idLabel;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton performOrdering;
     private javax.swing.JLabel providerName;
-    private javax.swing.JLabel providerNameLabel;
+    private javax.swing.JLabel providerNameLabel1;
     private javax.swing.JTable purchaseGoods;
+    private javax.swing.JLabel status;
+    private javax.swing.JLabel statusLabel;
     private javax.swing.JLabel title;
     private javax.swing.JLabel weekDay;
     private javax.swing.JLabel weekDayLabel;

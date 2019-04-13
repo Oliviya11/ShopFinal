@@ -443,6 +443,7 @@ public class MainWindow extends javax.swing.JFrame {
         orderingItem.setLabelDate(ordering.date + "");
         orderingItem.setProviderName(ordering.provider.name);
         orderingItem.setEmployeeName(ordering.employee.pib);
+        orderingItem.setStatus(ordering.pruveyanceId != 0);
         for (int i = 0; i < ordering.goods.size(); ++i) {
             Goods goods = ordering.goods.get(i);
             orderingItem.createRowInTable(goods.name, goods.number);

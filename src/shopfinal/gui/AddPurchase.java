@@ -159,7 +159,7 @@ public class AddPurchase extends javax.swing.JPanel {
         Component[] children = content.getComponents();
         for (int i = 0; i < children.length; ++i) {
             if (children[i].isVisible()) {
-                GoodsItem item = (GoodsItem) children[i];
+                GoodsPreviewItem item = (GoodsPreviewItem) children[i];
                 if (item != null) {
                     Goods goodsItem = goodsMap.get(item.getName());
                     if (goodsItem.number > item.getNumber()) {
@@ -176,7 +176,7 @@ public class AddPurchase extends javax.swing.JPanel {
         Goods goodsItem = goodsMap.get(goodsName);
         if (textDate.getText() != null && !"".equals(textDate.getText())
             && textNumber.getText() != null && !"".equals(textNumber.getText())) {
-            GoodsItem item = new GoodsItem();
+            GoodsPreviewItem item = new GoodsPreviewItem();
             item.setLabelName(goodsItem.name);
             item.setLabelNumber(textDate.getText());
             content.add(item);

@@ -11,12 +11,12 @@ import javax.swing.JLabel;
  *
  * @author User
  */
-public class GoodsItem extends javax.swing.JPanel {
+public class GoodsPreviewItem extends javax.swing.JPanel {
 
     /**
      * Creates new form GoodsItem
      */
-    public GoodsItem() {
+    public GoodsPreviewItem() {
         initComponents();
     }
 
