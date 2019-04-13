@@ -5,16 +5,12 @@
  */
 package shopfinal.models;
 
-public class Employee {
+public class Department {
     public int id;
-    public String pib;
-    public int cost;
-    public Department department;
+    public String name;
     
-    public Employee(int id, String pib, int cost, Department department) {
+    public Department(int id, String name) {
         this.id = id;
-        this.pib = pib;
-        this.cost = cost;
-        this.department = department;
+        this.name = name;       
     }
 }

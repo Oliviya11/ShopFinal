@@ -32,7 +32,10 @@ public class ActionManager {
         GET_SELECTED_PROVIDER_GOODS,
         ADD_PROVIDER,
         GET_ALL_ORDERINGS,
-        GET_ALL_PURVEYANCES
+        GET_ALL_PURVEYANCES,
+        GET_ALL_EMPLOYEES,
+        GET_ALL_DEPARTMENTS,
+        ADD_EMPLOYEE
     }
 
     public class Result {
@@ -49,6 +52,7 @@ public class ActionManager {
         public String strValue1;
         public String strValue2;
         public Object data;
+        public Object[] dataArr;
     }
 
     private DbAccessManager db = null;
@@ -118,6 +122,17 @@ public class ActionManager {
                 case GET_ALL_PURVEYANCES:
                     result = getAllPurveyances();
                     break;
+                case GET_ALL_EMPLOYEES:
+                    result = getAllEmployees();
+                    break;
+                case GET_ALL_DEPARTMENTS:
+                    result = getAllDepartments();
+                    break;
+                case ADD_EMPLOYEE:
+                    if (params != null) {
+                       addEmployee(params);
+                       break;
+                    }
                 default:
                     break;
             }
@@ -192,6 +207,25 @@ public class ActionManager {
         return result;
     }
     
+    private Result getAllEmployees() throws SQLException {
+        Result result = new Result();
+        result.data = db.getAllEmployees();
+        return result;
+    }
+    
+    private Result getAllDepartments() throws SQLException {
+        Result result = new Result();
+        result.data = db.getAllDepartments();
+        return result;
+    }
+    
+    private void addEmployee(ActionParams params) throws SQLException {
+        String pib = (String) params.dataArr[0];
+        int cost = (int) params.dataArr[1];
+        int depId = (int) params.dataArr[2];
+        db.addEmployee(pib, cost, depId);
+    }
+    
     private int getMonthNumber(String month) {
         switch (month) {
             case StringResources.January:
@@ -221,47 +255,6 @@ public class ActionManager {
             default:
                 return 0;
         }
-    }
-
-    private String getDatesByWeekDayMonthYear(int day, int month, int year, String date) {
-        StringBuilder dates = new StringBuilder("");
-        Calendar c = Calendar.getInstance();
-        java.util.Date utilDate;
-        YearMonth yearMonthObject = YearMonth.of(year, month);
-        int daysInMonth = yearMonthObject.lengthOfMonth();
-        for (int i = 1; i <= daysInMonth; ++i) {
-            String monthStr = month + "";
-            if (month < 10) {
-                monthStr = "0" + month;
-            }
-
-            String dayStr = i + "";
-            if (i < 10) {
-                dayStr = "0" + i;
-            }
-
-            Calendar dateC = Calendar.getInstance();
-            dateC.set(year, month - 1, i);
-            utilDate = dateC.getTime();
-            c.setTime(utilDate);
-            int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
-
-            if (dayOfWeek == day) {
-                String sqlDate = year + "-" + monthStr + "-" + dayStr;
-                dates.append(date + "='" + sqlDate + "' or ");
-            }
-
-        }
-
-        if (dates.length() > 4) {
-            dates.setCharAt(dates.length() - 1, ' ');
-            dates.setCharAt(dates.length() - 2, ' ');
-            dates.setCharAt(dates.length() - 3, ' ');
-            dates.setCharAt(dates.length() - 4, ')');
-
-        }
-
-        return "(" + dates.toString();
     }
 
     private static ActionManager instance;

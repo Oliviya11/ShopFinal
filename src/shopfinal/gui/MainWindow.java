@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import shopfinal.ButtonActionHolder;
 import shopfinal.managers.ActionManager;
 import shopfinal.managers.ActionManager.Result;
+import shopfinal.models.Employee;
 import shopfinal.models.Goods;
 import shopfinal.models.Ordering;
 import shopfinal.models.Provider;
@@ -56,6 +57,8 @@ public class MainWindow extends javax.swing.JFrame {
         ShowAllGoods = new javax.swing.JMenuItem();
         AddGoods = new javax.swing.JMenuItem();
         Employee = new javax.swing.JMenu();
+        AddEmployee = new javax.swing.JMenuItem();
+        ShowAllEmployees = new javax.swing.JMenuItem();
         Purchase = new javax.swing.JMenu();
         FindPurchaseById = new javax.swing.JMenuItem();
         AddPurchase = new javax.swing.JMenuItem();
@@ -99,6 +102,23 @@ public class MainWindow extends javax.swing.JFrame {
         jMenuBar1.add(Goods);
 
         Employee.setText("Працівник");
+
+        AddEmployee.setText("Додати");
+        AddEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddEmployeeActionPerformed(evt);
+            }
+        });
+        Employee.add(AddEmployee);
+
+        ShowAllEmployees.setText("Показати всі");
+        ShowAllEmployees.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowAllEmployeesActionPerformed(evt);
+            }
+        });
+        Employee.add(ShowAllEmployees);
+
         jMenuBar1.add(Employee);
 
         Purchase.setText("Покупка");
@@ -369,6 +389,40 @@ public class MainWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SettingsActionPerformed
 
+    private void ShowAllEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllEmployeesActionPerformed
+        removeLeftPanel();
+        ShowAll showAllEmployees = new ShowAll();
+        class RealButtonActionHolder extends ButtonActionHolder {
+
+            @Override
+            public void performAction() {
+                try {
+                    Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_ALL_EMPLOYEES, null);
+                    ArrayList<Employee> employees = (ArrayList<Employee>) result.data;
+                    rightPanel.clearPanel();
+                    addEmployeeItems(employees);
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+        }
+        RealButtonActionHolder actionHolder = new RealButtonActionHolder();
+        showAllEmployees.actionHolder = actionHolder;
+        leftPanel = showAllEmployees;
+        add(leftPanel);
+        adjsutRightPanel();
+        refresh();
+    }//GEN-LAST:event_ShowAllEmployeesActionPerformed
+
+    private void AddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddEmployeeActionPerformed
+        removeLeftPanel();
+        leftPanel = new AddEmployee();
+        add(leftPanel);
+        adjsutRightPanel();
+        refresh();
+    }//GEN-LAST:event_AddEmployeeActionPerformed
+
     private void addFindByIdPurchasePanel() {
         removeLeftPanel();
         FindById p = new FindById();
@@ -431,6 +485,23 @@ public class MainWindow extends javax.swing.JFrame {
     private void addPurveyanceItems(ArrayList<Purveyance> purveyances) {
         for (int i = 0; i < purveyances.size(); ++i) {
             addPurveyanceItem(purveyances.get(i));
+        }
+        
+        refresh();
+    }
+    
+    private void addEmployeeItem(Employee employee) {
+        EmployeeItem item = new EmployeeItem();
+        item.setLabelId(employee.id + "");
+        item.setLabelPIB(employee.pib);
+        item.setLabelCost(employee.cost + "(грн)");
+        item.setLabelDepartment(employee.department.name);
+        rightPanel.addPanel(item);
+    }
+    
+    private void addEmployeeItems(ArrayList<Employee> employees) {
+        for (int i = 0; i < employees.size(); ++i) {
+            addEmployeeItem(employees.get(i));
         }
         
         refresh();
@@ -535,6 +606,7 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem AddEmployee;
     private javax.swing.JMenuItem AddGoods;
     private javax.swing.JMenuItem AddOrdering;
     private javax.swing.JMenuItem AddProvider;
@@ -548,6 +620,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenu Purchase;
     private javax.swing.JMenu Purveyance;
     private javax.swing.JMenu Settings;
+    private javax.swing.JMenuItem ShowAllEmployees;
     private javax.swing.JMenuItem ShowAllGoods;
     private javax.swing.JMenuItem ShowAllOrderings;
     private javax.swing.JMenuItem ShowAllProviders;

@@ -38,6 +38,42 @@ public class DbAccessManager {
         }
         return names;
     }
+    
+    public Department getDepartmentById(int id) throws SQLException {
+        ArrayList<Department> departments = new ArrayList<Department>();
+        String sql = "select * from " + DbResources.Departments + " where " + DbResources.DepartmentId +"='"+id+"'";
+        ResultSet rs = getResultSet(sql);
+        getDepartmentFromSet(rs, departments);
+        if (departments.size() > 0) {
+            return departments.get(0);
+        }
+        
+        return null;
+    }
+    
+    private void getDepartmentFromSet(ResultSet rs, ArrayList<Department> departments) throws SQLException {
+        while ((rs != null) && (rs.next())) {
+            String name = rs.getString(DbResources.DepartmentName);
+            int depId = rs.getInt(DbResources.DepartmentId);
+            Department department = new Department(depId, name);
+            departments.add(department);
+        }
+    }
+    
+    public ArrayList<Department> getAllDepartments() throws SQLException {
+        ArrayList<Department> departments = new ArrayList<Department>();
+        String sql = "select * from " + DbResources.Departments;
+        ResultSet rs = getResultSet(sql);
+        getDepartmentFromSet(rs, departments);
+        return departments;
+    }
+    
+    public void addEmployee(String pib, int cost, int depId) throws SQLException {
+        String sql = "insert into " + DbResources.Employees + " (" + DbResources.PIB+", " 
+                + DbResources.Cost +", " + DbResources.DepartmentId + ") values ('" 
+                + pib +"', " + cost + ", " + depId + ")";
+        executSql(sql);
+    }
 
     private String getTableIdsByGoodsIds(String goodsIds, String tableName, String field) throws SQLException {
         StringBuilder purvIds = new StringBuilder("(");
@@ -165,6 +201,14 @@ public class DbAccessManager {
         }
     }
     
+    public ArrayList<Employee> getAllEmployees() throws SQLException {
+        ArrayList<Employee> employees = new ArrayList<Employee>();
+        String sql = "select * from " + DbResources.Employees;
+        ResultSet rs = getResultSet(sql);
+        getEmployeesFromSet(rs, employees);
+        return employees;
+    }
+    
     public ArrayList<Purveyance> getAllPurveyances() throws SQLException {
         ArrayList<Purveyance> purveyances = new ArrayList<Purveyance>();
         String sql = "select * from " + DbResources.Purveyances;
@@ -206,6 +250,18 @@ public class DbAccessManager {
             purveyances.add(purveyance);
         }
     }
+    
+    private void getEmployeesFromSet(ResultSet rs, ArrayList<Employee> employees) throws SQLException {
+        while ((rs != null) && (rs.next())) {
+            int id = rs.getInt(DbResources.EmployeeId);
+            String pib = rs.getString(DbResources.PIB);
+            int cost = rs.getInt(DbResources.Cost);
+            int depId = rs.getInt(DbResources.DepartmentId);
+            Department department = getDepartmentById(depId);
+            Employee employee = new Employee(id, pib, cost, department);
+            employees.add(employee);
+        }
+    }
 
     public ArrayList<Purchase> getAllPurchases() throws SQLException {
         ArrayList<Purchase> purchases = new ArrayList<Purchase>();
@@ -245,8 +301,10 @@ public class DbAccessManager {
         while ((rs != null) && (rs.next())) {
             int eid = rs.getInt(DbResources.EmployeeId);
             String pib = rs.getString(DbResources.PIB);
-            double cost = rs.getDouble(DbResources.Cost);
-            employee = new Employee(eid, pib, cost);
+            int cost = rs.getInt(DbResources.Cost);
+            int depId = rs.getInt(DbResources.DepartmentId);
+            Department department = getDepartmentById(depId);
+            employee = new Employee(eid, pib, cost, department);
         }
 
         return employee;
