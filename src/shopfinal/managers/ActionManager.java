@@ -253,6 +253,7 @@ public class ActionManager {
         ArrayList<Goods> goods = (ArrayList<Goods>) params.dataArr[1];
         int id = db.addPurchase(date);
         db.addItemsToPurchasesGoods(goods, id);
+        db.updateGoods(goods);
     }
 
     private static ActionManager instance;

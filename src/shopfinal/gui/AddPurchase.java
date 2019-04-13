@@ -166,8 +166,8 @@ public class AddPurchase extends javax.swing.JPanel {
                 GoodsPreviewItem item = (GoodsPreviewItem) children[i];
                 if (item != null) {
                     Goods goodsItem = goodsMap.get(item.getLabelName());
-                    System.out.println(goodsItem);
                     if (goodsItem.number > item.getLabelNumber()) {
+                        goodsItem.number -= item.getLabelNumber();
                         goodsItem.numberInPurchase = item.getLabelNumber();
                         goods.add(goodsItem);
                     }

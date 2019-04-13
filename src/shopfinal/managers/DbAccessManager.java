@@ -419,11 +419,14 @@ public class DbAccessManager {
         return providers;
     }
     
-    private void updateGoods(ArrayList<Goods> goods) throws SQLException {
+    public void updateGoods(ArrayList<Goods> goods) throws SQLException {
         for (int i = 0; i < goods.size(); ++i) {
             String sql = "update " + DbResources.Goods + " set " 
-            + DbResources.Number + " = '" + goods.get(i).number + "' where " +
-             DbResources.GoodsId + " = '" + goods.get(i).id + "'";
+            + DbResources.Number + "=" + goods.get(i).number + " where " +
+             DbResources.GoodsId + "=" + goods.get(i).id;
+            
+            System.out.println("sql: " + sql);
+            
             executSql(sql);
         }
     }
