@@ -17,6 +17,7 @@ import shopfinal.models.Goods;
 import shopfinal.models.Ordering;
 import shopfinal.models.Provider;
 import shopfinal.models.Purchase;
+import shopfinal.models.Purveyance;
 
 /**
  *
@@ -66,7 +67,6 @@ public class MainWindow extends javax.swing.JFrame {
         AddProvider = new javax.swing.JMenuItem();
         ShowAllProviders = new javax.swing.JMenuItem();
         Purveyance = new javax.swing.JMenu();
-        AddPurveyance = new javax.swing.JMenuItem();
         ShowAllPurveyances = new javax.swing.JMenuItem();
         Settings = new javax.swing.JMenu();
 
@@ -171,14 +171,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         Purveyance.setText("Поставка");
 
-        AddPurveyance.setText("Додати");
-        AddPurveyance.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddPurveyanceActionPerformed(evt);
-            }
-        });
-        Purveyance.add(AddPurveyance);
-
         ShowAllPurveyances.setText("Показати всі");
         ShowAllPurveyances.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,6 +213,7 @@ public class MainWindow extends javax.swing.JFrame {
                 try {
                     Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_ALL_PURCHASES, null);
                     ArrayList<Purchase> purchases = (ArrayList<Purchase>) result.data;
+                    rightPanel.clearPanel();
                     addPurchasesItems(purchases);
                 } catch (ClassNotFoundException | SQLException ex) {
                     Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
@@ -278,6 +271,7 @@ public class MainWindow extends javax.swing.JFrame {
                 try {
                     Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_ALL_ORDERINGS, null);
                     ArrayList<Ordering> orderings = (ArrayList<Ordering>) result.data;
+                    rightPanel.clearPanel();
                     addOrderingsItem(orderings);
                 } catch (ClassNotFoundException | SQLException ex) {
                     Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
@@ -303,6 +297,7 @@ public class MainWindow extends javax.swing.JFrame {
                 try {
                     ActionManager.ActionParams params = new ActionManager.ActionParams();
                     params.strValue1 = addProvider.getLabelName();
+                    rightPanel.clearPanel();
                     ActionManager.getInstance().performAction(ActionManager.Action.ADD_PROVIDER, params);
                 } catch (ClassNotFoundException | SQLException ex) {
                     Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
@@ -328,6 +323,7 @@ public class MainWindow extends javax.swing.JFrame {
                 try {
                     Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_ALL_PROVIDERS, null);
                     ArrayList<Provider> providers = (ArrayList<Provider>) result.data;
+                    rightPanel.clearPanel();
                     addProviderItems(providers);
                 } catch (ClassNotFoundException | SQLException ex) {
                     Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
@@ -343,12 +339,30 @@ public class MainWindow extends javax.swing.JFrame {
         refresh();
     }//GEN-LAST:event_ShowAllProvidersActionPerformed
 
-    private void AddPurveyanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPurveyanceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AddPurveyanceActionPerformed
-
     private void ShowAllPurveyancesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllPurveyancesActionPerformed
-        // TODO add your handling code here:
+        removeLeftPanel();
+        ShowAll showAllPurveyances = new ShowAll();
+        class RealButtonActionHolder extends ButtonActionHolder {
+
+            @Override
+            public void performAction() {
+                try {
+                    Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_ALL_PURVEYANCES, null);
+                    ArrayList<Purveyance> purveyances = (ArrayList<Purveyance>) result.data;
+                    rightPanel.clearPanel();
+                    addPurveyanceItems(purveyances);
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+        }
+        RealButtonActionHolder actionHolder = new RealButtonActionHolder();
+        showAllPurveyances.actionHolder = actionHolder;
+        leftPanel = showAllPurveyances;
+        add(leftPanel);
+        adjsutRightPanel();
+        refresh();
     }//GEN-LAST:event_ShowAllPurveyancesActionPerformed
 
     private void SettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SettingsActionPerformed
@@ -367,6 +381,7 @@ public class MainWindow extends javax.swing.JFrame {
                     params.intValue = p.getId();
                     Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_PURCHASE_BY_ID, params);
                     ArrayList<Purchase> purchases = (ArrayList<Purchase>) result.data;
+                    rightPanel.clearPanel();
                     addPurchasesItems(purchases);
                 } catch (ClassNotFoundException | SQLException ex) {
                     Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
@@ -399,6 +414,25 @@ public class MainWindow extends javax.swing.JFrame {
         for (int i = 0; i < purchases.size(); ++i) {
           addPurchaseItem(purchases.get(i));
         }
+        refresh();
+    }
+    
+    private void addPurveyanceItem(Purveyance purveyance) {
+       PurveyanceItem purveyanceItem = new PurveyanceItem();
+       purveyanceItem.setLabelId(purveyance.id+"");
+       purveyanceItem.setTotalPrice(purveyance.totalPrice);
+       for (int i = 0; i < purveyance.goods.size(); ++i) {
+            Goods goods = purveyance.goods.get(i);
+            purveyanceItem.createRowInTable(goods.name, goods.price, goods.number, goods.totalPrice);
+        }
+       rightPanel.addPanel(purveyanceItem);
+    }
+    
+    private void addPurveyanceItems(ArrayList<Purveyance> purveyances) {
+        for (int i = 0; i < purveyances.size(); ++i) {
+            addPurveyanceItem(purveyances.get(i));
+        }
+        
         refresh();
     }
     
@@ -504,7 +538,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem AddOrdering;
     private javax.swing.JMenuItem AddProvider;
     private javax.swing.JMenuItem AddPurchase;
-    private javax.swing.JMenuItem AddPurveyance;
     private javax.swing.JMenu Employee;
     private javax.swing.JMenuItem FindGoodsById;
     private javax.swing.JMenuItem FindPurchaseById;

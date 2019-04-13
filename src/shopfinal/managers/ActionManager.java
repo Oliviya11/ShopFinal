@@ -31,7 +31,8 @@ public class ActionManager {
         ADD_ORDERING,
         GET_SELECTED_PROVIDER_GOODS,
         ADD_PROVIDER,
-        GET_ALL_ORDERINGS
+        GET_ALL_ORDERINGS,
+        GET_ALL_PURVEYANCES
     }
 
     public class Result {
@@ -114,6 +115,9 @@ public class ActionManager {
                 case GET_ALL_ORDERINGS:
                     result = getAllOrderings();
                     break;
+                case GET_ALL_PURVEYANCES:
+                    result = getAllPurveyances();
+                    break;
                 default:
                     break;
             }
@@ -179,6 +183,12 @@ public class ActionManager {
     private Result getAllOrderings() throws SQLException {
         Result result = new Result();
         result.data = db.getAllOrderings();
+        return result;
+    }
+    
+    private Result getAllPurveyances() throws SQLException {
+        Result result = new Result();
+        result.data = db.getAllPurveyances();
         return result;
     }
     

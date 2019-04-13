@@ -7,10 +7,6 @@ package shopfinal.gui;
 
 import javax.swing.JPanel;
 
-/**
- *
- * @author User
- */
 public class ContentPanel extends javax.swing.JPanel {
 
     /**
@@ -22,6 +18,10 @@ public class ContentPanel extends javax.swing.JPanel {
     
     public void addPanel(JPanel child) {
         contentPanel.add(child);
+    }
+    
+    public void clearPanel() {
+        contentPanel.removeAll();
     }
 
     /**

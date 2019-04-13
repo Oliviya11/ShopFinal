@@ -132,7 +132,26 @@ public class DbAccessManager {
         return listGoods;
     }
     
-    private void getGoodsItemFromSet(ResultSet rs, ArrayList<Goods> listGoods,Date date) throws SQLException {
+    private ArrayList<Goods> getGoodsIdsFromGoodsPurveyances(int id) throws SQLException {
+        ArrayList<Goods> listGoods = new ArrayList<Goods>();
+        String sql = "select * from " + DbResources.GoodsPurveyances + " where " + DbResources.PurveyanceId + "=" + id;
+        ResultSet rs = getResultSet(sql);
+        getPurveyancesGoodsItemFromSet(rs, listGoods);
+        return listGoods;
+    }
+    
+    private void getPurveyancesGoodsItemFromSet(ResultSet rs, ArrayList<Goods> listGoods) throws SQLException {
+        while ((rs != null) && (rs.next())) {
+            int goodsId = rs.getInt(DbResources.GoodsId);
+            int number = rs.getInt(DbResources.Number);
+            double price = rs.getDouble(DbResources.Price);
+            String name = getGoodsNameById(goodsId);
+            Goods goods = new Goods(goodsId, name, number, price);
+            listGoods.add(goods);
+        }
+    }
+    
+    private void getGoodsItemFromSet(ResultSet rs, ArrayList<Goods> listGoods, Date date) throws SQLException {
         while ((rs != null) && (rs.next())) {
             int goodsId = rs.getInt(DbResources.GoodsId);
             int number = rs.getInt(DbResources.Number);
@@ -144,6 +163,14 @@ public class DbAccessManager {
             Goods goods = new Goods(goodsId, name, number, price);
             listGoods.add(goods);
         }
+    }
+    
+    public ArrayList<Purveyance> getAllPurveyances() throws SQLException {
+        ArrayList<Purveyance> purveyances = new ArrayList<Purveyance>();
+        String sql = "select * from " + DbResources.Purveyances;
+        ResultSet rs = getResultSet(sql);
+        getPurveyancesFromSet(rs, purveyances);
+        return purveyances;
     }
     
     public ArrayList<Ordering> getAllOrderings() throws SQLException {
@@ -166,6 +193,17 @@ public class DbAccessManager {
             int pruvId = rs.getInt(DbResources.PurveyanceId);
             Ordering ordering = new Ordering(id, date, provider,pruvId, employee, goods);
             orderings.add(ordering);
+        }
+    }
+
+    private void getPurveyancesFromSet(ResultSet rs, ArrayList<Purveyance> purveyances) throws SQLException {
+         while ((rs != null) && (rs.next())) {
+            int id = rs.getInt(DbResources.PurveyanceId);
+            ArrayList<Goods> goods = getGoodsIdsFromGoodsPurveyances(id);
+            int providerId = rs.getInt(DbResources.ProviderId);
+            Provider provider = getProviderById(providerId);
+            Purveyance purveyance = new Purveyance(id, provider, goods);
+            purveyances.add(purveyance);
         }
     }
 
