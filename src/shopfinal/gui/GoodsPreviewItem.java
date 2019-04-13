@@ -28,7 +28,7 @@ public class GoodsPreviewItem extends javax.swing.JPanel {
         return name.getText();
     }
     
-    public int getNumber() {
+    public int getLabelNumber() {
         return Integer.parseInt(number.getText());
     }
 
@@ -46,9 +46,11 @@ public class GoodsPreviewItem extends javax.swing.JPanel {
     private void initComponents() {
 
         name = new javax.swing.JLabel();
-        number = new javax.swing.JLabel();
+        numberText = new javax.swing.JLabel();
         deleteButton = new javax.swing.JButton();
-        name1 = new javax.swing.JLabel();
+        price = new javax.swing.JLabel();
+        number = new javax.swing.JLabel();
+        currency = new javax.swing.JLabel();
 
         setBorder(new javax.swing.border.MatteBorder(null));
         setMaximumSize(new java.awt.Dimension(32767, 42));
@@ -56,7 +58,7 @@ public class GoodsPreviewItem extends javax.swing.JPanel {
 
         name.setText("Сир");
 
-        number.setText("100 (од)");
+        numberText.setText("(од)");
 
         deleteButton.setText("x");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
@@ -65,25 +67,33 @@ public class GoodsPreviewItem extends javax.swing.JPanel {
             }
         });
 
-        name1.setText("500 (грн)");
+        price.setText("500");
+
+        number.setText("100 ");
+
+        currency.setText("(грн)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 168, Short.MAX_VALUE)
-                .addComponent(number, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(name1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
+                .addGap(0, 147, Short.MAX_VALUE)
+                .addComponent(number, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(numberText, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(currency, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(deleteButton)
                 .addGap(28, 28, 28))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(258, Short.MAX_VALUE)))
+                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(267, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,8 +101,10 @@ public class GoodsPreviewItem extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(name1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(number, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numberText, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(number, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(currency, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -110,9 +122,11 @@ public class GoodsPreviewItem extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel currency;
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel name;
-    private javax.swing.JLabel name1;
     private javax.swing.JLabel number;
+    private javax.swing.JLabel numberText;
+    private javax.swing.JLabel price;
     // End of variables declaration//GEN-END:variables
 }

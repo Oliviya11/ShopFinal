@@ -207,8 +207,8 @@ public class AddOrdering extends javax.swing.JPanel {
                 GoodsPreviewItem item = (GoodsPreviewItem) children[i];
                 if (item != null) {
                     Goods goodsItem = goodsMap.get(item.getName());
-                    if (goodsItem.number > item.getNumber()) {
-                        goodsItem.number -= item.getNumber();
+                    if (goodsItem.number > item.getLabelNumber()) {
+                        goodsItem.number -= item.getLabelNumber();
                         goods.add(goodsItem);
                     }
                 }

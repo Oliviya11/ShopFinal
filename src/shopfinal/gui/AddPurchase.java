@@ -33,8 +33,9 @@ public class AddPurchase extends javax.swing.JPanel {
             availableGoods.removeAllItems();
             ArrayList<Goods> goods = (ArrayList<Goods>) result.data;
             for (int i = 0; i < goods.size(); ++i) {
-                goodsMap.put(goods.get(i).name, goods.get(i));
-                availableGoods.addItem(goods.get(i).name);
+                Goods g = goods.get(i);
+                goodsMap.put(g.name, g);
+                availableGoods.addItem(g.name);
             }
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AddPurchase.class.getName()).log(Level.SEVERE, null, ex);
@@ -52,44 +53,44 @@ public class AddPurchase extends javax.swing.JPanel {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        textDate = new javax.swing.JTextField();
+        goodsLabel = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
+        date = new javax.swing.JTextField();
         scroll = new javax.swing.JScrollPane();
         content = new javax.swing.JPanel();
-        GoodsNumber = new javax.swing.JLabel();
+        dateLabel = new javax.swing.JLabel();
         availableGoods = new javax.swing.JComboBox<>();
         okButton = new javax.swing.JButton();
         performButton = new javax.swing.JButton();
-        GoodsNumber1 = new javax.swing.JLabel();
-        textNumber = new javax.swing.JTextField();
+        numberLabel = new javax.swing.JLabel();
+        number = new javax.swing.JTextField();
 
         setMaximumSize(new java.awt.Dimension(435, 600));
         setMinimumSize(new java.awt.Dimension(435, 600));
         setPreferredSize(new java.awt.Dimension(435, 600));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel1.setText("Товар:");
-        jLayeredPane1.add(jLabel1);
-        jLabel1.setBounds(30, 40, 60, 20);
-        jLabel1.getAccessibleContext().setAccessibleName("id");
+        goodsLabel.setText("Товар:");
+        jLayeredPane1.add(goodsLabel);
+        goodsLabel.setBounds(30, 80, 60, 20);
+        goodsLabel.getAccessibleContext().setAccessibleName("id");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Додати покупку");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLayeredPane1.add(jLabel2);
-        jLabel2.setBounds(140, 10, 140, 20);
+        title.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("Додати покупку");
+        title.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLayeredPane1.add(title);
+        title.setBounds(140, 10, 140, 20);
 
-        textDate.setMinimumSize(new java.awt.Dimension(80, 20));
-        textDate.setPreferredSize(new java.awt.Dimension(80, 20));
-        textDate.addActionListener(new java.awt.event.ActionListener() {
+        date.setMinimumSize(new java.awt.Dimension(80, 20));
+        date.setPreferredSize(new java.awt.Dimension(80, 20));
+        date.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textDateActionPerformed(evt);
+                dateActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(textDate);
-        textDate.setBounds(100, 90, 100, 30);
+        jLayeredPane1.add(date);
+        date.setBounds(100, 40, 100, 30);
 
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -97,15 +98,15 @@ public class AddPurchase extends javax.swing.JPanel {
         scroll.setViewportView(content);
 
         jLayeredPane1.add(scroll);
-        scroll.setBounds(10, 130, 410, 340);
+        scroll.setBounds(10, 150, 410, 320);
 
-        GoodsNumber.setText("Дата:");
-        jLayeredPane1.add(GoodsNumber);
-        GoodsNumber.setBounds(30, 100, 70, 20);
+        dateLabel.setText("Дата:");
+        jLayeredPane1.add(dateLabel);
+        dateLabel.setBounds(30, 40, 70, 30);
 
         availableGoods.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jLayeredPane1.add(availableGoods);
-        availableGoods.setBounds(100, 40, 260, 20);
+        availableGoods.setBounds(100, 80, 260, 20);
 
         okButton.setText("+");
         okButton.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +115,7 @@ public class AddPurchase extends javax.swing.JPanel {
             }
         });
         jLayeredPane1.add(okButton);
-        okButton.setBounds(370, 50, 40, 30);
+        okButton.setBounds(370, 80, 50, 50);
 
         performButton.setText("Виконати");
 
@@ -129,19 +130,19 @@ public class AddPurchase extends javax.swing.JPanel {
         jLayeredPane1.add(performButton);
         performButton.setBounds(130, 490, 180, 30);
 
-        GoodsNumber1.setText("Кількість:");
-        jLayeredPane1.add(GoodsNumber1);
-        GoodsNumber1.setBounds(30, 70, 70, 20);
+        numberLabel.setText("Кількість:");
+        jLayeredPane1.add(numberLabel);
+        numberLabel.setBounds(30, 110, 70, 30);
 
-        textNumber.setMinimumSize(new java.awt.Dimension(80, 20));
-        textNumber.setPreferredSize(new java.awt.Dimension(80, 20));
-        textNumber.addActionListener(new java.awt.event.ActionListener() {
+        number.setMinimumSize(new java.awt.Dimension(80, 20));
+        number.setPreferredSize(new java.awt.Dimension(80, 20));
+        number.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textNumberActionPerformed(evt);
+                numberActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(textNumber);
-        textNumber.setBounds(100, 60, 100, 30);
+        jLayeredPane1.add(number);
+        number.setBounds(100, 110, 100, 30);
 
         add(jLayeredPane1);
 
@@ -150,9 +151,9 @@ public class AddPurchase extends javax.swing.JPanel {
         bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textDateActionPerformed
+    private void dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textDateActionPerformed
+    }//GEN-LAST:event_dateActionPerformed
 
     private void performButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_performButtonActionPerformed
         ArrayList<Goods> goods = new ArrayList<Goods>();
@@ -161,9 +162,10 @@ public class AddPurchase extends javax.swing.JPanel {
             if (children[i].isVisible()) {
                 GoodsPreviewItem item = (GoodsPreviewItem) children[i];
                 if (item != null) {
-                    Goods goodsItem = goodsMap.get(item.getName());
-                    if (goodsItem.number > item.getNumber()) {
-                        goodsItem.number -= item.getNumber();
+                    Goods goodsItem = goodsMap.get(item.getLabelName());
+                    System.out.println(goodsItem);
+                    if (goodsItem.number > item.getLabelNumber()) {
+                        goodsItem.number -= item.getLabelNumber();
                         goods.add(goodsItem);
                     }
                 }
@@ -174,35 +176,35 @@ public class AddPurchase extends javax.swing.JPanel {
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         String goodsName = String.valueOf(availableGoods.getSelectedItem());
         Goods goodsItem = goodsMap.get(goodsName);
-        if (textDate.getText() != null && !"".equals(textDate.getText())
-            && textNumber.getText() != null && !"".equals(textNumber.getText())) {
+        if (date.getText() != null && !"".equals(date.getText())
+            && number.getText() != null && !"".equals(number.getText())) {
             GoodsPreviewItem item = new GoodsPreviewItem();
             item.setLabelName(goodsItem.name);
-            item.setLabelNumber(textDate.getText());
+            item.setLabelNumber(number.getText());
             content.add(item);
             content.repaint();
             content.revalidate();
         }
     }//GEN-LAST:event_okButtonActionPerformed
 
-    private void textNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNumberActionPerformed
+    private void numberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textNumberActionPerformed
+    }//GEN-LAST:event_numberActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel GoodsNumber;
-    private javax.swing.JLabel GoodsNumber1;
     private javax.swing.JComboBox<String> availableGoods;
     private javax.swing.JPanel content;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField date;
+    private javax.swing.JLabel dateLabel;
+    private javax.swing.JLabel goodsLabel;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JTextField number;
+    private javax.swing.JLabel numberLabel;
     private javax.swing.JButton okButton;
     private javax.swing.JButton performButton;
     private javax.swing.JScrollPane scroll;
-    private javax.swing.JTextField textDate;
-    private javax.swing.JTextField textNumber;
+    private javax.swing.JLabel title;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
