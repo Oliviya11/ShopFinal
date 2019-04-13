@@ -7,9 +7,7 @@ package shopfinal.managers;
 
 import java.sql.Date;
 import java.sql.SQLException;
-import java.time.YearMonth;
 import java.util.ArrayList;
-import java.util.Calendar;
 import shopfinal.models.Purchase;
 import shopfinal.res.DbResources;
 import shopfinal.res.StringResources;
@@ -35,7 +33,8 @@ public class ActionManager {
         GET_ALL_PURVEYANCES,
         GET_ALL_EMPLOYEES,
         GET_ALL_DEPARTMENTS,
-        ADD_EMPLOYEE
+        ADD_EMPLOYEE,
+        ADD_GOODS
     }
 
     public class Result {
@@ -134,6 +133,11 @@ public class ActionManager {
                         addEmployee(params);
                     }
                     break;
+                case ADD_GOODS:
+                    if (params != null) {
+                        addGoods(params);
+                    }
+                    break;
                 default:
                     break;
             }
@@ -230,6 +234,18 @@ public class ActionManager {
         int cost = (int) params.dataArr[1];
         int depId = (int) params.dataArr[2];
         db.addEmployee(pib, cost, depId);
+    }
+    
+    private void addGoods(ActionParams params) throws SQLException {
+        String name = (String) params.dataArr[0];
+        String provider = (String) params.dataArr[1];
+        int number = (int) params.dataArr[2];
+        int depId = (int) params.dataArr[3];
+        int price = (int) params.dataArr[4];
+        String date = (String) params.dataArr[5];
+        db.addGoods(name, provider, number, depId);
+        int id = db.getGoodsIdByName(name);
+        db.addToGoodsPrices(id, date, price);
     }
 
     private int getMonthNumber(String month) {

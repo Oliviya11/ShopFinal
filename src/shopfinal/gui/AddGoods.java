@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import shopfinal.ButtonActionHolder;
 import shopfinal.managers.ActionManager;
+import shopfinal.managers.ActionManager.ActionParams;
 import shopfinal.managers.ActionManager.Result;
 import shopfinal.models.Department;
 import shopfinal.models.Provider;
@@ -69,19 +70,16 @@ public class AddGoods extends javax.swing.JPanel {
         date = new javax.swing.JTextField();
         performButton = new javax.swing.JButton();
         nameLabel1 = new javax.swing.JLabel();
-        name1 = new javax.swing.JTextField();
+        name = new javax.swing.JTextField();
         nameLabel2 = new javax.swing.JLabel();
         availableDepartments = new javax.swing.JComboBox<>();
         numberLabel1 = new javax.swing.JLabel();
         availableProviders = new javax.swing.JComboBox<>();
         departmentLabel1 = new javax.swing.JLabel();
-        number1 = new javax.swing.JTextField();
+        number = new javax.swing.JTextField();
         dateLabel = new javax.swing.JLabel();
-        costLabel = new javax.swing.JLabel();
-        cost = new javax.swing.JTextField();
         priceLabel = new javax.swing.JLabel();
         price = new javax.swing.JTextField();
-        departmentLabel2 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(435, 600));
         setMinimumSize(new java.awt.Dimension(435, 600));
@@ -100,12 +98,7 @@ public class AddGoods extends javax.swing.JPanel {
 
         date.setMinimumSize(new java.awt.Dimension(80, 20));
         date.setPreferredSize(new java.awt.Dimension(80, 20));
-        date.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dateActionPerformed(evt);
-            }
-        });
-        add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 130, 30));
+        add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 130, 30));
 
         performButton.setText("Виконати");
         performButton.addActionListener(new java.awt.event.ActionListener() {
@@ -113,19 +106,14 @@ public class AddGoods extends javax.swing.JPanel {
                 performButtonActionPerformed(evt);
             }
         });
-        add(performButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 140, -1));
+        add(performButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, 140, -1));
 
         nameLabel1.setText("Постачальник:");
         add(nameLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 100, 30));
 
-        name1.setMinimumSize(new java.awt.Dimension(80, 20));
-        name1.setPreferredSize(new java.awt.Dimension(80, 20));
-        name1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                name1ActionPerformed(evt);
-            }
-        });
-        add(name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 230, 30));
+        name.setMinimumSize(new java.awt.Dimension(80, 20));
+        name.setPreferredSize(new java.awt.Dimension(80, 20));
+        add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 230, 30));
 
         nameLabel2.setText("Назва:");
         add(nameLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 80, 30));
@@ -142,73 +130,45 @@ public class AddGoods extends javax.swing.JPanel {
         departmentLabel1.setText("Відділ:");
         add(departmentLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 80, 30));
 
-        number1.setMinimumSize(new java.awt.Dimension(80, 20));
-        number1.setPreferredSize(new java.awt.Dimension(80, 20));
-        number1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                number1ActionPerformed(evt);
-            }
-        });
-        add(number1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 130, 30));
+        number.setMinimumSize(new java.awt.Dimension(80, 20));
+        number.setPreferredSize(new java.awt.Dimension(80, 20));
+        add(number, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 130, 30));
 
         dateLabel.setText("Дата:");
-        add(dateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 80, 30));
-
-        costLabel.setText("Собіварітість:");
-        add(costLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 90, 30));
-
-        cost.setMinimumSize(new java.awt.Dimension(80, 20));
-        cost.setPreferredSize(new java.awt.Dimension(80, 20));
-        cost.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                costActionPerformed(evt);
-            }
-        });
-        add(cost, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 130, 30));
+        add(dateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 80, 30));
 
         priceLabel.setText("Ціна:");
-        add(priceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 80, 30));
+        add(priceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 80, 30));
 
         price.setMinimumSize(new java.awt.Dimension(80, 20));
         price.setPreferredSize(new java.awt.Dimension(80, 20));
-        price.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                priceActionPerformed(evt);
-            }
-        });
-        add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 130, 30));
-
-        departmentLabel2.setText("(грн)");
-        add(departmentLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 80, 30));
+        add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 130, 30));
 
         getAccessibleContext().setAccessibleParent(this);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dateActionPerformed
 
     private void performButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_performButtonActionPerformed
         if (actionHolder != null) {
             actionHolder.performAction();
         }
+        
+        ActionParams params = new ActionManager.ActionParams();
+        params.dataArr = new Object[6];
+        params.dataArr[0] = name.getText();
+        params.dataArr[1] = String.valueOf(availableProviders.getSelectedItem());
+        params.dataArr[2] = Integer.parseInt(number.getText());
+        String depName = String.valueOf(availableDepartments.getSelectedItem());
+        int depId = depMap.get(depName);
+        params.dataArr[3] = depId;
+        params.dataArr[4] = Integer.parseInt(price.getText());
+        params.dataArr[5] = date.getText();
+        
+        try {
+            ActionManager.getInstance().performAction(ActionManager.Action.ADD_GOODS, params);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(AddGoods.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_performButtonActionPerformed
-
-    private void name1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_name1ActionPerformed
-
-    private void number1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_number1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_number1ActionPerformed
-
-    private void costActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_costActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_costActionPerformed
-
-    private void priceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_priceActionPerformed
 
     public String getLabelName() {
         if (date.getText() != null && date.getText() != "") {
@@ -222,18 +182,15 @@ public class AddGoods extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> availableDepartments;
     private javax.swing.JComboBox<String> availableProviders;
-    private javax.swing.JTextField cost;
-    private javax.swing.JLabel costLabel;
     private javax.swing.JTextField date;
     private javax.swing.JLabel dateLabel;
     private javax.swing.JLabel departmentLabel;
     private javax.swing.JLabel departmentLabel1;
-    private javax.swing.JLabel departmentLabel2;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField name1;
+    private javax.swing.JTextField name;
     private javax.swing.JLabel nameLabel1;
     private javax.swing.JLabel nameLabel2;
-    private javax.swing.JTextField number1;
+    private javax.swing.JTextField number;
     private javax.swing.JLabel numberLabel1;
     private javax.swing.JButton performButton;
     private javax.swing.JTextField price;

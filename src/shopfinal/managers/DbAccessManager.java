@@ -130,6 +130,18 @@ public class DbAccessManager {
 
         return name;
     }
+    
+    public int getGoodsIdByName(String name) throws SQLException {
+        int id = 0;
+        String sql = "select " + DbResources.GoodsId + " from " + DbResources.Goods + " where " + DbResources.GoodsName
+                + "='" + name + "'";
+        ResultSet rs = getResultSet(sql);
+        while ((rs != null) && (rs.next())) {
+            id = rs.getInt(DbResources.GoodsId);
+        }
+
+        return id;
+    }
 
     private double getActualGoodsPriceByDateAndId(Date date, int goodsId) throws SQLException {
         Double price = 0.0;
@@ -414,5 +426,21 @@ public class DbAccessManager {
     
     public void createPurchase(ArrayList<Goods> goods) throws SQLException {
         updateGoods(goods);
+    }
+    
+    public void addGoods(String name, String providerName, int number, int depId) throws SQLException {
+        String sql = "insert into " + DbResources.Goods + " (" + DbResources.GoodsName + ", " +
+                DbResources.Provider + ", " + DbResources.Number + ", " + DbResources.Minimum + ", "
+                + DbResources.DepartmentId + ") values ('" + name + "', " + "'" + providerName +"', "
+                + number + ", 0, " + depId +")";
+        
+        executSql(sql);     
+    }
+    
+    public void addToGoodsPrices(int goodsId, String date, int price) throws SQLException {
+        String sql = "insert into " + DbResources.GoodsPrices + " (" + DbResources.GoodsId + ", " +
+                DbResources.GoodsPricesDate + ", " + DbResources.Price + ") values (" +
+                + goodsId + ", '" + date + "', " + price + ")";
+        executSql(sql);
     }
 }
