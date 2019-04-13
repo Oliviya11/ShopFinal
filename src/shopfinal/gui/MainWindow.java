@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import shopfinal.ButtonActionHolder;
+import shopfinal.Utils;
 import shopfinal.managers.ActionManager;
 import shopfinal.managers.ActionManager.Result;
 import shopfinal.models.*;
@@ -262,9 +263,7 @@ public class MainWindow extends javax.swing.JFrame {
             public void performAction() {
                 try {
                     ActionManager.ActionParams params = new ActionManager.ActionParams();
-                    java.util.Date utilDate = new java.util.Date();
-                    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-                    params.data = sqlDate;
+                    params.data = Utils.getNow().toString();
                     Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_ALL_GOODS, params);
                     ArrayList<Goods> goods = (ArrayList<Goods>) result.data;
                     rightPanel.clearPanel();

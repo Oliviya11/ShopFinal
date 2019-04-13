@@ -188,7 +188,7 @@ public class ActionManager {
         if (params == null) {
             result.data = db.getAllGoods(null);
         } else {
-            Date date = (Date) params.data;
+            String date = (String) params.data;
             result.data = db.getAllGoods(date);
         }
         return result;

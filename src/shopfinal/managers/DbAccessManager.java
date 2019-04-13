@@ -143,7 +143,7 @@ public class DbAccessManager {
         return id;
     }
 
-    private double getActualGoodsPriceByDateAndId(Date date, int goodsId) throws SQLException {
+    private double getActualGoodsPriceByDateAndId(String date, int goodsId) throws SQLException {
         Double price = 0.0;
         Date prevDate = null;
         String sql = "select " + DbResources.Price + ", " + DbResources.GoodsPricesDate + " from "
@@ -162,7 +162,7 @@ public class DbAccessManager {
         return price;
     }
 
-    private ArrayList<Goods> getGoodsIdsFromGoodsPurchases(int id, Date date) throws SQLException {
+    private ArrayList<Goods> getGoodsIdsFromGoodsPurchases(int id, String date) throws SQLException {
         ArrayList<Goods> listGoods = new ArrayList<Goods>();
         String sql = "select * from " + DbResources.GoodsPurchases + " where " + DbResources.PurchaseId + "=" + id;
         ResultSet rs = getResultSet(sql);
@@ -199,7 +199,7 @@ public class DbAccessManager {
         }
     }
     
-    private void getGoodsItemsFromSet(ResultSet rs, ArrayList<Goods> listGoods, Date date) throws SQLException {
+    private void getGoodsItemsFromSet(ResultSet rs, ArrayList<Goods> listGoods, String date) throws SQLException {
         while ((rs != null) && (rs.next())) {
             int goodsId = rs.getInt(DbResources.GoodsId);
             int number = rs.getInt(DbResources.Number);
@@ -372,13 +372,13 @@ public class DbAccessManager {
         while ((rs != null) && (rs.next())) {
             Date date = rs.getDate(DbResources.PurchaseDate);
             int id = rs.getInt(DbResources.PurchaseId);
-            ArrayList<Goods> goods = getGoodsIdsFromGoodsPurchases(id, date);
+            ArrayList<Goods> goods = getGoodsIdsFromGoodsPurchases(id, date.toString());
             Purchase purchase = new Purchase(id, date, goods);
             purchases.add(purchase);
         }
     }
     
-    public ArrayList getAllGoods(Date date) throws SQLException {
+    public ArrayList getAllGoods(String date) throws SQLException {
         ArrayList goods = new ArrayList();
         String sql = "select * from " + DbResources.Goods;
         ResultSet rs = getResultSet(sql);

@@ -10,6 +10,7 @@ import java.util.Calendar;
 import shopfinal.res.StringResources;
 
 public final class Utils {
+
     private static String getWeekDayNumber(int day) {
         // Saturday = 1, Monday = 2, ... Sunday = 7
         switch (day) {
@@ -31,8 +32,14 @@ public final class Utils {
                 return "None";
         }
     }
-    
-     public static String getDayOfTheWeek(Date date) {
+
+    public static String getDayOfTheWeek(Date date) {
         return getWeekDayNumber(date.getDay());
+    }
+    
+    public static java.sql.Date getNow() {
+         java.util.Date utilDate = new java.util.Date();
+         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+         return sqlDate;
     }
 }

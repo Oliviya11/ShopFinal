@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import shopfinal.managers.ActionManager;
+import shopfinal.managers.ActionManager.ActionParams;
 import shopfinal.managers.ActionManager.Result;
 import shopfinal.models.Goods;
 
@@ -29,7 +30,9 @@ public class AddPurchase extends javax.swing.JPanel {
 
     private void addAvailableGoods() {
         try {
-            Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_ALL_GOODS, null);
+            ActionManager.ActionParams params = new ActionParams();
+            params.data = date.toString();
+            Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_ALL_GOODS, params);
             availableGoods.removeAllItems();
             ArrayList<Goods> goods = (ArrayList<Goods>) result.data;
             for (int i = 0; i < goods.size(); ++i) {
@@ -191,6 +194,7 @@ public class AddPurchase extends javax.swing.JPanel {
             GoodsPreviewItem item = new GoodsPreviewItem();
             item.setLabelName(goodsItem.name);
             item.setLabelNumber(number.getText());
+            item.setLabelPrice(goodsItem.price+"");
             content.add(item);
             content.repaint();
             content.revalidate();
