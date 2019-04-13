@@ -84,7 +84,7 @@ create table GoodsPurchases (
 drop table if exists Employees;
 create table Employees (
 	EmployeeId integer primary key auto_increment,
-    Surname varchar(25),
+    PIB varchar(300),
     Cost decimal,
     DepartmentId integer,
     foreign key (DepartmentId) references Departments(DepartmentId) on update cascade on delete cascade
@@ -537,3 +537,29 @@ insert into Balances (BalanceDate, Income, Exes, Remnant) values ("2019-01-23", 
 -- cash flow 15
 insert into CashFlows (CashFlowDate, Cost, BalanceId) values ("2019-01-23", 5000, 9);
 insert into PurveyancesCosts (CashFlowId, PurveyanceId) values (15, 7);
+
+insert into Employees (PIB, Cost, DepartmentId) values ("Коваленко Олекссандр Віталійович", 4800, 1);
+insert into Employees (PIB, Cost, DepartmentId) values ("Галиненко Світлана Миколаївна", 3700, 1);
+insert into Employees (PIB, Cost, DepartmentId) values ("Архипчук Катерина Генадіївна", 3700, 1);
+insert into Employees (PIB, Cost, DepartmentId) values ("Ісайчук Микола Семенович", 5500, 2);
+insert into Employees (PIB, Cost, DepartmentId) values ("Зотько Степан Олександрович", 4600, 2);
+insert into Employees (PIB, Cost, DepartmentId) values ("Борисенко Тимофій Богданович", 5300, 2);
+
+insert into Orderings (OrderingDate, ProviderId, PurveyanceId, EmployeeId) values ("2019-01-14", 1, null, 1);
+insert into Orderings (OrderingDate, ProviderId, PurveyanceId, EmployeeId) values ("2019-04-15", 2, null, 2);
+insert into Orderings (OrderingDate, ProviderId, PurveyanceId, EmployeeId) values ("2019-04-18", 3, null, 3);
+insert into Orderings (OrderingDate, ProviderId, PurveyanceId, EmployeeId) values ("2019-04-18", 4, null, 5);
+
+insert into GoodsOrderings (GoodsId, OrderingId, Num) values (1, 1, 600);
+insert into GoodsOrderings (GoodsId, OrderingId, Num) values (2, 1, 500);
+insert into GoodsOrderings (GoodsId, OrderingId, Num) values (3, 1, 100);
+insert into GoodsOrderings (GoodsId, OrderingId, Num) values (4, 2, 800);
+insert into GoodsOrderings (GoodsId, OrderingId, Num) values (5, 2, 510);
+insert into GoodsOrderings (GoodsId, OrderingId, Num) values (6, 2, 900);
+insert into GoodsOrderings (GoodsId, OrderingId, Num) values (7, 2, 210);
+insert into GoodsOrderings (GoodsId, OrderingId, Num) values (15, 3, 410);
+insert into GoodsOrderings (GoodsId, OrderingId, Num) values (16, 3, 560);
+insert into GoodsOrderings (GoodsId, OrderingId, Num) values (17, 3, 820);
+insert into GoodsOrderings (GoodsId, OrderingId, Num) values (18, 3, 230);
+insert into GoodsOrderings (GoodsId, OrderingId, Num) values (19, 4, 200);
+insert into GoodsOrderings (GoodsId, OrderingId, Num) values (20, 4, 500);

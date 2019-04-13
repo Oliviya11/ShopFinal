@@ -14,6 +14,7 @@ import shopfinal.ButtonActionHolder;
 import shopfinal.managers.ActionManager;
 import shopfinal.managers.ActionManager.Result;
 import shopfinal.models.Goods;
+import shopfinal.models.Ordering;
 import shopfinal.models.Provider;
 import shopfinal.models.Purchase;
 
@@ -194,6 +195,11 @@ public class MainWindow extends javax.swing.JFrame {
                 SettingsMouseClicked(evt);
             }
         });
+        Settings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SettingsActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(Settings);
 
         setJMenuBar(jMenuBar1);
@@ -242,6 +248,7 @@ public class MainWindow extends javax.swing.JFrame {
         removeLeftPanel();
         leftPanel = new Settings();
         add(leftPanel);
+        removeRightPanel();
         refresh();
     }//GEN-LAST:event_SettingsMouseClicked
 
@@ -263,7 +270,24 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void ShowAllOrderingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllOrderingsActionPerformed
         removeLeftPanel();
-        leftPanel = new FindById();
+        ShowAll showAll = new ShowAll();
+        class RealButtonActionHolder extends ButtonActionHolder {
+
+            @Override
+            public void performAction() {
+                try {
+                    Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_ALL_ORDERINGS, null);
+                    ArrayList<Ordering> orderings = (ArrayList<Ordering>) result.data;
+                    addOrderingsItem(orderings);
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+        }
+        RealButtonActionHolder actionHolder = new RealButtonActionHolder();
+        showAll.actionHolder = actionHolder;
+        leftPanel = showAll;
         add(leftPanel);
         adjsutRightPanel();
         refresh();
@@ -327,6 +351,10 @@ public class MainWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ShowAllPurveyancesActionPerformed
 
+    private void SettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SettingsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SettingsActionPerformed
+
     private void addFindByIdPurchasePanel() {
         removeLeftPanel();
         FindById p = new FindById();
@@ -370,6 +398,27 @@ public class MainWindow extends javax.swing.JFrame {
     private void addPurchasesItems(ArrayList<Purchase> purchases) {
         for (int i = 0; i < purchases.size(); ++i) {
           addPurchaseItem(purchases.get(i));
+        }
+        refresh();
+    }
+    
+    private void addOrderingItem(Ordering ordering) {
+        OrderingItem orderingItem = new OrderingItem();
+        orderingItem.setLabelId(ordering.id+"");
+        orderingItem.setDayOfTheWeek(ordering.dayOfTheWeek);
+        orderingItem.setLabelDate(ordering.date + "");
+        orderingItem.setProviderName(ordering.provider.name);
+        orderingItem.setEmployeeName(ordering.employee.pib);
+        for (int i = 0; i < ordering.goods.size(); ++i) {
+            Goods goods = ordering.goods.get(i);
+            orderingItem.createRowInTable(goods.name, goods.number);
+        }
+        rightPanel.addPanel(orderingItem);
+    }
+    
+    private void addOrderingsItem(ArrayList<Ordering> orderings) {
+        for (int i = 0; i < orderings.size(); ++i) {
+            addOrderingItem(orderings.get(i));
         }
         refresh();
     }

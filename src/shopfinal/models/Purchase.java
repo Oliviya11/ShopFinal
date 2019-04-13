@@ -8,7 +8,6 @@ package shopfinal.models;
 import java.sql.Date;
 import java.util.ArrayList;
 import shopfinal.Utils;
-import shopfinal.managers.DbAccessManager;
 
 public class Purchase {
 

@@ -30,7 +30,8 @@ public class ActionManager {
         ADD_PURCHASE,
         ADD_ORDERING,
         GET_SELECTED_PROVIDER_GOODS,
-        ADD_PROVIDER
+        ADD_PROVIDER,
+        GET_ALL_ORDERINGS
     }
 
     public class Result {
@@ -109,7 +110,10 @@ public class ActionManager {
                     if (params != null) {
                         addProvider(params);
                         break;
-                    }     
+                    }
+                case GET_ALL_ORDERINGS:
+                    result = getAllOrderings();
+                    break;
                 default:
                     break;
             }
@@ -172,6 +176,12 @@ public class ActionManager {
         return result;
     }
 
+    private Result getAllOrderings() throws SQLException {
+        Result result = new Result();
+        result.data = db.getAllOrderings();
+        return result;
+    }
+    
     private int getMonthNumber(String month) {
         switch (month) {
             case StringResources.January:

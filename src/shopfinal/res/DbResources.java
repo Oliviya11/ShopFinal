@@ -40,4 +40,12 @@ public class DbResources {
     public static final String ProviderName = "ProviderName";
     public static final String Providers = "Providers";
     public static final String ProviderId = "ProviderId";
+    public static final String Orderins = "Orderings";
+    public static final String OrderingDate = "OrderingDate";
+    public static final String EmployeeId = "EmployeeId";
+    public static final String GoodsOrderings = "GoodsOrderings";
+    public static final String OrderingId = "OrderingId";
+    public static final String Employee = "Employee";
+    public static final String Employees = "Employees";
+    public static final String PIB = "PIB";
 }
