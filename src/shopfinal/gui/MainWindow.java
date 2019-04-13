@@ -13,12 +13,7 @@ import javax.swing.JPanel;
 import shopfinal.ButtonActionHolder;
 import shopfinal.managers.ActionManager;
 import shopfinal.managers.ActionManager.Result;
-import shopfinal.models.Employee;
-import shopfinal.models.Goods;
-import shopfinal.models.Ordering;
-import shopfinal.models.Provider;
-import shopfinal.models.Purchase;
-import shopfinal.models.Purveyance;
+import shopfinal.models.*;
 
 /**
  *
@@ -97,6 +92,11 @@ public class MainWindow extends javax.swing.JFrame {
         Goods.add(ShowAllGoods);
 
         AddGoods.setText("Додати");
+        AddGoods.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddGoodsActionPerformed(evt);
+            }
+        });
         Goods.add(AddGoods);
 
         jMenuBar1.add(Goods);
@@ -254,7 +254,33 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_FindPurchaseByIdActionPerformed
 
     private void ShowAllGoodsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllGoodsActionPerformed
+        removeLeftPanel();
+        ShowAll showAllEmployees = new ShowAll();
+        class RealButtonActionHolder extends ButtonActionHolder {
 
+            @Override
+            public void performAction() {
+                try {
+                    ActionManager.ActionParams params = new ActionManager.ActionParams();
+                    java.util.Date utilDate = new java.util.Date();
+                    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+                    params.data = sqlDate;
+                    Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_ALL_GOODS, params);
+                    ArrayList<Goods> goods = (ArrayList<Goods>) result.data;
+                    rightPanel.clearPanel();
+                    addGoodsItems(goods);
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+        }
+        RealButtonActionHolder actionHolder = new RealButtonActionHolder();
+        showAllEmployees.actionHolder = actionHolder;
+        leftPanel = showAllEmployees;
+        add(leftPanel);
+        adjsutRightPanel();
+        refresh();
     }//GEN-LAST:event_ShowAllGoodsActionPerformed
 
     private void SettingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SettingsMouseClicked
@@ -423,6 +449,10 @@ public class MainWindow extends javax.swing.JFrame {
         refresh();
     }//GEN-LAST:event_AddEmployeeActionPerformed
 
+    private void AddGoodsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddGoodsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddGoodsActionPerformed
+
     private void addFindByIdPurchasePanel() {
         removeLeftPanel();
         FindById p = new FindById();
@@ -502,6 +532,25 @@ public class MainWindow extends javax.swing.JFrame {
     private void addEmployeeItems(ArrayList<Employee> employees) {
         for (int i = 0; i < employees.size(); ++i) {
             addEmployeeItem(employees.get(i));
+        }
+        
+        refresh();
+    }
+    
+    private void addGoodsItem(Goods goods) {
+        GoodsItem item = new GoodsItem();
+        item.setLabelId(goods.id+"");
+        item.setLabelName(goods.name);
+        item.setLabelNumber(goods.number+"(од)");
+        item.setLabelProvider(goods.providerName);
+        item.setLabelActualPrice(goods.price + "(грн)");
+        rightPanel.addPanel(item);
+    }
+    
+    
+    private void addGoodsItems(ArrayList<Goods> goods) {
+        for (int i = 0; i < goods.size(); ++i) {
+            addGoodsItem(goods.get(i));
         }
         
         refresh();

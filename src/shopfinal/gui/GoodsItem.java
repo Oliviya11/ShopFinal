@@ -42,10 +42,10 @@ public class GoodsItem extends javax.swing.JPanel {
         actualPriceLabel = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        setMaximumSize(new java.awt.Dimension(488, 337));
-        setMinimumSize(new java.awt.Dimension(488, 337));
+        setMaximumSize(new java.awt.Dimension(488, 211));
+        setMinimumSize(new java.awt.Dimension(488, 211));
         setName(""); // NOI18N
-        setPreferredSize(new java.awt.Dimension(488, 337));
+        setPreferredSize(new java.awt.Dimension(488, 211));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 270, 20));
 

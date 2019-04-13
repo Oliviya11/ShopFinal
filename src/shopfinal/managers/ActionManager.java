@@ -97,25 +97,26 @@ public class ActionManager {
                     result = getAllPurchases();
                     break;
                 case GET_ALL_GOODS:
-                    result = getAllGoods();
+                    result = getAllGoods(params);
                     break;
                 case GET_ALL_PROVIDERS:
                     result = getAllProviders();
                     break;
                 case ADD_PURCHASE:
                     if (params != null) {
-                        break;
+                        
                     }
+                    break;
                 case GET_SELECTED_PROVIDER_GOODS:
                     if (params != null) {
                         result = getSelectedProviderGoods(params);
-                        break;
                     }
+                    break;
                 case ADD_PROVIDER:
                     if (params != null) {
                         addProvider(params);
-                        break;
                     }
+                    break;
                 case GET_ALL_ORDERINGS:
                     result = getAllOrderings();
                     break;
@@ -130,9 +131,9 @@ public class ActionManager {
                     break;
                 case ADD_EMPLOYEE:
                     if (params != null) {
-                       addEmployee(params);
-                       break;
+                        addEmployee(params);
                     }
+                    break;
                 default:
                     break;
             }
@@ -144,7 +145,7 @@ public class ActionManager {
 
         return result;
     }
-    
+
     private void addProvider(ActionParams params) throws SQLException {
         db.addProvider(params.strValue1);
     }
@@ -176,10 +177,15 @@ public class ActionManager {
         result.data = purchases;
         return result;
     }
-    
-    private Result getAllGoods() throws SQLException {
+
+    private Result getAllGoods(ActionParams params) throws SQLException {
         Result result = new Result();
-        result.data = db.getAllGoods(null);
+        if (params == null) {
+            result.data = db.getAllGoods(null);
+        } else {
+            Date date = (Date) params.data;
+            result.data = db.getAllGoods(date);
+        }
         return result;
     }
 
@@ -200,32 +206,32 @@ public class ActionManager {
         result.data = db.getAllOrderings();
         return result;
     }
-    
+
     private Result getAllPurveyances() throws SQLException {
         Result result = new Result();
         result.data = db.getAllPurveyances();
         return result;
     }
-    
+
     private Result getAllEmployees() throws SQLException {
         Result result = new Result();
         result.data = db.getAllEmployees();
         return result;
     }
-    
+
     private Result getAllDepartments() throws SQLException {
         Result result = new Result();
         result.data = db.getAllDepartments();
         return result;
     }
-    
+
     private void addEmployee(ActionParams params) throws SQLException {
         String pib = (String) params.dataArr[0];
         int cost = (int) params.dataArr[1];
         int depId = (int) params.dataArr[2];
         db.addEmployee(pib, cost, depId);
     }
-    
+
     private int getMonthNumber(String month) {
         switch (month) {
             case StringResources.January:

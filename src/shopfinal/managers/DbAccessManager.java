@@ -182,7 +182,6 @@ public class DbAccessManager {
             int number = rs.getInt(DbResources.Number);
             double price = rs.getDouble(DbResources.Price);
             String name = getGoodsNameById(goodsId);
-//            String provider = rs.getString(DbResources.Provider);
             Goods goods = new Goods(goodsId, "", name, number, price);
             listGoods.add(goods);
         }
@@ -198,6 +197,9 @@ public class DbAccessManager {
             }
             String name = getGoodsNameById(goodsId);
             String provider = "";
+            try {
+                provider = rs.getString(DbResources.Provider);
+            } catch (Exception ex) {}
             Goods goods = new Goods(goodsId, provider, name, number, price);
             listGoods.add(goods);
         }
