@@ -31,8 +31,9 @@ public class Goods {
         this.departmentId = departmentId;
     }
     
-    public Goods(int id, String name, int number, double price) {
+    public Goods(int id, String providerName, String name, int number, double price) {
         this.id = id;
+        this.providerName = providerName;
         this.name = name;
         this.number = number;
         this.price = price;

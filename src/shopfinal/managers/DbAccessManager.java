@@ -154,7 +154,7 @@ public class DbAccessManager {
         ArrayList<Goods> listGoods = new ArrayList<Goods>();
         String sql = "select * from " + DbResources.GoodsPurchases + " where " + DbResources.PurchaseId + "=" + id;
         ResultSet rs = getResultSet(sql);
-        getGoodsItemFromSet(rs, listGoods, date);
+        getGoodsItemsFromSet(rs, listGoods, date);
 
         return listGoods;
     }
@@ -163,7 +163,7 @@ public class DbAccessManager {
         ArrayList<Goods> listGoods = new ArrayList<Goods>();
         String sql = "select * from " + DbResources.GoodsOrderings + " where " + DbResources.OrderingId + "=" + id;
         ResultSet rs = getResultSet(sql);
-        getGoodsItemFromSet(rs, listGoods, null);
+        getGoodsItemsFromSet(rs, listGoods, null);
 
         return listGoods;
     }
@@ -182,12 +182,13 @@ public class DbAccessManager {
             int number = rs.getInt(DbResources.Number);
             double price = rs.getDouble(DbResources.Price);
             String name = getGoodsNameById(goodsId);
-            Goods goods = new Goods(goodsId, name, number, price);
+//            String provider = rs.getString(DbResources.Provider);
+            Goods goods = new Goods(goodsId, "", name, number, price);
             listGoods.add(goods);
         }
     }
     
-    private void getGoodsItemFromSet(ResultSet rs, ArrayList<Goods> listGoods, Date date) throws SQLException {
+    private void getGoodsItemsFromSet(ResultSet rs, ArrayList<Goods> listGoods, Date date) throws SQLException {
         while ((rs != null) && (rs.next())) {
             int goodsId = rs.getInt(DbResources.GoodsId);
             int number = rs.getInt(DbResources.Number);
@@ -196,7 +197,8 @@ public class DbAccessManager {
                 price = getActualGoodsPriceByDateAndId(date, goodsId);
             }
             String name = getGoodsNameById(goodsId);
-            Goods goods = new Goods(goodsId, name, number, price);
+            String provider = "";
+            Goods goods = new Goods(goodsId, provider, name, number, price);
             listGoods.add(goods);
         }
     }
@@ -352,21 +354,11 @@ public class DbAccessManager {
         }
     }
     
-    public ArrayList getAllGoods() throws SQLException {
+    public ArrayList getAllGoods(Date date) throws SQLException {
         ArrayList goods = new ArrayList();
         String sql = "select * from " + DbResources.Goods;
         ResultSet rs = getResultSet(sql);
-        while ((rs != null) && (rs.next())) {
-            Goods goodsItem = new Goods(
-                    rs.getInt(DbResources.GoodsId),
-                    rs.getString(DbResources.GoodsName),
-                    rs.getString(DbResources.Provider),
-                    rs.getInt(DbResources.Number),
-                    rs.getInt(DbResources.Minimum),
-                    rs.getInt(DbResources.DepartmentId)
-            );
-            goods.add(goodsItem);
-        }
+        getGoodsItemsFromSet(rs, goods, date);
         return goods;
     }
     

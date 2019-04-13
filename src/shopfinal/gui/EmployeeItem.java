@@ -27,7 +27,6 @@ public class EmployeeItem extends javax.swing.JPanel {
 
         jLabel2 = new javax.swing.JLabel();
         id = new javax.swing.JLabel();
-        performButton = new javax.swing.JButton();
         department = new javax.swing.JLabel();
         idLabel = new javax.swing.JLabel();
         pib = new javax.swing.JLabel();
@@ -50,13 +49,6 @@ public class EmployeeItem extends javax.swing.JPanel {
         add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 100, 20));
         id.getAccessibleContext().setAccessibleName("id");
 
-        performButton.setText("Виконати");
-        performButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                performButtonActionPerformed(evt);
-            }
-        });
-        add(performButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 140, -1));
         add(department, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 320, 20));
 
         idLabel.setText("id:");
@@ -75,12 +67,6 @@ public class EmployeeItem extends javax.swing.JPanel {
 
         getAccessibleContext().setAccessibleParent(this);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void performButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_performButtonActionPerformed
-        if (actionHolder != null) {
-            actionHolder.performAction();
-        }
-    }//GEN-LAST:event_performButtonActionPerformed
 
     public int getId() {
         if (id.getText() != null && id.getText() != "") {
@@ -115,7 +101,6 @@ public class EmployeeItem extends javax.swing.JPanel {
     private javax.swing.JLabel id;
     private javax.swing.JLabel idLabel;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JButton performButton;
     private javax.swing.JLabel pib;
     private javax.swing.JLabel pibLabel;
     // End of variables declaration//GEN-END:variables

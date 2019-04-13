@@ -179,7 +179,7 @@ public class ActionManager {
     
     private Result getAllGoods() throws SQLException {
         Result result = new Result();
-        result.data = db.getAllGoods();
+        result.data = db.getAllGoods(null);
         return result;
     }
 
