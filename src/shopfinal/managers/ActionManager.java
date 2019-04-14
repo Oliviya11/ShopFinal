@@ -308,7 +308,6 @@ public class ActionManager {
     
     private Result getGoodsByName(ActionParams params) throws SQLException {
         String name = (String) params.dataArr[0];
-        System.out.println("name: " + name);
         String date = (String) params.dataArr[1];
         Result result = new Result();
         result.data = db.getGoodsByName(name, date);
