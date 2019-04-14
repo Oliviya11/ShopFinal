@@ -32,13 +32,11 @@ public class ShowAll extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(435, 600));
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(435, 600));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         title.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title.setText("Показати всі");
         title.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 350, 30));
 
         performButton.setText("Виконати");
         performButton.addActionListener(new java.awt.event.ActionListener() {
@@ -46,7 +44,26 @@ public class ShowAll extends javax.swing.JPanel {
                 performButtonActionPerformed(evt);
             }
         });
-        add(performButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 140, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(performButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(performButton))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void performButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_performButtonActionPerformed

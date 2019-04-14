@@ -39,6 +39,7 @@ public class OrderingItem extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         status = new javax.swing.JLabel();
         statusLabel = new javax.swing.JLabel();
@@ -64,35 +65,136 @@ public class OrderingItem extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(488, 460));
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(488, 460));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 180, 20));
+        setLayout(new java.awt.GridBagLayout());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 27;
+        gridBagConstraints.ipadx = 180;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        add(status, gridBagConstraints);
 
         statusLabel.setText("Статус:");
-        add(statusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 60, 20));
-        add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 100, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.ipady = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 0);
+        add(statusLabel, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        add(id, gridBagConstraints);
 
         idLabel.setText("id:");
-        add(idLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 30, 20));
-        add(employee, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 330, 20));
-        add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 110, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 18;
+        gridBagConstraints.ipady = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 0);
+        add(idLabel, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 34;
+        gridBagConstraints.ipadx = 330;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        add(employee, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.ipadx = 110;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        add(date, gridBagConstraints);
 
         title.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title.setText("Замовлення");
         title.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 180, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 11;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 28;
+        gridBagConstraints.ipadx = 109;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 0);
+        add(title, gridBagConstraints);
 
         dateLabel.setText("Дата:");
-        add(dateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 60, 20));
-        add(cost, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 120, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 0);
+        add(dateLabel, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 11;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 18;
+        gridBagConstraints.ipadx = 120;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        add(cost, gridBagConstraints);
 
         weekDayLabel.setText("День тижня:");
-        add(weekDayLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 80, 20));
-        add(weekDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 140, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.ipady = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 0);
+        add(weekDayLabel, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 17;
+        gridBagConstraints.ipadx = 140;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        add(weekDay, gridBagConstraints);
 
         providerNameLabel1.setText("Постачальник:");
-        add(providerNameLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 90, 20));
-        add(providerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 350, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.ipadx = 14;
+        gridBagConstraints.ipady = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 0);
+        add(providerNameLabel1, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 38;
+        gridBagConstraints.ipadx = 350;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        add(providerName, gridBagConstraints);
 
         performOrdering.setText("Виконати замовлення");
         performOrdering.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +202,15 @@ public class OrderingItem extends javax.swing.JPanel {
                 performOrderingActionPerformed(evt);
             }
         });
-        add(performOrdering, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 210, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 11;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 29;
+        gridBagConstraints.ipadx = 67;
+        gridBagConstraints.ipady = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 30, 0);
+        add(performOrdering, gridBagConstraints);
 
         orderingGoods.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -123,13 +233,40 @@ public class OrderingItem extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(orderingGoods);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 470, 150));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 43;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 447;
+        gridBagConstraints.ipady = 123;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 8);
+        add(jScrollPane1, gridBagConstraints);
 
         employeeLabel1.setText("ПІБ працівника:");
-        add(employeeLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 110, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 0);
+        add(employeeLabel1, gridBagConstraints);
 
         totalCostLabel1.setText("Загальна вартість:");
-        add(totalCostLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 120, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.ipadx = 23;
+        gridBagConstraints.ipady = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 0);
+        add(totalCostLabel1, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void performOrderingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_performOrderingActionPerformed

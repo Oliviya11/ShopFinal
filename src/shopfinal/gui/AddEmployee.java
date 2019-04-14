@@ -65,17 +65,13 @@ public class AddEmployee extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(435, 600));
         setMinimumSize(new java.awt.Dimension(435, 600));
         setPreferredSize(new java.awt.Dimension(435, 600));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         title.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title.setText("Додати працівника");
         title.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 160, 30));
 
         departmentLabel.setText("Відділ:");
-        add(departmentLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 60, 30));
-        departmentLabel.getAccessibleContext().setAccessibleName("id");
 
         performButton.setText("Виконати");
         performButton.addActionListener(new java.awt.event.ActionListener() {
@@ -83,10 +79,8 @@ public class AddEmployee extends javax.swing.JPanel {
                 performButtonActionPerformed(evt);
             }
         });
-        add(performButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 140, -1));
 
         pibLabel.setText("ПІБ:");
-        add(pibLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 60, 30));
 
         pib.setMinimumSize(new java.awt.Dimension(80, 20));
         pib.setPreferredSize(new java.awt.Dimension(80, 20));
@@ -95,10 +89,8 @@ public class AddEmployee extends javax.swing.JPanel {
                 pibActionPerformed(evt);
             }
         });
-        add(pib, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 270, 30));
 
         currencyLabel.setText("(грн)");
-        add(currencyLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 60, 30));
 
         cost.setMinimumSize(new java.awt.Dimension(80, 20));
         cost.setPreferredSize(new java.awt.Dimension(80, 20));
@@ -107,13 +99,64 @@ public class AddEmployee extends javax.swing.JPanel {
                 costActionPerformed(evt);
             }
         });
-        add(cost, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 150, 30));
 
         departments.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(departments, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 140, 260, -1));
 
         costLabel1.setText("Оклад:");
-        add(costLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 60, 30));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(pibLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(pib, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(costLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(cost, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(currencyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(departmentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(departments, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addComponent(performButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pibLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pib, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(costLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cost, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(currencyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(departmentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(departments, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
+                .addComponent(performButton))
+        );
+
+        departmentLabel.getAccessibleContext().setAccessibleName("id");
 
         getAccessibleContext().setAccessibleParent(this);
     }// </editor-fold>//GEN-END:initComponents

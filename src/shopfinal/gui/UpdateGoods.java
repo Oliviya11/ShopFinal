@@ -65,17 +65,13 @@ public class UpdateGoods extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(435, 600));
         setMinimumSize(new java.awt.Dimension(435, 600));
         setPreferredSize(new java.awt.Dimension(435, 600));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Знайти за назвою");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 140, 30));
 
         nameLabel.setText("(грн)");
-        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 50, 30));
-        nameLabel.getAccessibleContext().setAccessibleName("id");
 
         performButton.setText("Виконати");
         performButton.addActionListener(new java.awt.event.ActionListener() {
@@ -83,16 +79,12 @@ public class UpdateGoods extends javax.swing.JPanel {
                 performButtonActionPerformed(evt);
             }
         });
-        add(performButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 140, -1));
 
         availableNames.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(availableNames, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 290, -1));
 
         nameLabel1.setText("Назва:");
-        add(nameLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 50, 20));
 
         dateLabel.setText("Дата:");
-        add(dateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 50, 30));
 
         date.setMinimumSize(new java.awt.Dimension(80, 20));
         date.setPreferredSize(new java.awt.Dimension(80, 20));
@@ -101,7 +93,6 @@ public class UpdateGoods extends javax.swing.JPanel {
                 dateActionPerformed(evt);
             }
         });
-        add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 220, 30));
 
         price.setMinimumSize(new java.awt.Dimension(80, 20));
         price.setPreferredSize(new java.awt.Dimension(80, 20));
@@ -110,10 +101,60 @@ public class UpdateGoods extends javax.swing.JPanel {
                 priceActionPerformed(evt);
             }
         });
-        add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 120, 30));
 
         priceLabel.setText("Ціна:");
-        add(priceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 60, 30));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(nameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(availableNames, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(priceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(performButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(availableNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(priceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addComponent(performButton))
+        );
+
+        nameLabel.getAccessibleContext().setAccessibleName("id");
 
         getAccessibleContext().setAccessibleParent(this);
     }// </editor-fold>//GEN-END:initComponents

@@ -96,7 +96,6 @@ public class AddOrdering extends javax.swing.JPanel {
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        jLayeredPane1 = new javax.swing.JLayeredPane();
         goodsLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         price = new javax.swing.JTextField();
@@ -119,40 +118,25 @@ public class AddOrdering extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(435, 600));
         setMinimumSize(new java.awt.Dimension(435, 600));
         setPreferredSize(new java.awt.Dimension(435, 600));
-        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
         goodsLabel.setText("Товар:");
-        jLayeredPane1.add(goodsLabel);
-        goodsLabel.setBounds(30, 180, 70, 20);
-        goodsLabel.getAccessibleContext().setAccessibleName("id");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Додати замовлення");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLayeredPane1.add(jLabel2);
-        jLabel2.setBounds(150, 10, 140, 20);
 
         price.setMinimumSize(new java.awt.Dimension(80, 20));
         price.setPreferredSize(new java.awt.Dimension(80, 20));
-        jLayeredPane1.add(price);
-        price.setBounds(120, 240, 100, 30);
 
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         content.setLayout(new javax.swing.BoxLayout(content, javax.swing.BoxLayout.Y_AXIS));
         scroll.setViewportView(content);
 
-        jLayeredPane1.add(scroll);
-        scroll.setBounds(10, 280, 420, 170);
-
         priceLabel.setText("Ціна:");
-        jLayeredPane1.add(priceLabel);
-        priceLabel.setBounds(30, 240, 70, 30);
 
         availableGoods.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jLayeredPane1.add(availableGoods);
-        availableGoods.setBounds(120, 180, 280, 20);
 
         okButton.setText("+");
         okButton.addActionListener(new java.awt.event.ActionListener() {
@@ -160,8 +144,6 @@ public class AddOrdering extends javax.swing.JPanel {
                 okButtonActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(okButton);
-        okButton.setBounds(370, 220, 50, 50);
 
         performButton.setText("Виконати");
 
@@ -173,25 +155,15 @@ public class AddOrdering extends javax.swing.JPanel {
                 performButtonActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(performButton);
-        performButton.setBounds(130, 460, 180, 30);
 
         numberLabel.setText("Кількість:");
-        jLayeredPane1.add(numberLabel);
-        numberLabel.setBounds(30, 210, 70, 30);
 
         number.setMinimumSize(new java.awt.Dimension(80, 20));
         number.setPreferredSize(new java.awt.Dimension(80, 20));
-        jLayeredPane1.add(number);
-        number.setBounds(120, 210, 100, 30);
 
         availableEmployees.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jLayeredPane1.add(availableEmployees);
-        availableEmployees.setBounds(120, 80, 280, 20);
 
         providerLabel1.setText("Працівник:");
-        jLayeredPane1.add(providerLabel1);
-        providerLabel1.setBounds(20, 80, 90, 20);
 
         showSelectedProviderGoods.setText("Переглянути товари обраного постачальника");
         showSelectedProviderGoods.addActionListener(new java.awt.event.ActionListener() {
@@ -199,27 +171,110 @@ public class AddOrdering extends javax.swing.JPanel {
                 showSelectedProviderGoodsActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(showSelectedProviderGoods);
-        showSelectedProviderGoods.setBounds(80, 140, 300, 23);
 
         dateLabel1.setText("Дата:");
-        jLayeredPane1.add(dateLabel1);
-        dateLabel1.setBounds(20, 40, 70, 30);
 
         date.setMinimumSize(new java.awt.Dimension(80, 20));
         date.setPreferredSize(new java.awt.Dimension(80, 20));
-        jLayeredPane1.add(date);
-        date.setBounds(100, 40, 100, 30);
 
         providerLabel2.setText("Постачальник:");
-        jLayeredPane1.add(providerLabel2);
-        providerLabel2.setBounds(20, 110, 90, 20);
 
         availableProviders.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jLayeredPane1.add(availableProviders);
-        availableProviders.setBounds(120, 110, 280, 20);
 
-        add(jLayeredPane1);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 9, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(dateLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(providerLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(availableEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(providerLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(availableProviders, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(showSelectedProviderGoods, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(goodsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(availableGoods, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(numberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(priceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(number, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(150, 150, 150)
+                        .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(performButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 10, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 60, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dateLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(providerLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(availableEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(providerLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(availableProviders, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(showSelectedProviderGoods)
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(goodsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(availableGoods, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(numberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(priceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(number, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
+                .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(performButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 60, Short.MAX_VALUE))
+        );
+
+        goodsLabel.getAccessibleContext().setAccessibleName("id");
 
         getAccessibleContext().setAccessibleParent(this);
 
@@ -288,7 +343,6 @@ public class AddOrdering extends javax.swing.JPanel {
     private javax.swing.JLabel dateLabel1;
     private javax.swing.JLabel goodsLabel;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JTextField number;
     private javax.swing.JLabel numberLabel;
     private javax.swing.JButton okButton;

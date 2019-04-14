@@ -53,9 +53,9 @@ public class AddPurchase extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        jLayeredPane1 = new javax.swing.JLayeredPane();
         goodsLabel = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
         date = new javax.swing.JTextField();
@@ -71,19 +71,32 @@ public class AddPurchase extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(435, 600));
         setMinimumSize(new java.awt.Dimension(435, 600));
         setPreferredSize(new java.awt.Dimension(435, 600));
-        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
+        setLayout(new java.awt.GridBagLayout());
 
         goodsLabel.setText("Товар:");
-        jLayeredPane1.add(goodsLabel);
-        goodsLabel.setBounds(30, 80, 60, 20);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 26;
+        gridBagConstraints.ipady = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 32, 0, 0);
+        add(goodsLabel, gridBagConstraints);
         goodsLabel.getAccessibleContext().setAccessibleName("id");
 
         title.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title.setText("Додати покупку");
         title.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLayeredPane1.add(title);
-        title.setBounds(140, 10, 140, 20);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 42;
+        gridBagConstraints.ipady = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(45, 40, 0, 0);
+        add(title, gridBagConstraints);
 
         date.setMinimumSize(new java.awt.Dimension(80, 20));
         date.setPreferredSize(new java.awt.Dimension(80, 20));
@@ -92,24 +105,53 @@ public class AddPurchase extends javax.swing.JPanel {
                 dateActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(date);
-        date.setBounds(100, 40, 100, 30);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        add(date, gridBagConstraints);
 
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         content.setLayout(new javax.swing.BoxLayout(content, javax.swing.BoxLayout.Y_AXIS));
         scroll.setViewportView(content);
 
-        jLayeredPane1.add(scroll);
-        scroll.setBounds(10, 150, 410, 320);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 387;
+        gridBagConstraints.ipady = 314;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 12, 0, 13);
+        add(scroll, gridBagConstraints);
 
         dateLabel.setText("Дата:");
-        jLayeredPane1.add(dateLabel);
-        dateLabel.setBounds(30, 40, 70, 30);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 40;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 32, 0, 0);
+        add(dateLabel, gridBagConstraints);
 
         availableGoods.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jLayeredPane1.add(availableGoods);
-        availableGoods.setBounds(100, 80, 260, 20);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.ipadx = 204;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        add(availableGoods, gridBagConstraints);
 
         okButton.setText("+");
         okButton.addActionListener(new java.awt.event.ActionListener() {
@@ -117,8 +159,15 @@ public class AddPurchase extends javax.swing.JPanel {
                 okButtonActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(okButton);
-        okButton.setBounds(370, 80, 50, 50);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 9;
+        gridBagConstraints.ipady = 27;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 13);
+        add(okButton, gridBagConstraints);
 
         performButton.setText("Виконати");
 
@@ -130,12 +179,27 @@ public class AddPurchase extends javax.swing.JPanel {
                 performButtonActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(performButton);
-        performButton.setBounds(130, 490, 180, 30);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 99;
+        gridBagConstraints.ipady = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 30, 45, 0);
+        add(performButton, gridBagConstraints);
 
         numberLabel.setText("Кількість:");
-        jLayeredPane1.add(numberLabel);
-        numberLabel.setBounds(30, 110, 70, 30);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 32, 0, 0);
+        add(numberLabel, gridBagConstraints);
 
         number.setMinimumSize(new java.awt.Dimension(80, 20));
         number.setPreferredSize(new java.awt.Dimension(80, 20));
@@ -144,10 +208,15 @@ public class AddPurchase extends javax.swing.JPanel {
                 numberActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(number);
-        number.setBounds(100, 110, 100, 30);
-
-        add(jLayeredPane1);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        add(number, gridBagConstraints);
 
         getAccessibleContext().setAccessibleParent(this);
 
@@ -212,7 +281,6 @@ public class AddPurchase extends javax.swing.JPanel {
     private javax.swing.JTextField date;
     private javax.swing.JLabel dateLabel;
     private javax.swing.JLabel goodsLabel;
-    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JTextField number;
     private javax.swing.JLabel numberLabel;
     private javax.swing.JButton okButton;
