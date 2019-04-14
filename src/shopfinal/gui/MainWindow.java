@@ -336,7 +336,25 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void SettingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SettingsMouseClicked
         removeLeftPanel();
-        leftPanel = new Settings();
+        Settings settings = new Settings();
+        class RealButtonActionHolder extends ButtonActionHolder {
+
+            @Override
+            public void performAction() {
+                try {
+                    ActionManager.getInstance().setSettings(
+                            settings.getUser(),
+                            settings.getPassword(),
+                            settings.getConnectionStr());
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+        RealButtonActionHolder actionHolder = new RealButtonActionHolder();
+        settings.actionHolder = actionHolder;
+        leftPanel = settings;
         add(leftPanel);
         removeRightPanel();
         refresh();

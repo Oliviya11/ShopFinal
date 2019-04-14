@@ -65,7 +65,6 @@ public class ActionManager {
 
     public ActionManager() throws ClassNotFoundException {
         db = new DbAccessManager();
-        setSettings("Admin", "1111", null);
     }
 
     public void setSettings(String userName, String password, String connectionStr) {
