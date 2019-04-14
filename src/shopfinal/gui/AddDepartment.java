@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import shopfinal.ButtonActionHolder;
 import shopfinal.managers.ActionManager;
+import shopfinal.managers.ActionManager.ActionParams;
 import shopfinal.models.Department;
 
 public class AddDepartment extends javax.swing.JPanel {
@@ -35,8 +36,8 @@ public class AddDepartment extends javax.swing.JPanel {
     private void initComponents() {
 
         title = new javax.swing.JLabel();
-        pibLabel = new javax.swing.JLabel();
-        pib = new javax.swing.JTextField();
+        nameLabel = new javax.swing.JLabel();
+        name = new javax.swing.JTextField();
         performButton = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(435, 600));
@@ -50,12 +51,12 @@ public class AddDepartment extends javax.swing.JPanel {
         title.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 180, 30));
 
-        pibLabel.setText("Назва:");
-        add(pibLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 60, 30));
+        nameLabel.setText("Назва:");
+        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 60, 30));
 
-        pib.setMinimumSize(new java.awt.Dimension(80, 20));
-        pib.setPreferredSize(new java.awt.Dimension(80, 20));
-        add(pib, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 270, 30));
+        name.setMinimumSize(new java.awt.Dimension(80, 20));
+        name.setPreferredSize(new java.awt.Dimension(80, 20));
+        add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 270, 30));
 
         performButton.setText("Виконати");
         performButton.addActionListener(new java.awt.event.ActionListener() {
@@ -72,14 +73,21 @@ public class AddDepartment extends javax.swing.JPanel {
         if (actionHolder != null) {
             actionHolder.performAction();
         }
+        ActionParams params = new ActionManager.ActionParams();
+        params.data = name.getText();
+        try {
+            ActionManager.getInstance().performAction(ActionManager.Action.ADD_DEPARTMENT, params);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(AddDepartment.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_performButtonActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField name;
+    private javax.swing.JLabel nameLabel;
     private javax.swing.JButton performButton;
-    private javax.swing.JTextField pib;
-    private javax.swing.JLabel pibLabel;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

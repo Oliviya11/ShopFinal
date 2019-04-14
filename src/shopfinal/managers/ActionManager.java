@@ -36,7 +36,8 @@ public class ActionManager {
         GET_ALL_DEPARTMENTS,
         ADD_EMPLOYEE,
         ADD_GOODS,
-        ADD_PURVEYANCE
+        ADD_PURVEYANCE,
+        ADD_DEPARTMENT
     }
 
     public class Result {
@@ -141,13 +142,18 @@ public class ActionManager {
                     }
                     break;
                 case ADD_ORDERING:
-                    if (params != null ) {
+                    if (params != null) {
                         addOrdering(params);
                     }
                     break;
                 case ADD_PURVEYANCE:
                     if (params != null) {
                         addPurveyance(params);
+                    }
+                    break;
+                case ADD_DEPARTMENT:
+                    if (params != null) {
+                        addDepartment(params);
                     }
                     break;
                 default:
@@ -247,7 +253,7 @@ public class ActionManager {
         int depId = (int) params.dataArr[2];
         db.addEmployee(pib, cost, depId);
     }
-    
+
     private void addGoods(ActionParams params) throws SQLException {
         String name = (String) params.dataArr[0];
         String provider = (String) params.dataArr[1];
@@ -258,7 +264,7 @@ public class ActionManager {
         int id = db.addGoods(name, provider, number, depId);
         db.addToGoodsPrices(id, date, price);
     }
-    
+
     private void addOrdering(ActionParams params) throws SQLException {
         int providerId = (int) params.dataArr[0];
         int employeeId = (int) params.dataArr[1];
@@ -267,12 +273,17 @@ public class ActionManager {
         int orderingId = db.addOrdering(date, providerId, employeeId);
         db.addItemsToGoodsOrderings(goods, orderingId);
     }
-    
+
     private void addPurveyance(ActionParams params) throws SQLException {
         int providerId = (int) params.dataArr[0];
-         ArrayList<Goods> goods = (ArrayList<Goods>) params.data;
-         int purveyanceId = db.addPurveyances(providerId);
-         db.addItemsToGoodsPurveyances(goods, purveyanceId);
+        ArrayList<Goods> goods = (ArrayList<Goods>) params.data;
+        int purveyanceId = db.addPurveyances(providerId);
+        db.addItemsToGoodsPurveyances(goods, purveyanceId);
+    }
+
+    private void addDepartment(ActionParams params) throws SQLException {
+        String name = (String) params.data;
+        db.addDepartment(name);
     }
 
     private void addPurchase(ActionParams params) throws SQLException {

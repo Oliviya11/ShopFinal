@@ -525,4 +525,10 @@ public class DbAccessManager {
             addItemIntoGoodsPurveyances(goods.get(i), purveyanceId);
         }
     }
+    
+    public void addDepartment(String name) throws SQLException {
+        String sql = "insert into " + DbResources.Departments + " (" + DbResources.DepartmentName + ") "
+                +"values ('" + name + "')";
+        executSql(sql);
+    }
 }
