@@ -34,8 +34,8 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     private void setUpOnFirstLaunch() {
-       setResizable(false);
-       setLocationRelativeTo(null);
+        setResizable(false);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -49,7 +49,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         Goods = new javax.swing.JMenu();
-        FindGoodsById = new javax.swing.JMenuItem();
+        FindGoodsByName = new javax.swing.JMenuItem();
         AddGoods = new javax.swing.JMenuItem();
         ShowAllGoods = new javax.swing.JMenuItem();
         Employee = new javax.swing.JMenu();
@@ -79,13 +79,13 @@ public class MainWindow extends javax.swing.JFrame {
 
         Goods.setText("Товар");
 
-        FindGoodsById.setText("Знайти за id");
-        FindGoodsById.addActionListener(new java.awt.event.ActionListener() {
+        FindGoodsByName.setText("Знайти за назвою");
+        FindGoodsByName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FindGoodsByIdActionPerformed(evt);
+                FindGoodsByNameActionPerformed(evt);
             }
         });
-        Goods.add(FindGoodsById);
+        Goods.add(FindGoodsByName);
 
         AddGoods.setText("Додати");
         AddGoods.addActionListener(new java.awt.event.ActionListener() {
@@ -248,10 +248,6 @@ public class MainWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void FindGoodsByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FindGoodsByIdActionPerformed
-        
-    }//GEN-LAST:event_FindGoodsByIdActionPerformed
-
     private void ShowAllPurchasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllPurchasesActionPerformed
         removeLeftPanel();
         ShowAll showAllPurchases = new ShowAll();
@@ -268,7 +264,7 @@ public class MainWindow extends javax.swing.JFrame {
                     Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
+
         }
         RealButtonActionHolder actionHolder = new RealButtonActionHolder();
         showAllPurchases.actionHolder = actionHolder;
@@ -300,7 +296,7 @@ public class MainWindow extends javax.swing.JFrame {
                     Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
+
         }
         RealButtonActionHolder actionHolder = new RealButtonActionHolder();
         showAllEmployees.actionHolder = actionHolder;
@@ -350,7 +346,7 @@ public class MainWindow extends javax.swing.JFrame {
                     Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
+
         }
         RealButtonActionHolder actionHolder = new RealButtonActionHolder();
         showAll.actionHolder = actionHolder;
@@ -376,7 +372,7 @@ public class MainWindow extends javax.swing.JFrame {
                     Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
+
         }
         RealButtonActionHolder actionHolder = new RealButtonActionHolder();
         addProvider.actionHolder = actionHolder;
@@ -402,7 +398,7 @@ public class MainWindow extends javax.swing.JFrame {
                     Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
+
         }
         RealButtonActionHolder actionHolder = new RealButtonActionHolder();
         showAllProviders.actionHolder = actionHolder;
@@ -428,7 +424,7 @@ public class MainWindow extends javax.swing.JFrame {
                     Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
+
         }
         RealButtonActionHolder actionHolder = new RealButtonActionHolder();
         showAllPurveyances.actionHolder = actionHolder;
@@ -458,7 +454,7 @@ public class MainWindow extends javax.swing.JFrame {
                     Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
+
         }
         RealButtonActionHolder actionHolder = new RealButtonActionHolder();
         showAllEmployees.actionHolder = actionHolder;
@@ -500,7 +496,7 @@ public class MainWindow extends javax.swing.JFrame {
                     Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
+
         }
         RealButtonActionHolder actionHolder = new RealButtonActionHolder();
         showAllDepartments.actionHolder = actionHolder;
@@ -522,6 +518,36 @@ public class MainWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_DepartmentActionPerformed
 
+    private void FindGoodsByNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FindGoodsByNameActionPerformed
+        removeLeftPanel();
+        FindByName findByName = new FindByName();
+        class RealButtonActionHolder extends ButtonActionHolder {
+
+            @Override
+            public void performAction() {
+                try {
+                    ActionManager.ActionParams params = new ActionManager.ActionParams();
+                    params.dataArr = new Object[2];
+                    params.dataArr[0] = findByName.getSelectedName();
+                    params.dataArr[1] = Utils.getNow().toString();
+                    Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_GOODS_BY_NAME, params);
+                    ArrayList<Goods> goods = (ArrayList<Goods>) result.data;
+                    rightPanel.clearPanel();
+                    addGoodsItems(goods);
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+        RealButtonActionHolder actionHolder = new RealButtonActionHolder();
+        findByName.actionHolder = actionHolder;
+        leftPanel = findByName;
+        add(leftPanel);
+        adjsutRightPanel();
+        refresh();
+    }//GEN-LAST:event_FindGoodsByNameActionPerformed
+
     private void addFindByIdPurchasePanel() {
         removeLeftPanel();
         FindById p = new FindById();
@@ -540,7 +566,7 @@ public class MainWindow extends javax.swing.JFrame {
                     Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
+
         }
         RealButtonActionHolder actionHolder = new RealButtonActionHolder();
         p.actionHolder = actionHolder;
@@ -549,12 +575,12 @@ public class MainWindow extends javax.swing.JFrame {
         adjsutRightPanel();
         refresh();
     }
-    
+
     private void addPurchaseItem(Purchase purchase) {
         PurchaseItem purchaseItem = new PurchaseItem();
         purchaseItem.setLabelDate(purchase.date.toString());
         purchaseItem.setDayOfTheWeek(purchase.dayOfTheWeek);
-        purchaseItem.setLabelId(purchase.id+"");
+        purchaseItem.setLabelId(purchase.id + "");
         purchaseItem.setPurchasePrice(purchase.getTotalPrice());
         for (int i = 0; i < purchase.goods.size(); ++i) {
             Goods goods = purchase.goods.get(i);
@@ -562,48 +588,54 @@ public class MainWindow extends javax.swing.JFrame {
         }
         rightPanel.addPanel(purchaseItem);
     }
-    
+
     private void addPurchasesItems(ArrayList<Purchase> purchases) {
-        for (int i = 0; i < purchases.size(); ++i) {
-          addPurchaseItem(purchases.get(i));
+        if (purchases != null) {
+            for (int i = 0; i < purchases.size(); ++i) {
+                addPurchaseItem(purchases.get(i));
+            }
+            refresh();
         }
-        refresh();
     }
-    
+
     private void addDepartmentItem(Department d) {
         DepartmentItem item = new DepartmentItem();
-        item.setLabelId(d.id+"");
+        item.setLabelId(d.id + "");
         item.setLabelName(d.name);
         rightPanel.addPanel(item);
     }
-    
+
     private void addDepartmentsItems(ArrayList<Department> departments) {
-        for (int i = 0; i < departments.size(); ++i) {
-            addDepartmentItem(departments.get(i));
+        if (departments != null) {
+            for (int i = 0; i < departments.size(); ++i) {
+                addDepartmentItem(departments.get(i));
+            }
+
+            refresh();
         }
-        
-        refresh();
     }
-    
+
     private void addPurveyanceItem(Purveyance purveyance) {
-       PurveyanceItem purveyanceItem = new PurveyanceItem();
-       purveyanceItem.setLabelId(purveyance.id+"");
-       purveyanceItem.setTotalPrice(purveyance.totalPrice);
-       for (int i = 0; i < purveyance.goods.size(); ++i) {
+        PurveyanceItem purveyanceItem = new PurveyanceItem();
+        purveyanceItem.setLabelId(purveyance.id + "");
+        purveyanceItem.setTotalPrice(purveyance.totalPrice);
+        for (int i = 0; i < purveyance.goods.size(); ++i) {
             Goods goods = purveyance.goods.get(i);
             purveyanceItem.createRowInTable(goods);
         }
-       rightPanel.addPanel(purveyanceItem);
+        rightPanel.addPanel(purveyanceItem);
     }
-    
+
     private void addPurveyanceItems(ArrayList<Purveyance> purveyances) {
-        for (int i = 0; i < purveyances.size(); ++i) {
-            addPurveyanceItem(purveyances.get(i));
+        if (purveyances != null) {
+            for (int i = 0; i < purveyances.size(); ++i) {
+                addPurveyanceItem(purveyances.get(i));
+            }
+
+            refresh();
         }
-        
-        refresh();
     }
-    
+
     private void addEmployeeItem(Employee employee) {
         EmployeeItem item = new EmployeeItem();
         item.setLabelId(employee.id + "");
@@ -612,37 +644,40 @@ public class MainWindow extends javax.swing.JFrame {
         item.setLabelDepartment(employee.department.name);
         rightPanel.addPanel(item);
     }
-    
+
     private void addEmployeeItems(ArrayList<Employee> employees) {
-        for (int i = 0; i < employees.size(); ++i) {
-            addEmployeeItem(employees.get(i));
+        if (employees != null) {
+            for (int i = 0; i < employees.size(); ++i) {
+                addEmployeeItem(employees.get(i));
+            }
+
+            refresh();
         }
-        
-        refresh();
     }
-    
+
     private void addGoodsItem(Goods goods) {
         GoodsItem item = new GoodsItem();
-        item.setLabelId(goods.id+"");
+        item.setLabelId(goods.id + "");
         item.setLabelName(goods.name);
-        item.setLabelNumber(goods.number+"(од)");
+        item.setLabelNumber(goods.number + "(од)");
         item.setLabelProvider(goods.providerName);
         item.setLabelActualPrice(goods.price + "(грн)");
         rightPanel.addPanel(item);
     }
-    
-    
+
     private void addGoodsItems(ArrayList<Goods> goods) {
-        for (int i = 0; i < goods.size(); ++i) {
-            addGoodsItem(goods.get(i));
+        if (goods != null) {
+            for (int i = 0; i < goods.size(); ++i) {
+                addGoodsItem(goods.get(i));
+            }
+
+            refresh();
         }
-        
-        refresh();
     }
-    
+
     private void addOrderingItem(Ordering ordering) {
         OrderingItem orderingItem = new OrderingItem();
-        orderingItem.setLabelId(ordering.id+"");
+        orderingItem.setLabelId(ordering.id + "");
         orderingItem.setDayOfTheWeek(ordering.dayOfTheWeek);
         orderingItem.setLabelDate(ordering.date + "");
         orderingItem.setProviderName(ordering.provider.name);
@@ -655,38 +690,40 @@ public class MainWindow extends javax.swing.JFrame {
         }
         rightPanel.addPanel(orderingItem);
     }
-    
+
     private void addOrderingsItem(ArrayList<Ordering> orderings) {
         for (int i = 0; i < orderings.size(); ++i) {
             addOrderingItem(orderings.get(i));
         }
         refresh();
     }
-    
+
     private void addProviderItem(Provider p) {
         ProviderItem providerItem = new ProviderItem();
         providerItem.setLabelId(p.id + "");
         providerItem.setLabelName(p.name);
         rightPanel.addPanel(providerItem);
     }
-    
+
     private void addProviderItems(ArrayList<Provider> providers) {
-        for (int i = 0; i < providers.size(); ++i) {
-            addProviderItem(providers.get(i));
+        if (providers != null) {
+            for (int i = 0; i < providers.size(); ++i) {
+                addProviderItem(providers.get(i));
+            }
+            refresh();
         }
-        refresh();
     }
-    
+
     private void adjsutRightPanel() {
         removeRightPanel();
         addRightPanel();
     }
-    
+
     private void addRightPanel() {
         rightPanel = new ContentPanel();
         add(rightPanel);
     }
-    
+
     private void removeRightPanel() {
         if (rightPanel != null) {
             remove(rightPanel);
@@ -748,7 +785,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem AddPurchase;
     private javax.swing.JMenu Department;
     private javax.swing.JMenu Employee;
-    private javax.swing.JMenuItem FindGoodsById;
+    private javax.swing.JMenuItem FindGoodsByName;
     private javax.swing.JMenuItem FindPurchaseById;
     private javax.swing.JMenu Goods;
     private javax.swing.JMenu Ordering;

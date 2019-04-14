@@ -142,6 +142,16 @@ public class DbAccessManager {
 
         return id;
     }
+    
+     public ArrayList<Goods> getGoodsByName(String name, String date) throws SQLException {
+        ArrayList<Goods> goods = new ArrayList<Goods>();
+        String sql = "select * from " + DbResources.Goods + " where " + DbResources.GoodsName
+                + "='" + name + "'";
+        ResultSet rs = getResultSet(sql);
+        getGoodsItemsFromSet(rs, goods, date);
+
+        return goods;
+    }
 
     private double getActualGoodsPriceByDateAndId(String date, int goodsId) throws SQLException {
         Double price = 0.0;

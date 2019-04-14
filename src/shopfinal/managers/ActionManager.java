@@ -37,7 +37,8 @@ public class ActionManager {
         ADD_EMPLOYEE,
         ADD_GOODS,
         ADD_PURVEYANCE,
-        ADD_DEPARTMENT
+        ADD_DEPARTMENT,
+        GET_GOODS_BY_NAME
     }
 
     public class Result {
@@ -154,6 +155,11 @@ public class ActionManager {
                 case ADD_DEPARTMENT:
                     if (params != null) {
                         addDepartment(params);
+                    }
+                    break;
+                case GET_GOODS_BY_NAME:
+                    if (params != null) {
+                        result = getGoodsByName(params);
                     }
                     break;
                 default:
@@ -292,6 +298,15 @@ public class ActionManager {
         int id = db.addPurchase(date);
         db.addItemsToPurchasesGoods(goods, id);
         db.updateGoods(goods);
+    }
+    
+    private Result getGoodsByName(ActionParams params) throws SQLException {
+        String name = (String) params.dataArr[0];
+        System.out.println("name: " + name);
+        String date = (String) params.dataArr[1];
+        Result result = new Result();
+        result.data = db.getGoodsByName(name, date);
+        return result;
     }
 
     private static ActionManager instance;
