@@ -615,9 +615,10 @@ public class MainWindow extends javax.swing.JFrame {
         orderingItem.setProviderName(ordering.provider.name);
         orderingItem.setEmployeeName(ordering.employee.pib);
         orderingItem.setStatus(ordering.pruveyanceId != 0);
+        orderingItem.setTotalCost(ordering.totalCost + "(грн)");
         for (int i = 0; i < ordering.goods.size(); ++i) {
             Goods goods = ordering.goods.get(i);
-            orderingItem.createRowInTable(goods.name, goods.number);
+            orderingItem.createRowInTable(goods.name, goods.price, goods.number, goods.totalPrice);
         }
         rightPanel.addPanel(orderingItem);
     }

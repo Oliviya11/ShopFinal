@@ -36,9 +36,9 @@ public class PurveyanceItem extends javax.swing.JPanel {
         idLabel = new javax.swing.JLabel();
         totalPrice = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        purveyanceGoods = new javax.swing.JTable();
         totalPriceLabel = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        purveyanceGoods = new javax.swing.JTable();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setMaximumSize(new java.awt.Dimension(488, 337));
@@ -58,31 +58,31 @@ public class PurveyanceItem extends javax.swing.JPanel {
         title.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 180, 30));
 
+        totalPriceLabel.setText("Загальна ціна:");
+        add(totalPriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 110, 20));
+
         purveyanceGoods.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Назва товару", "Ціна за одиницю", "Кількість", "Загальна ціна"
+                "Назва товару", "Кількість"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(purveyanceGoods);
+        jScrollPane2.setViewportView(purveyanceGoods);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 470, 200));
-
-        totalPriceLabel.setText("Загальна ціна:");
-        add(totalPriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 110, 20));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 470, 210));
     }// </editor-fold>//GEN-END:initComponents
 
     public void setLabelId(String d) {
@@ -100,7 +100,7 @@ public class PurveyanceItem extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel id;
     private javax.swing.JLabel idLabel;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable purveyanceGoods;
     private javax.swing.JLabel title;
     private javax.swing.JLabel totalPrice;

@@ -60,7 +60,6 @@ create table GoodsPrices (
 drop table if exists GoodsPurveyances;
 create table GoodsPurveyances (
 	Num integer,
-    Price decimal,
     GoodsId integer,
     PurveyanceId integer,
     primary key (GoodsId, PurveyanceId),
@@ -109,6 +108,7 @@ create table Orderings (
 drop table if exists GoodsOrderings;
 create table GoodsOrderings (
 	GoodsId integer,
+    Price decimal,
 	OrderingId integer,
 	primary key (GoodsId, OrderingId),
     foreign key (GoodsId) references Goods(GoodsId) on update cascade on delete cascade,
@@ -481,57 +481,57 @@ insert into GoodsPrices (GoodsId, GoodsPricesDate, Price) values(25, "2018-07-16
 
 -- purveyance id 1
 insert into Purveyances (ProviderId) values (3);
-insert into GoodsPurveyances (Num, Price, GoodsId, PurveyanceId) values (2000, 120, 19, 1);
-insert into GoodsPurveyances (Num, Price, GoodsId, PurveyanceId) values (1200, 112, 20, 1);
-insert into GoodsPurveyances (Num, Price, GoodsId, PurveyanceId) values (900, 115, 21, 1);
-insert into GoodsPurveyances (Num, Price, GoodsId, PurveyanceId) values (1000, 100, 25, 1);
-insert into GoodsPurveyances (Num, Price, GoodsId, PurveyanceId) values (800, 100, 24, 1);
+insert into GoodsPurveyances (Num, GoodsId, PurveyanceId) values (2000, 19, 1);
+insert into GoodsPurveyances (Num, GoodsId, PurveyanceId) values (1200, 20, 1);
+insert into GoodsPurveyances (Num, GoodsId, PurveyanceId) values (900, 21, 1);
+insert into GoodsPurveyances (Num, GoodsId, PurveyanceId) values (1000, 25, 1);
+insert into GoodsPurveyances (Num, GoodsId, PurveyanceId) values (800, 24, 1);
 -- cash flow 9
 insert into CashFlows (CashFlowDate, Cost, BalanceId) values ("2018-07-12", 40000, 1);
 insert into PurveyancesCosts (CashFlowId, PurveyanceId) values (9, 1);
 
 -- purveyance id 2
 insert into Purveyances (ProviderId) values (1);
-insert into GoodsPurveyances (Num, Price, GoodsId, PurveyanceId) values (1000, 120, 10, 2);
-insert into GoodsPurveyances (Num, Price, GoodsId, PurveyanceId) values (1200, 112, 12, 2);
-insert into GoodsPurveyances (Num, Price, GoodsId, PurveyanceId) values (950, 115, 11, 2);
-insert into GoodsPurveyances (Num, Price, GoodsId, PurveyanceId) values (1000, 97, 15, 2);
-insert into GoodsPurveyances (Num, Price, GoodsId, PurveyanceId) values (800, 90, 13, 2);
+insert into GoodsPurveyances (Num, GoodsId, PurveyanceId) values (1000, 10, 2);
+insert into GoodsPurveyances (Num, GoodsId, PurveyanceId) values (1200, 12, 2);
+insert into GoodsPurveyances (Num, GoodsId, PurveyanceId) values (950, 11, 2);
+insert into GoodsPurveyances (Num, GoodsId, PurveyanceId) values (1000, 15, 2);
+insert into GoodsPurveyances (Num, GoodsId, PurveyanceId) values (800, 13, 2);
 -- cash flow 10
 insert into CashFlows (CashFlowDate, Cost, BalanceId) values ("2018-07-13", 40000, 2);
 insert into PurveyancesCosts (CashFlowId, PurveyanceId) values (10, 2);
 
 -- purveyance id 3
 insert into Purveyances (ProviderId) values (1);
-insert into GoodsPurveyances (Num, Price, GoodsId, PurveyanceId) values (1000, 120, 10, 3);
+insert into GoodsPurveyances (Num, GoodsId, PurveyanceId) values (1000, 10, 3);
 -- cash flow 11
 insert into CashFlows (CashFlowDate, Cost, BalanceId) values ("2018-07-15", 40000, 3);
 insert into PurveyancesCosts (CashFlowId, PurveyanceId) values (11, 3);
 
 -- purveyance id 4
 insert into Purveyances (ProviderId) values (2);
-insert into GoodsPurveyances (Num, Price, GoodsId, PurveyanceId) values (1000, 50, 10, 4);
+insert into GoodsPurveyances (Num, GoodsId, PurveyanceId) values (1000, 10, 4);
 -- cash flow 12
 insert into CashFlows (CashFlowDate, Cost, BalanceId) values ("2018-11-01", 10000, 5);
 insert into PurveyancesCosts (CashFlowId, PurveyanceId) values (12, 4);
 
 -- purveyance id 5
 insert into Purveyances (ProviderId) values (2);
-insert into GoodsPurveyances (Num, Price, GoodsId, PurveyanceId) values (1000, 50, 10, 5);
+insert into GoodsPurveyances (Num, GoodsId, PurveyanceId) values (1000, 10, 5);
 -- cash flow 13
 insert into CashFlows (CashFlowDate, Cost, BalanceId) values ("2018-11-08", 10000, 6);
 insert into PurveyancesCosts (CashFlowId, PurveyanceId) values (13, 5);
 
 -- purveyance id 6
 insert into Purveyances (ProviderId) values (2);
-insert into GoodsPurveyances (Num, Price, GoodsId, PurveyanceId) values (1000, 50, 10, 6);
+insert into GoodsPurveyances (Num, GoodsId, PurveyanceId) values (1000, 10, 6);
 -- cash flow 14
 insert into CashFlows (CashFlowDate, Cost, BalanceId) values ("2018-11-08", 5000, 6);
 insert into PurveyancesCosts (CashFlowId, PurveyanceId) values (14, 6);
 
 -- purveyance id 7
 insert into Purveyances (ProviderId) values (3);
-insert into GoodsPurveyances (Num, Price, GoodsId, PurveyanceId) values (1000, 50, 10, 7);
+insert into GoodsPurveyances (Num, GoodsId, PurveyanceId) values (1000, 10, 7);
 -- balance id 9
 insert into Balances (BalanceDate, Income, Exes, Remnant) values ("2019-01-23", 0, 0, 0);
 -- cash flow 15
@@ -550,16 +550,16 @@ insert into Orderings (OrderingDate, ProviderId, PurveyanceId, EmployeeId) value
 insert into Orderings (OrderingDate, ProviderId, PurveyanceId, EmployeeId) values ("2019-04-18", 3, null, 3);
 insert into Orderings (OrderingDate, ProviderId, PurveyanceId, EmployeeId) values ("2019-04-18", 4, null, 5);
 
-insert into GoodsOrderings (GoodsId, OrderingId, Num) values (1, 1, 600);
-insert into GoodsOrderings (GoodsId, OrderingId, Num) values (2, 1, 500);
-insert into GoodsOrderings (GoodsId, OrderingId, Num) values (3, 1, 100);
-insert into GoodsOrderings (GoodsId, OrderingId, Num) values (4, 2, 800);
-insert into GoodsOrderings (GoodsId, OrderingId, Num) values (5, 2, 510);
-insert into GoodsOrderings (GoodsId, OrderingId, Num) values (6, 2, 900);
-insert into GoodsOrderings (GoodsId, OrderingId, Num) values (7, 2, 210);
-insert into GoodsOrderings (GoodsId, OrderingId, Num) values (15, 3, 410);
-insert into GoodsOrderings (GoodsId, OrderingId, Num) values (16, 3, 560);
-insert into GoodsOrderings (GoodsId, OrderingId, Num) values (17, 3, 820);
-insert into GoodsOrderings (GoodsId, OrderingId, Num) values (18, 3, 230);
-insert into GoodsOrderings (GoodsId, OrderingId, Num) values (19, 4, 200);
-insert into GoodsOrderings (GoodsId, OrderingId, Num) values (20, 4, 500);
+insert into GoodsOrderings (GoodsId, Price, OrderingId, Num) values (1, 100, 1, 600);
+insert into GoodsOrderings (GoodsId, Price, OrderingId, Num) values (2, 140, 1, 500);
+insert into GoodsOrderings (GoodsId, Price, OrderingId, Num) values (3, 50, 1, 100);
+insert into GoodsOrderings (GoodsId, Price, OrderingId, Num) values (4, 120, 2, 800);
+insert into GoodsOrderings (GoodsId, Price, OrderingId, Num) values (5, 110, 2, 510);
+insert into GoodsOrderings (GoodsId, Price, OrderingId, Num) values (6, 20, 2, 900);
+insert into GoodsOrderings (GoodsId, Price, OrderingId, Num) values (7, 90, 2, 210);
+insert into GoodsOrderings (GoodsId, Price, OrderingId, Num) values (15, 40, 3, 410);
+insert into GoodsOrderings (GoodsId, Price, OrderingId, Num) values (16, 80, 3, 560);
+insert into GoodsOrderings (GoodsId, Price, OrderingId, Num) values (17, 40, 3, 820);
+insert into GoodsOrderings (GoodsId, Price, OrderingId, Num) values (18, 50, 3, 230);
+insert into GoodsOrderings (GoodsId, Price, OrderingId, Num) values (19, 70, 4, 200);
+insert into GoodsOrderings (GoodsId, Price, OrderingId, Num) values (20, 60, 4, 500);

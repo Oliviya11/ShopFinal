@@ -18,7 +18,7 @@ public class OrderingItem extends javax.swing.JPanel {
      */
     public OrderingItem() {
         initComponents();
-        model = (DefaultTableModel) purchaseGoods.getModel();
+        model = (DefaultTableModel) orderingGoods.getModel();
         model.setRowCount(0);
     }
 
@@ -38,15 +38,17 @@ public class OrderingItem extends javax.swing.JPanel {
         employee = new javax.swing.JLabel();
         date = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        purchaseGoods = new javax.swing.JTable();
         dateLabel = new javax.swing.JLabel();
-        employeeLabel = new javax.swing.JLabel();
+        cost = new javax.swing.JLabel();
         weekDayLabel = new javax.swing.JLabel();
         weekDay = new javax.swing.JLabel();
         providerNameLabel1 = new javax.swing.JLabel();
         providerName = new javax.swing.JLabel();
         performOrdering = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        orderingGoods = new javax.swing.JTable();
+        employeeLabel1 = new javax.swing.JLabel();
+        totalCostLabel1 = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setMaximumSize(new java.awt.Dimension(488, 460));
@@ -54,15 +56,15 @@ public class OrderingItem extends javax.swing.JPanel {
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(488, 460));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 180, 20));
+        add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 180, 20));
 
         statusLabel.setText("Статус:");
-        add(statusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 60, 20));
+        add(statusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 60, 20));
         add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 100, 20));
 
         idLabel.setText("id:");
         add(idLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 30, 20));
-        add(employee, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 330, 20));
+        add(employee, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 330, 20));
         add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 110, 20));
 
         title.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -71,34 +73,9 @@ public class OrderingItem extends javax.swing.JPanel {
         title.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 180, 30));
 
-        purchaseGoods.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Назва товару", "Кількість"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(purchaseGoods);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 470, 150));
-
         dateLabel.setText("Дата:");
         add(dateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 60, 20));
-
-        employeeLabel.setText("ПІБ працівника:");
-        add(employeeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 110, 20));
+        add(cost, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 120, 20));
 
         weekDayLabel.setText("День тижня:");
         add(weekDayLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 80, 20));
@@ -114,7 +91,36 @@ public class OrderingItem extends javax.swing.JPanel {
                 performOrderingActionPerformed(evt);
             }
         });
-        add(performOrdering, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 210, 30));
+        add(performOrdering, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 210, 30));
+
+        orderingGoods.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Назва товару", "Вартість за од", "Кількість", "Загальна вартість (грн)"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(orderingGoods);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 470, 150));
+
+        employeeLabel1.setText("ПІБ працівника:");
+        add(employeeLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 110, 20));
+
+        totalCostLabel1.setText("Загальна вартість:");
+        add(totalCostLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 120, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void performOrderingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_performOrderingActionPerformed
@@ -133,8 +139,8 @@ public class OrderingItem extends javax.swing.JPanel {
         weekDay.setText(day);
     }
 
-    public void createRowInTable(String name, int number) {
-        model.addRow(new Object[] { name, number});
+    public void createRowInTable(String name, double price, int number, double totalPrice) {
+        model.addRow(new Object[] { name, price, number, totalPrice});
     }
     
     public void setEmployeeName(String n) {
@@ -143,6 +149,10 @@ public class OrderingItem extends javax.swing.JPanel {
     
     public void setProviderName(String pn) {
         providerName.setText(pn);
+    }
+    
+    public void setTotalCost(String c) {
+        cost.setText(c);
     }
     
     public void setStatus(boolean isPerformed) {
@@ -155,20 +165,22 @@ public class OrderingItem extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel cost;
     private javax.swing.JLabel date;
     private javax.swing.JLabel dateLabel;
     private javax.swing.JLabel employee;
-    private javax.swing.JLabel employeeLabel;
+    private javax.swing.JLabel employeeLabel1;
     private javax.swing.JLabel id;
     private javax.swing.JLabel idLabel;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable orderingGoods;
     private javax.swing.JButton performOrdering;
     private javax.swing.JLabel providerName;
     private javax.swing.JLabel providerNameLabel1;
-    private javax.swing.JTable purchaseGoods;
     private javax.swing.JLabel status;
     private javax.swing.JLabel statusLabel;
     private javax.swing.JLabel title;
+    private javax.swing.JLabel totalCostLabel1;
     private javax.swing.JLabel weekDay;
     private javax.swing.JLabel weekDayLabel;
     // End of variables declaration//GEN-END:variables

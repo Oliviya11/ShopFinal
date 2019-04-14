@@ -38,7 +38,7 @@
     <Component class="javax.swing.JLabel" name="status">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="90" y="330" width="180" height="20"/>
+          <AbsoluteConstraints x="90" y="360" width="180" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -48,7 +48,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="20" y="330" width="60" height="20"/>
+          <AbsoluteConstraints x="20" y="360" width="60" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -72,7 +72,7 @@
     <Component class="javax.swing.JLabel" name="employee">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="140" y="300" width="330" height="20"/>
+          <AbsoluteConstraints x="130" y="330" width="330" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -100,30 +100,6 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="140" width="470" height="150"/>
-        </Constraint>
-      </Constraints>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTable" name="purchaseGoods">
-          <Properties>
-            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="2" rowCount="4">
-                <Column editable="false" title="&#x41d;&#x430;&#x437;&#x432;&#x430; &#x442;&#x43e;&#x432;&#x430;&#x440;&#x443;" type="java.lang.Object"/>
-                <Column editable="false" title="&#x41a;&#x456;&#x43b;&#x44c;&#x43a;&#x456;&#x441;&#x442;&#x44c;" type="java.lang.Object"/>
-              </Table>
-            </Property>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
     <Component class="javax.swing.JLabel" name="dateLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x414;&#x430;&#x442;&#x430;:"/>
@@ -134,13 +110,10 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="employeeLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#x41f;&#x406;&#x411; &#x43f;&#x440;&#x430;&#x446;&#x456;&#x432;&#x43d;&#x438;&#x43a;&#x430;:"/>
-      </Properties>
+    <Component class="javax.swing.JLabel" name="cost">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="20" y="300" width="110" height="20"/>
+          <AbsoluteConstraints x="150" y="300" width="120" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -187,7 +160,53 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="140" y="390" width="210" height="30"/>
+          <AbsoluteConstraints x="140" y="400" width="210" height="30"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="10" y="140" width="470" height="150"/>
+        </Constraint>
+      </Constraints>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="orderingGoods">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="4" rowCount="4">
+                <Column editable="false" title="&#x41d;&#x430;&#x437;&#x432;&#x430; &#x442;&#x43e;&#x432;&#x430;&#x440;&#x443;" type="java.lang.Object"/>
+                <Column editable="false" title="&#x412;&#x430;&#x440;&#x442;&#x456;&#x441;&#x442;&#x44c; &#x437;&#x430; &#x43e;&#x434;" type="java.lang.Object"/>
+                <Column editable="false" title="&#x41a;&#x456;&#x43b;&#x44c;&#x43a;&#x456;&#x441;&#x442;&#x44c;" type="java.lang.Object"/>
+                <Column editable="false" title="&#x417;&#x430;&#x433;&#x430;&#x43b;&#x44c;&#x43d;&#x430; &#x432;&#x430;&#x440;&#x442;&#x456;&#x441;&#x442;&#x44c; (&#x433;&#x440;&#x43d;)" type="java.lang.Object"/>
+              </Table>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="employeeLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x41f;&#x406;&#x411; &#x43f;&#x440;&#x430;&#x446;&#x456;&#x432;&#x43d;&#x438;&#x43a;&#x430;:"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="20" y="330" width="110" height="20"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="totalCostLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x417;&#x430;&#x433;&#x430;&#x43b;&#x44c;&#x43d;&#x430; &#x432;&#x430;&#x440;&#x442;&#x456;&#x441;&#x442;&#x44c;:"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="20" y="300" width="120" height="20"/>
         </Constraint>
       </Constraints>
     </Component>

@@ -17,6 +17,7 @@ public class Ordering {
     public Employee employee;
     public ArrayList<Goods> goods;
     public String dayOfTheWeek;
+    public double totalCost;
     
     public Ordering(int id, 
                     Date date, 
@@ -31,5 +32,14 @@ public class Ordering {
         this.employee = employee;
         this.goods = goods;
         this.dayOfTheWeek = Utils.getDayOfTheWeek(date);
+        this.totalCost = getTotalCost();
+    }
+    
+    private double getTotalCost() {
+        double totalCost = 0;
+        for (int i = 0; i < goods.size(); ++i) {
+            totalCost += (goods.get(i).totalPrice);
+        }
+        return totalCost;
     }
 }
