@@ -11,23 +11,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import shopfinal.ButtonActionHolder;
 import shopfinal.managers.ActionManager;
 import shopfinal.managers.ActionManager.ActionParams;
 import shopfinal.managers.ActionManager.Result;
+import shopfinal.models.Department;
 import shopfinal.models.Goods;
+import shopfinal.models.Provider;
 
-public class AddPurchase extends javax.swing.JPanel {
+public class AddPurchase2 extends javax.swing.JPanel {
 
+    public ButtonActionHolder actionHolder = null;
     private final HashMap<String, Goods> goodsMap = new HashMap<String, Goods>();
 
-    /**
-     * Creates new form FindById
-     */
-    public AddPurchase() {
+    public AddPurchase2() {
         initComponents();
         addAvailableGoods();
     }
-
+    
     private void addAvailableGoods() {
         try {
             ActionManager.ActionParams params = new ActionParams();
@@ -53,47 +54,51 @@ public class AddPurchase extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        goodsLabel = new javax.swing.JLabel();
-        title = new javax.swing.JLabel();
-        date = new javax.swing.JTextField();
-        scroll = new javax.swing.JScrollPane();
-        content = new javax.swing.JPanel();
-        dateLabel = new javax.swing.JLabel();
-        availableGoods = new javax.swing.JComboBox<>();
-        okButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        departmentLabel = new javax.swing.JLabel();
         performButton = new javax.swing.JButton();
+        goodsLabel = new javax.swing.JLabel();
+        date = new javax.swing.JTextField();
+        dateLabel = new javax.swing.JLabel();
         numberLabel = new javax.swing.JLabel();
+        availableGoods = new javax.swing.JComboBox<>();
         number = new javax.swing.JTextField();
+        okButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        content = new javax.swing.JPanel();
 
         setMaximumSize(new java.awt.Dimension(435, 600));
         setMinimumSize(new java.awt.Dimension(435, 600));
         setPreferredSize(new java.awt.Dimension(435, 600));
 
-        goodsLabel.setText("Товар:");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Додати покупку");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        title.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title.setText("Додати покупку");
-        title.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        departmentLabel.setText("(од)");
 
-        date.setMinimumSize(new java.awt.Dimension(80, 20));
-        date.setPreferredSize(new java.awt.Dimension(80, 20));
-        date.addActionListener(new java.awt.event.ActionListener() {
+        performButton.setText("Виконати");
+        performButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dateActionPerformed(evt);
+                performButtonActionPerformed(evt);
             }
         });
 
-        scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        goodsLabel.setText("Товар:");
 
-        content.setLayout(new javax.swing.BoxLayout(content, javax.swing.BoxLayout.Y_AXIS));
-        scroll.setViewportView(content);
+        date.setMinimumSize(new java.awt.Dimension(80, 20));
+        date.setPreferredSize(new java.awt.Dimension(80, 20));
 
         dateLabel.setText("Дата:");
 
+        numberLabel.setText("Кількість:");
+
         availableGoods.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        number.setMinimumSize(new java.awt.Dimension(80, 20));
+        number.setPreferredSize(new java.awt.Dimension(80, 20));
 
         okButton.setText("+");
         okButton.addActionListener(new java.awt.event.ActionListener() {
@@ -102,95 +107,81 @@ public class AddPurchase extends javax.swing.JPanel {
             }
         });
 
-        performButton.setText("Виконати");
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alignmentY}"), performButton, org.jdesktop.beansbinding.BeanProperty.create("alignmentY"));
-        bindingGroup.addBinding(binding);
-
-        performButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                performButtonActionPerformed(evt);
-            }
-        });
-
-        numberLabel.setText("Кількість:");
-
-        number.setMinimumSize(new java.awt.Dimension(80, 20));
-        number.setPreferredSize(new java.awt.Dimension(80, 20));
-        number.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numberActionPerformed(evt);
-            }
-        });
+        content.setLayout(new javax.swing.BoxLayout(content, javax.swing.BoxLayout.Y_AXIS));
+        jScrollPane1.setViewportView(content);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(142, 142, 142)
-                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(130, 130, 130)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(goodsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(availableGoods, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(number, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(goodsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(availableGoods, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(numberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(number, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(departmentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(performButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(150, 150, 150)
+                .addComponent(performButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(goodsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(goodsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
-                        .addComponent(numberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(availableGoods, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(number, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(availableGoods, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10)
-                .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(performButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(numberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(number, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(departmentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(performButton))
         );
 
-        goodsLabel.getAccessibleContext().setAccessibleName("id");
+        departmentLabel.getAccessibleContext().setAccessibleName("id");
 
         getAccessibleContext().setAccessibleParent(this);
-
-        bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dateActionPerformed
-
     private void performButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_performButtonActionPerformed
-        ArrayList<Goods> goods = new ArrayList<Goods>();
+       ArrayList<Goods> goods = new ArrayList<Goods>();
         Component[] children = content.getComponents();
         for (int i = 0; i < children.length; ++i) {
             if (children[i].isVisible()) {
@@ -232,9 +223,9 @@ public class AddPurchase extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_okButtonActionPerformed
 
-    private void numberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_numberActionPerformed
+    public String getLabelName() {
+        return null;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -242,13 +233,13 @@ public class AddPurchase extends javax.swing.JPanel {
     private javax.swing.JPanel content;
     private javax.swing.JTextField date;
     private javax.swing.JLabel dateLabel;
+    private javax.swing.JLabel departmentLabel;
     private javax.swing.JLabel goodsLabel;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField number;
     private javax.swing.JLabel numberLabel;
     private javax.swing.JButton okButton;
     private javax.swing.JButton performButton;
-    private javax.swing.JScrollPane scroll;
-    private javax.swing.JLabel title;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

@@ -362,7 +362,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void AddPurchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPurchaseActionPerformed
         removeLeftPanel();
-        leftPanel = new AddPurchase();
+        leftPanel = new AddPurchase2();
         add(leftPanel);
         adjsutRightPanel();
         refresh();

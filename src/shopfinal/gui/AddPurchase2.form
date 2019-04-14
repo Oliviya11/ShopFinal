@@ -34,43 +34,46 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="142" pref="142" max="-2" attributes="0"/>
-              <Component id="title" min="-2" pref="140" max="-2" attributes="0"/>
+              <EmptySpace min="130" pref="130" max="-2" attributes="0"/>
+              <Component id="jLabel2" min="-2" pref="160" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="32" pref="32" max="-2" attributes="0"/>
-              <Component id="dateLabel" min="-2" pref="70" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="date" min="-2" pref="100" max="-2" attributes="0"/>
+              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+              <Component id="dateLabel" min="-2" pref="80" max="-2" attributes="0"/>
+              <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
+              <Component id="date" min="-2" pref="230" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="32" pref="32" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="goodsLabel" min="-2" pref="60" max="-2" attributes="0"/>
-                  <Component id="numberLabel" min="-2" pref="70" max="-2" attributes="0"/>
-              </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="availableGoods" min="-2" pref="260" max="-2" attributes="0"/>
-                  <Component id="number" min="-2" pref="100" max="-2" attributes="0"/>
-              </Group>
+              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+              <Component id="goodsLabel" min="-2" pref="100" max="-2" attributes="0"/>
+              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+              <Component id="availableGoods" min="-2" pref="230" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+              <Component id="numberLabel" min="-2" pref="100" max="-2" attributes="0"/>
+              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+              <Component id="number" min="-2" pref="130" max="-2" attributes="0"/>
+              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+              <Component id="departmentLabel" min="-2" pref="30" max="-2" attributes="0"/>
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
               <Component id="okButton" min="-2" pref="50" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-              <Component id="scroll" min="-2" pref="410" max="-2" attributes="0"/>
+              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="420" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="130" pref="130" max="-2" attributes="0"/>
-              <Component id="performButton" min="-2" pref="180" max="-2" attributes="0"/>
+              <EmptySpace min="150" pref="150" max="-2" attributes="0"/>
+              <Component id="performButton" min="-2" pref="140" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="45" pref="45" max="-2" attributes="0"/>
-              <Component id="title" min="-2" pref="20" max="-2" attributes="0"/>
+              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+              <Component id="jLabel2" min="-2" pref="30" max="-2" attributes="0"/>
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="dateLabel" min="-2" pref="30" max="-2" attributes="0"/>
@@ -78,36 +81,34 @@
               </Group>
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="goodsLabel" min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="goodsLabel" min="-2" pref="20" max="-2" attributes="0"/>
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="numberLabel" min="-2" pref="30" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
                       <Component id="availableGoods" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="number" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="okButton" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-              <Component id="scroll" min="-2" pref="150" max="-2" attributes="0"/>
-              <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
-              <Component id="performButton" min="-2" pref="30" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="okButton" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="numberLabel" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="number" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="departmentLabel" min="-2" pref="30" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="220" max="-2" attributes="0"/>
+              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+              <Component id="performButton" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="goodsLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#x422;&#x43e;&#x432;&#x430;&#x440;:"/>
-      </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="id"/>
-      </AccessibilityProperties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="title">
+    <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="11" style="1"/>
@@ -119,6 +120,27 @@
         </Property>
       </Properties>
     </Component>
+    <Component class="javax.swing.JLabel" name="departmentLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="(&#x43e;&#x434;)"/>
+      </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="id"/>
+      </AccessibilityProperties>
+    </Component>
+    <Component class="javax.swing.JButton" name="performButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x412;&#x438;&#x43a;&#x43e;&#x43d;&#x430;&#x442;&#x438;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="performButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="goodsLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x422;&#x43e;&#x432;&#x430;&#x440;:"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JTextField" name="date">
       <Properties>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -128,28 +150,15 @@
           <Dimension value="[80, 20]"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dateActionPerformed"/>
-      </Events>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="scroll">
-      <Properties>
-        <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
-      </Properties>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Container class="javax.swing.JPanel" name="content">
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
-            <Property name="axis" type="int" value="1"/>
-          </Layout>
-        </Container>
-      </SubComponents>
-    </Container>
     <Component class="javax.swing.JLabel" name="dateLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x414;&#x430;&#x442;&#x430;:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="numberLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x41a;&#x456;&#x43b;&#x44c;&#x43a;&#x456;&#x441;&#x442;&#x44c;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="availableGoods">
@@ -167,30 +176,6 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="okButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="+"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="okButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="performButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#x412;&#x438;&#x43a;&#x43e;&#x43d;&#x430;&#x442;&#x438;"/>
-      </Properties>
-      <BindingProperties>
-        <BindingProperty name="alignmentY" source="Form" sourcePath="${alignmentY}" target="performButton" targetPath="alignmentY" updateStrategy="0" immediately="false"/>
-      </BindingProperties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="performButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="numberLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#x41a;&#x456;&#x43b;&#x44c;&#x43a;&#x456;&#x441;&#x442;&#x44c;:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="number">
       <Properties>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -200,9 +185,29 @@
           <Dimension value="[80, 20]"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="okButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="+"/>
+      </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="numberActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="okButtonActionPerformed"/>
       </Events>
     </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <Properties>
+        <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="content">
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
+            <Property name="axis" type="int" value="1"/>
+          </Layout>
+        </Container>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>
