@@ -38,7 +38,7 @@ public class Ordering {
     private double getTotalCost() {
         double totalCost = 0;
         for (int i = 0; i < goods.size(); ++i) {
-            totalCost += (goods.get(i).totalPrice);
+            totalCost += (goods.get(i).totalPriceInSmth);
         }
         return totalCost;
     }

@@ -152,6 +152,16 @@ public class DbAccessManager {
 
         return goods;
     }
+     
+    public ArrayList<Goods> getGoodsById(int id, String date) throws SQLException {
+        ArrayList<Goods> goods = new ArrayList<Goods>();
+        String sql = "select * from " + DbResources.Goods + " where " + DbResources.GoodsId
+                + "=" + id ;
+        ResultSet rs = getResultSet(sql);
+        getGoodsItemsFromSet(rs, goods, date);
+
+        return goods;
+    }
 
     private double getActualGoodsPriceByDateAndId(String date, int goodsId) throws SQLException {
         Double price = 0.0;
@@ -228,14 +238,21 @@ public class DbAccessManager {
     private void getGoodsItemsFromOrderingsSet(ResultSet rs, ArrayList<Goods> listGoods) throws SQLException {
         while ((rs != null) && (rs.next())) {
             int goodsId = rs.getInt(DbResources.GoodsId);
-            int number = rs.getInt(DbResources.Number);
+            ArrayList<Goods> goodsList = getGoodsById(goodsId, null);
+            Goods gFromDb = null;
+            int number = 0;
+            if (goodsList.size() > 0) {
+                gFromDb = goodsList.get(0);
+                number = gFromDb.number;
+            }
+            int numberInSmth = rs.getInt(DbResources.Number);
             double price = rs.getDouble(DbResources.Price);
             String name = getGoodsNameById(goodsId);
             String provider = "";
             try {
                 provider = rs.getString(DbResources.Provider);
             } catch (Exception ex) {}
-            Goods goods = new Goods(goodsId, provider, name, number, price);
+            Goods goods = new Goods(goodsId, provider, name, number, numberInSmth, price);
             listGoods.add(goods);
         }
     }
@@ -546,6 +563,7 @@ public class DbAccessManager {
         String sql = "insert into " + DbResources.GoodsPrices + " (" + DbResources.GoodsId + ", " +
                 DbResources.GoodsPricesDate + ", " + DbResources.Price + ") values (" + id + ", '" +
                 date + "', " + price + ")";
+        System.out.println(sql);
         executSql(sql);
     }
 }

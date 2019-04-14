@@ -156,7 +156,8 @@ public class OrderingItem extends javax.swing.JPanel {
     }
 
     public void createRowInTable(Goods goods) {
-        model.addRow(new Object[] { goods.name, goods.price, goods.number, goods.totalPrice});
+        model.addRow(new Object[] { goods.name, goods.price, goods.numberInSmth, goods.totalPriceInSmth});
+        goods.number += goods.numberInSmth;
         goodsList.add(goods);
     }
     

@@ -15,6 +15,7 @@ public class Goods {
     public int departmentId;
     public double price;
     public double totalPrice;
+    public double totalPriceInSmth;
     public int numberInSmth;
 
     public Goods(int id,
@@ -39,6 +40,17 @@ public class Goods {
         this.number = number;
         this.price = price;
         this.totalPrice = number * price;
+    }
+    
+    public Goods(int id, String providerName, String name, int number, int numberInSmth, double price) {
+        this.id = id;
+        this.providerName = providerName;
+        this.name = name;
+        this.number = number;
+        this.numberInSmth = numberInSmth;
+        this.price = price;
+        this.totalPrice = number * price;
+        this.totalPriceInSmth = numberInSmth * price;
     }
         
 }

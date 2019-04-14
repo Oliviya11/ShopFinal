@@ -291,6 +291,7 @@ public class ActionManager {
         ArrayList<Goods> goods = (ArrayList<Goods>) params.data;
         int purveyanceId = db.addPurveyances(providerId);
         db.addItemsToGoodsPurveyances(goods, purveyanceId);
+        db.updateGoods(goods);
     }
 
     private void addDepartment(ActionParams params) throws SQLException {

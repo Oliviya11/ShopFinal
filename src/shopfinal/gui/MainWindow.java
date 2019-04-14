@@ -351,7 +351,7 @@ public class MainWindow extends javax.swing.JFrame {
                     Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_ALL_ORDERINGS, null);
                     ArrayList<Ordering> orderings = (ArrayList<Ordering>) result.data;
                     rightPanel.clearPanel();
-                    addOrderingsItem(orderings);
+                    addOrderingsItems(orderings);
                 } catch (ClassNotFoundException | SQLException ex) {
                     Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -714,7 +714,7 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }
 
-    private void addOrderingItem(Ordering ordering) {
+    private void addOrderingsItem(Ordering ordering) {
         OrderingItem orderingItem = new OrderingItem();
         orderingItem.setLabelId(ordering.id + "");
         orderingItem.setDayOfTheWeek(ordering.dayOfTheWeek);
@@ -730,9 +730,9 @@ public class MainWindow extends javax.swing.JFrame {
         rightPanel.addPanel(orderingItem);
     }
 
-    private void addOrderingsItem(ArrayList<Ordering> orderings) {
+    private void addOrderingsItems(ArrayList<Ordering> orderings) {
         for (int i = 0; i < orderings.size(); ++i) {
-            addOrderingItem(orderings.get(i));
+            addOrderingsItem(orderings.get(i));
         }
         refresh();
     }
