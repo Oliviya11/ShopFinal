@@ -31,6 +31,10 @@ public class GoodsPreviewItem extends javax.swing.JPanel {
     public int getLabelNumber() {
         return Integer.parseInt(number.getText());
     }
+    
+    public int getLabelPrice() {
+        return Integer.parseInt(price.getText());
+    }
 
     public void setLabelNumber(String n) {
         number.setText(n);

@@ -139,6 +139,10 @@ public class ActionManager {
                         addGoods(params);
                     }
                     break;
+                case ADD_ORDERING:
+                    if (params != null ) {
+                        addOrdering(params);
+                    }
                 default:
                     break;
             }
@@ -246,6 +250,15 @@ public class ActionManager {
         String date = (String) params.dataArr[5];
         int id = db.addGoods(name, provider, number, depId);
         db.addToGoodsPrices(id, date, price);
+    }
+    
+    private void addOrdering(ActionParams params) throws SQLException {
+        int providerId = (int) params.dataArr[0];
+        int employeeId = (int) params.dataArr[1];
+        String date = (String) params.dataArr[2];
+        ArrayList<Goods> goods = (ArrayList<Goods>) params.data;
+        int orderingId = db.addOrdering(date, providerId, employeeId);
+        db.addItemsToGoodsOrderings(goods, orderingId);
     }
 
     private void addPurchase(ActionParams params) throws SQLException {

@@ -488,4 +488,24 @@ public class DbAccessManager {
             addItemToPurchaseGoods(goods.get(i), purchaseId);
         }
     }
+    
+    public int addOrdering(String date, int providerId, int employeeId) throws SQLException {
+        String sql = "insert into " + DbResources.Orderins + " (" + DbResources.OrderingDate + ", "
+                + DbResources.ProviderId + ", " + DbResources.PurveyanceId + ", " + DbResources.EmployeeId + ") "
+                + "values ('" + date + "', " + providerId + ", null, " + employeeId + ")";
+        return executSqlWithId(sql);
+    }
+    
+    private void addItemToGoodsOrderings(Goods goods, int orderingId) throws SQLException {
+        String sql = "insert into " + DbResources.GoodsOrderings + " (" + DbResources.GoodsId + ", "
+                + DbResources.Price + ", " + DbResources.OrderingId + ", " + DbResources.Number + ")"
+                + " values (" + goods.id + ", " + goods.price + ", " + orderingId + ", " + goods.numberInPurchase + ")";
+        executSql(sql);
+    }
+    
+    public void addItemsToGoodsOrderings(ArrayList<Goods> goods, int orderingId) throws SQLException {
+        for (int i = 0; i < goods.size(); ++i) {
+            addItemToGoodsOrderings(goods.get(i), orderingId);
+        }
+    }
 }
