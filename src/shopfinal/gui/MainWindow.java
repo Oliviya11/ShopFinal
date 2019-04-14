@@ -486,7 +486,25 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void ShowAllDepartmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllDepartmentsActionPerformed
         removeLeftPanel();
-        leftPanel = new ShowAll();
+        ShowAll showAllDepartments = new ShowAll();
+        class RealButtonActionHolder extends ButtonActionHolder {
+
+            @Override
+            public void performAction() {
+                try {
+                    Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_ALL_DEPARTMENTS, null);
+                    ArrayList<Department> departments = (ArrayList<Department>) result.data;
+                    rightPanel.clearPanel();
+                    addDepartmentsItems(departments);
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+        }
+        RealButtonActionHolder actionHolder = new RealButtonActionHolder();
+        showAllDepartments.actionHolder = actionHolder;
+        leftPanel = showAllDepartments;
         add(leftPanel);
         adjsutRightPanel();
         refresh();
@@ -549,6 +567,21 @@ public class MainWindow extends javax.swing.JFrame {
         for (int i = 0; i < purchases.size(); ++i) {
           addPurchaseItem(purchases.get(i));
         }
+        refresh();
+    }
+    
+    private void addDepartmentItem(Department d) {
+        DepartmentItem item = new DepartmentItem();
+        item.setLabelId(d.id+"");
+        item.setLabelName(d.name);
+        rightPanel.addPanel(item);
+    }
+    
+    private void addDepartmentsItems(ArrayList<Department> departments) {
+        for (int i = 0; i < departments.size(); ++i) {
+            addDepartmentItem(departments.get(i));
+        }
+        
         refresh();
     }
     
