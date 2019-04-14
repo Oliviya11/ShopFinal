@@ -370,7 +370,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void AddOrderingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddOrderingActionPerformed
         removeLeftPanel();
-        leftPanel = new AddOrdering();
+        leftPanel = new AddOrdering2();
         add(leftPanel);
         adjsutRightPanel();
         refresh();
