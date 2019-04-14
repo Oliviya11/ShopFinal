@@ -39,7 +39,9 @@ public class ActionManager {
         ADD_PURVEYANCE,
         ADD_DEPARTMENT,
         GET_GOODS_BY_NAME,
-        UPDATE_GOODS
+        UPDATE_GOODS,
+        GET_NOT_PERFORMED_ORDERINGS,
+        GET_PERFORMED_ORDERINGS
     }
 
     public class Result {
@@ -168,6 +170,12 @@ public class ActionManager {
                         updateGoods(params);
                     }
                     break;
+                case GET_NOT_PERFORMED_ORDERINGS:
+                    result = getNotPerformedOrderings();
+                    break;
+                case GET_PERFORMED_ORDERINGS:
+                    result = getPerformedOrderings();
+                    break;
                 default:
                     break;
             }
@@ -238,6 +246,18 @@ public class ActionManager {
     private Result getAllOrderings() throws SQLException {
         Result result = new Result();
         result.data = db.getAllOrderings();
+        return result;
+    }
+    
+    private Result getNotPerformedOrderings() throws SQLException {
+        Result result = new Result();
+        result.data = db.getNotPerformedOrderings();
+        return result;
+    }
+    
+    private Result getPerformedOrderings() throws SQLException {
+        Result result = new Result();
+        result.data = db.getPerformedOrderings();
         return result;
     }
 

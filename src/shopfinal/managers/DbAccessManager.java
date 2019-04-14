@@ -281,6 +281,24 @@ public class DbAccessManager {
         return orderings;
     }
     
+    public ArrayList<Ordering> getNotPerformedOrderings() throws SQLException {
+        ArrayList<Ordering> orderings = new ArrayList<Ordering>();
+        String sql = "select * from " + DbResources.Orderins + " where " 
+                + DbResources.PurveyanceId +" is null";
+        ResultSet rs = getResultSet(sql);
+        getOrderingFromSet(rs, orderings);
+        return orderings;
+    }
+    
+    public ArrayList<Ordering> getPerformedOrderings() throws SQLException {
+        ArrayList<Ordering> orderings = new ArrayList<Ordering>();
+        String sql = "select * from " + DbResources.Orderins + " where " 
+                + DbResources.PurveyanceId +" is not null";
+        ResultSet rs = getResultSet(sql);
+        getOrderingFromSet(rs, orderings);
+        return orderings;
+    }
+    
     private void getOrderingFromSet(ResultSet rs, ArrayList<Ordering> orderings) throws SQLException {
         while ((rs != null) && (rs.next())) {
             Date date = rs.getDate(DbResources.OrderingDate);

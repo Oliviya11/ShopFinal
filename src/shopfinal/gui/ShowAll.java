@@ -25,7 +25,7 @@ public class ShowAll extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
         performButton = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(435, 600));
@@ -34,11 +34,11 @@ public class ShowAll extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(435, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Показати всі");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 140, 30));
+        title.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("Показати всі");
+        title.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 350, 30));
 
         performButton.setText("Виконати");
         performButton.addActionListener(new java.awt.event.ActionListener() {
@@ -55,9 +55,12 @@ public class ShowAll extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_performButtonActionPerformed
 
+    public void setTitle(String t) {
+        title.setText(t);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton performButton;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

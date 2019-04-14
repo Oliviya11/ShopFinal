@@ -63,6 +63,7 @@ public class MainWindow extends javax.swing.JFrame {
         Ordering = new javax.swing.JMenu();
         AddOrdering = new javax.swing.JMenuItem();
         ShowAllNotPerformed = new javax.swing.JMenuItem();
+        ShowAllPerformed = new javax.swing.JMenuItem();
         ShowAllOrderings = new javax.swing.JMenuItem();
         Provider = new javax.swing.JMenu();
         AddProvider = new javax.swing.JMenuItem();
@@ -181,6 +182,14 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         Ordering.add(ShowAllNotPerformed);
+
+        ShowAllPerformed.setText("Показати виконані");
+        ShowAllPerformed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowAllPerformedActionPerformed(evt);
+            }
+        });
+        Ordering.add(ShowAllPerformed);
 
         ShowAllOrderings.setText("Показати всі");
         ShowAllOrderings.addActionListener(new java.awt.event.ActionListener() {
@@ -597,8 +606,60 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_UpdateGoodsActionPerformed
 
     private void ShowAllNotPerformedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllNotPerformedActionPerformed
-        // TODO add your handling code here:
+        removeLeftPanel();
+        ShowAll showAll = new ShowAll();
+        showAll.setTitle("Показати невиконані замовлення");
+        
+        class RealButtonActionHolder extends ButtonActionHolder {
+
+            @Override
+            public void performAction() {
+                try {
+                    Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_NOT_PERFORMED_ORDERINGS, null);
+                    ArrayList<Ordering> orderings = (ArrayList<Ordering>) result.data;
+                    rightPanel.clearPanel();
+                    addOrderingsItems(orderings);
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+        RealButtonActionHolder actionHolder = new RealButtonActionHolder();
+        showAll.actionHolder = actionHolder;
+        leftPanel = showAll;
+        add(leftPanel);
+        adjsutRightPanel();
+        refresh();
     }//GEN-LAST:event_ShowAllNotPerformedActionPerformed
+
+    private void ShowAllPerformedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllPerformedActionPerformed
+        removeLeftPanel();
+        ShowAll showAll = new ShowAll();
+        showAll.setTitle("Показати виконані замовлення");
+        
+        class RealButtonActionHolder extends ButtonActionHolder {
+
+            @Override
+            public void performAction() {
+                try {
+                    Result result = ActionManager.getInstance().performAction(ActionManager.Action.GET_PERFORMED_ORDERINGS, null);
+                    ArrayList<Ordering> orderings = (ArrayList<Ordering>) result.data;
+                    rightPanel.clearPanel();
+                    addOrderingsItems(orderings);
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+        RealButtonActionHolder actionHolder = new RealButtonActionHolder();
+        showAll.actionHolder = actionHolder;
+        leftPanel = showAll;
+        add(leftPanel);
+        adjsutRightPanel();
+        refresh();
+    }//GEN-LAST:event_ShowAllPerformedActionPerformed
 
     private void addFindByIdPurchasePanel() {
         removeLeftPanel();
@@ -849,6 +910,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem ShowAllGoods;
     private javax.swing.JMenuItem ShowAllNotPerformed;
     private javax.swing.JMenuItem ShowAllOrderings;
+    private javax.swing.JMenuItem ShowAllPerformed;
     private javax.swing.JMenuItem ShowAllProviders;
     private javax.swing.JMenuItem ShowAllPurchases;
     private javax.swing.JMenuItem ShowAllPurveyances;
