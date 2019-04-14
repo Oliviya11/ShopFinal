@@ -38,7 +38,8 @@ public class ActionManager {
         ADD_GOODS,
         ADD_PURVEYANCE,
         ADD_DEPARTMENT,
-        GET_GOODS_BY_NAME
+        GET_GOODS_BY_NAME,
+        UPDATE_GOODS
     }
 
     public class Result {
@@ -160,6 +161,11 @@ public class ActionManager {
                 case GET_GOODS_BY_NAME:
                     if (params != null) {
                         result = getGoodsByName(params);
+                    }
+                    break;
+                case UPDATE_GOODS:
+                    if (params != null) {
+                        updateGoods(params);
                     }
                     break;
                 default:
@@ -307,6 +313,13 @@ public class ActionManager {
         Result result = new Result();
         result.data = db.getGoodsByName(name, date);
         return result;
+    }
+    
+    private void updateGoods(ActionParams params) throws SQLException {
+        int id = (int) params.dataArr[0];
+        String date = (String) params.dataArr[1];
+        int price = (int) params.dataArr[2];
+        db.updateGoods(id, date, price);
     }
 
     private static ActionManager instance;

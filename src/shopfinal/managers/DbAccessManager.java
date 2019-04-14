@@ -274,7 +274,7 @@ public class DbAccessManager {
             int employeeId = rs.getInt(DbResources.EmployeeId);
             Employee employee = getEmployeeById(employeeId);
             int pruvId = rs.getInt(DbResources.PurveyanceId);
-            Ordering ordering = new Ordering(id, date, provider,pruvId, employee, goods);
+            Ordering ordering = new Ordering(id, date, provider, pruvId, employee, goods);
             orderings.add(ordering);
         }
     }
@@ -539,6 +539,13 @@ public class DbAccessManager {
     public void addDepartment(String name) throws SQLException {
         String sql = "insert into " + DbResources.Departments + " (" + DbResources.DepartmentName + ") "
                 +"values ('" + name + "')";
+        executSql(sql);
+    }
+    
+    public void updateGoods(int id, String date, int price) throws SQLException {
+        String sql = "insert into " + DbResources.GoodsPrices + " (" + DbResources.GoodsId + ", " +
+                DbResources.GoodsPricesDate + ", " + DbResources.Price + ") values (" + id + ", '" +
+                date + "', " + price + ")";
         executSql(sql);
     }
 }

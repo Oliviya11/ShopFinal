@@ -7,6 +7,7 @@ package shopfinal.gui;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import shopfinal.ButtonActionHolder;
@@ -14,13 +15,13 @@ import shopfinal.Utils;
 import shopfinal.managers.ActionManager;
 import shopfinal.models.Goods;
 
-public class FindByName extends javax.swing.JPanel {
+public class UpdateGoods extends javax.swing.JPanel {
      public ButtonActionHolder actionHolder = null;
-     public ArrayList<String> goodsNames = new ArrayList<String>();
+     public HashMap<String,Goods> mapGoods = new HashMap<String,Goods>();
     /**
      * Creates new form FindById
      */
-    public FindByName() {
+    public UpdateGoods() {
         initComponents();
         addAvailableGoods();
     }
@@ -34,7 +35,7 @@ public class FindByName extends javax.swing.JPanel {
             ArrayList<Goods> goods = (ArrayList<Goods>) result.data;
             for (int i = 0; i < goods.size(); ++i) {
                 Goods g = goods.get(i);
-                goodsNames.add(g.name);
+                mapGoods.put(g.name, g);
                 availableNames.addItem(g.name);
             }
         } catch (ClassNotFoundException | SQLException ex) {
@@ -55,6 +56,11 @@ public class FindByName extends javax.swing.JPanel {
         nameLabel = new javax.swing.JLabel();
         performButton = new javax.swing.JButton();
         availableNames = new javax.swing.JComboBox<>();
+        nameLabel1 = new javax.swing.JLabel();
+        dateLabel = new javax.swing.JLabel();
+        date = new javax.swing.JTextField();
+        price = new javax.swing.JTextField();
+        priceLabel = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(435, 600));
         setMinimumSize(new java.awt.Dimension(435, 600));
@@ -67,8 +73,8 @@ public class FindByName extends javax.swing.JPanel {
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 140, 30));
 
-        nameLabel.setText("Назва:");
-        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 50, 20));
+        nameLabel.setText("(грн)");
+        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 50, 30));
         nameLabel.getAccessibleContext().setAccessibleName("id");
 
         performButton.setText("Виконати");
@@ -77,10 +83,37 @@ public class FindByName extends javax.swing.JPanel {
                 performButtonActionPerformed(evt);
             }
         });
-        add(performButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 140, -1));
+        add(performButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 140, -1));
 
         availableNames.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(availableNames, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 290, -1));
+
+        nameLabel1.setText("Назва:");
+        add(nameLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 50, 20));
+
+        dateLabel.setText("Дата:");
+        add(dateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 50, 30));
+
+        date.setMinimumSize(new java.awt.Dimension(80, 20));
+        date.setPreferredSize(new java.awt.Dimension(80, 20));
+        date.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dateActionPerformed(evt);
+            }
+        });
+        add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 220, 30));
+
+        price.setMinimumSize(new java.awt.Dimension(80, 20));
+        price.setPreferredSize(new java.awt.Dimension(80, 20));
+        price.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                priceActionPerformed(evt);
+            }
+        });
+        add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 120, 30));
+
+        priceLabel.setText("Ціна:");
+        add(priceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 60, 30));
 
         getAccessibleContext().setAccessibleParent(this);
     }// </editor-fold>//GEN-END:initComponents
@@ -90,15 +123,42 @@ public class FindByName extends javax.swing.JPanel {
             actionHolder.performAction();
         }
     }//GEN-LAST:event_performButtonActionPerformed
+
+    private void dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dateActionPerformed
+
+    private void priceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_priceActionPerformed
   
-    public String getSelectedName() {
-        return String.valueOf(availableNames.getSelectedItem());
+    public int getGoodsId() {
+        String name = String.valueOf(availableNames.getSelectedItem());
+        Goods goods = mapGoods.get(name);
+        if (goods != null) {
+            return goods.id;
+        }
+        
+        return 0;
+    }
+    
+    public String getLabelDate() {
+        return String.valueOf(date.getText());
+    }
+    
+    public int getLabelPrice() {
+        return Integer.parseInt(price.getText());
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> availableNames;
+    private javax.swing.JTextField date;
+    private javax.swing.JLabel dateLabel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel nameLabel;
+    private javax.swing.JLabel nameLabel1;
     private javax.swing.JButton performButton;
+    private javax.swing.JTextField price;
+    private javax.swing.JLabel priceLabel;
     // End of variables declaration//GEN-END:variables
 }

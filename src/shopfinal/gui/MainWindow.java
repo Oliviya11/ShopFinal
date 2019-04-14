@@ -51,6 +51,7 @@ public class MainWindow extends javax.swing.JFrame {
         Goods = new javax.swing.JMenu();
         FindGoodsByName = new javax.swing.JMenuItem();
         AddGoods = new javax.swing.JMenuItem();
+        UpdateGoods = new javax.swing.JMenuItem();
         ShowAllGoods = new javax.swing.JMenuItem();
         Employee = new javax.swing.JMenu();
         AddEmployee = new javax.swing.JMenuItem();
@@ -94,6 +95,15 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         Goods.add(AddGoods);
+
+        UpdateGoods.setText("Оновити");
+        UpdateGoods.setActionCommand("");
+        UpdateGoods.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateGoodsActionPerformed(evt);
+            }
+        });
+        Goods.add(UpdateGoods);
 
         ShowAllGoods.setText("Показати всі");
         ShowAllGoods.addActionListener(new java.awt.event.ActionListener() {
@@ -520,7 +530,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void FindGoodsByNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FindGoodsByNameActionPerformed
         removeLeftPanel();
-        FindByName findByName = new FindByName();
+        FindGoodsByName findByName = new FindGoodsByName();
         class RealButtonActionHolder extends ButtonActionHolder {
 
             @Override
@@ -547,6 +557,35 @@ public class MainWindow extends javax.swing.JFrame {
         adjsutRightPanel();
         refresh();
     }//GEN-LAST:event_FindGoodsByNameActionPerformed
+
+    private void UpdateGoodsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateGoodsActionPerformed
+        removeLeftPanel();
+        UpdateGoods updateGoods = new UpdateGoods();
+        class RealButtonActionHolder extends ButtonActionHolder {
+
+            @Override
+            public void performAction() {
+                try {
+                    ActionManager.ActionParams params = new ActionManager.ActionParams();
+                    params.dataArr = new Object[3];
+                    params.dataArr[0] = updateGoods.getGoodsId();
+                    params.dataArr[1] = updateGoods.getLabelDate();
+                    params.dataArr[2] = updateGoods.getLabelPrice();
+                    ActionManager.getInstance().performAction(ActionManager.Action.UPDATE_GOODS, params);
+                    rightPanel.clearPanel();
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+        RealButtonActionHolder actionHolder = new RealButtonActionHolder();
+        updateGoods.actionHolder = actionHolder;
+        leftPanel = updateGoods;
+        add(leftPanel);
+        adjsutRightPanel();
+        refresh();
+    }//GEN-LAST:event_UpdateGoodsActionPerformed
 
     private void addFindByIdPurchasePanel() {
         removeLeftPanel();
@@ -800,6 +839,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem ShowAllProviders;
     private javax.swing.JMenuItem ShowAllPurchases;
     private javax.swing.JMenuItem ShowAllPurveyances;
+    private javax.swing.JMenuItem UpdateGoods;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
