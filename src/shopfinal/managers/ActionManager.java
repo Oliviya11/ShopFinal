@@ -287,11 +287,13 @@ public class ActionManager {
     }
 
     private void addPurveyance(ActionParams params) throws SQLException {
-        int providerId = (int) params.dataArr[0];
+        int orderingId = (int) params.dataArr[0];
+        int providerId = (int) params.dataArr[1];
         ArrayList<Goods> goods = (ArrayList<Goods>) params.data;
         int purveyanceId = db.addPurveyances(providerId);
         db.addItemsToGoodsPurveyances(goods, purveyanceId);
-        db.updateGoods(goods);
+        db.updateGoodsNumber(goods);
+        db.updateOrderingPurvId(orderingId, purveyanceId);
     }
 
     private void addDepartment(ActionParams params) throws SQLException {
@@ -304,7 +306,7 @@ public class ActionManager {
         ArrayList<Goods> goods = (ArrayList<Goods>) params.dataArr[1];
         int id = db.addPurchase(date);
         db.addItemsToPurchasesGoods(goods, id);
-        db.updateGoods(goods);
+        db.updateGoodsNumber(goods);
     }
     
     private Result getGoodsByName(ActionParams params) throws SQLException {
@@ -319,7 +321,7 @@ public class ActionManager {
         int id = (int) params.dataArr[0];
         String date = (String) params.dataArr[1];
         int price = (int) params.dataArr[2];
-        db.updateGoods(id, date, price);
+        db.updateGoodsPrice(id, date, price);
     }
 
     private static ActionManager instance;

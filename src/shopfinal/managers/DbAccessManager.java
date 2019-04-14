@@ -212,7 +212,7 @@ public class DbAccessManager {
             int goodsId = rs.getInt(DbResources.GoodsId);
             int number = rs.getInt(DbResources.Number);
             String name = getGoodsNameById(goodsId);
-            Goods goods = new Goods(goodsId, "", name, number, 0);
+            Goods goods = new Goods(goodsId, name, number);
             listGoods.add(goods);
         }
     }
@@ -459,24 +459,26 @@ public class DbAccessManager {
         return providers;
     }
     
-    public void updateGoods(ArrayList<Goods> goods) throws SQLException {
+    public void updateGoodsNumber(ArrayList<Goods> goods) throws SQLException {
         for (int i = 0; i < goods.size(); ++i) {
             String sql = "update " + DbResources.Goods + " set " 
             + DbResources.Number + "=" + goods.get(i).number + " where " +
              DbResources.GoodsId + "=" + goods.get(i).id;
-            
             executSql(sql);
         }
+    }
+    
+    public void updateOrderingPurvId(int ordId, int purId) throws SQLException {
+        String sql = "update " + DbResources.Orderins + " set "
+                + DbResources.PurveyanceId + "=" + purId + " where " +
+                DbResources.OrderingId + "=" + ordId;
+        executSql(sql);
     }
     
     public void addProvider(String name) throws SQLException {
         String sql = "insert into " + DbResources.Providers + " (" + DbResources.ProviderName + ") "
                 +" values ('" + name + "')";
         executSql(sql);
-    }
-    
-    public void createPurchase(ArrayList<Goods> goods) throws SQLException {
-        updateGoods(goods);
     }
     
     public int addGoods(String name, String providerName, int number, int depId) throws SQLException {
@@ -559,7 +561,7 @@ public class DbAccessManager {
         executSql(sql);
     }
     
-    public void updateGoods(int id, String date, int price) throws SQLException {
+    public void updateGoodsPrice(int id, String date, int price) throws SQLException {
         String sql = "insert into " + DbResources.GoodsPrices + " (" + DbResources.GoodsId + ", " +
                 DbResources.GoodsPricesDate + ", " + DbResources.Price + ") values (" + id + ", '" +
                 date + "', " + price + ")";

@@ -62,6 +62,7 @@ public class MainWindow extends javax.swing.JFrame {
         ShowAllPurchases = new javax.swing.JMenuItem();
         Ordering = new javax.swing.JMenu();
         AddOrdering = new javax.swing.JMenuItem();
+        ShowAllNotPerformed = new javax.swing.JMenuItem();
         ShowAllOrderings = new javax.swing.JMenuItem();
         Provider = new javax.swing.JMenu();
         AddProvider = new javax.swing.JMenuItem();
@@ -172,6 +173,14 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         Ordering.add(AddOrdering);
+
+        ShowAllNotPerformed.setText("Показати невиконані");
+        ShowAllNotPerformed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowAllNotPerformedActionPerformed(evt);
+            }
+        });
+        Ordering.add(ShowAllNotPerformed);
 
         ShowAllOrderings.setText("Показати всі");
         ShowAllOrderings.addActionListener(new java.awt.event.ActionListener() {
@@ -587,6 +596,10 @@ public class MainWindow extends javax.swing.JFrame {
         refresh();
     }//GEN-LAST:event_UpdateGoodsActionPerformed
 
+    private void ShowAllNotPerformedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAllNotPerformedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ShowAllNotPerformedActionPerformed
+
     private void addFindByIdPurchasePanel() {
         removeLeftPanel();
         FindById p = new FindById();
@@ -657,7 +670,6 @@ public class MainWindow extends javax.swing.JFrame {
     private void addPurveyanceItem(Purveyance purveyance) {
         PurveyanceItem purveyanceItem = new PurveyanceItem();
         purveyanceItem.setLabelId(purveyance.id + "");
-        purveyanceItem.setTotalPrice(purveyance.totalPrice);
         for (int i = 0; i < purveyance.goods.size(); ++i) {
             Goods goods = purveyance.goods.get(i);
             purveyanceItem.createRowInTable(goods);
@@ -719,7 +731,7 @@ public class MainWindow extends javax.swing.JFrame {
         orderingItem.setLabelId(ordering.id + "");
         orderingItem.setDayOfTheWeek(ordering.dayOfTheWeek);
         orderingItem.setLabelDate(ordering.date + "");
-        orderingItem.setProviderName(ordering.provider.name);
+        orderingItem.setProvider(ordering.provider);
         orderingItem.setEmployeeName(ordering.employee.pib);
         orderingItem.setStatus(ordering.pruveyanceId != 0);
         orderingItem.setTotalCost(ordering.totalCost + "(грн)");
@@ -835,6 +847,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem ShowAllDepartments;
     private javax.swing.JMenuItem ShowAllEmployees;
     private javax.swing.JMenuItem ShowAllGoods;
+    private javax.swing.JMenuItem ShowAllNotPerformed;
     private javax.swing.JMenuItem ShowAllOrderings;
     private javax.swing.JMenuItem ShowAllProviders;
     private javax.swing.JMenuItem ShowAllPurchases;

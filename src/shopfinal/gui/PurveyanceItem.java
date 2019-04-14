@@ -35,9 +35,7 @@ public class PurveyanceItem extends javax.swing.JPanel {
 
         id = new javax.swing.JLabel();
         idLabel = new javax.swing.JLabel();
-        totalPrice = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
-        totalPriceLabel = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         purveyanceGoods = new javax.swing.JTable();
 
@@ -51,16 +49,12 @@ public class PurveyanceItem extends javax.swing.JPanel {
 
         idLabel.setText("id:");
         add(idLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 30, 20));
-        add(totalPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 110, 20));
 
         title.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title.setText("Поставка");
         title.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 180, 30));
-
-        totalPriceLabel.setText("Загальна ціна:");
-        add(totalPriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 110, 20));
 
         purveyanceGoods.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,7 +77,7 @@ public class PurveyanceItem extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(purveyanceGoods);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 470, 210));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 470, 240));
     }// </editor-fold>//GEN-END:initComponents
 
     public void setLabelId(String d) {
@@ -91,11 +85,7 @@ public class PurveyanceItem extends javax.swing.JPanel {
     }
 
     public void createRowInTable(Goods goods) {
-       model.addRow(new Object[] { goods.name, goods.number});
-    }
-    
-    public void setTotalPrice(double price) {
-        totalPrice.setText(price + "(грн)");
+       model.addRow(new Object[] { goods.name, goods.numberInSmth});
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -104,7 +94,5 @@ public class PurveyanceItem extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable purveyanceGoods;
     private javax.swing.JLabel title;
-    private javax.swing.JLabel totalPrice;
-    private javax.swing.JLabel totalPriceLabel;
     // End of variables declaration//GEN-END:variables
 }

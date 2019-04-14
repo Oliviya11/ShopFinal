@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import shopfinal.managers.ActionManager;
 import shopfinal.models.Goods;
+import shopfinal.models.Provider;
 
 /**
  *
@@ -20,6 +21,7 @@ import shopfinal.models.Goods;
 public class OrderingItem extends javax.swing.JPanel {
     private DefaultTableModel  model;
     private ArrayList<Goods> goodsList = new  ArrayList<Goods>();
+    private Provider provider;
     /**
      * Creates new form PurchaseItem
      */
@@ -133,8 +135,9 @@ public class OrderingItem extends javax.swing.JPanel {
     private void performOrderingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_performOrderingActionPerformed
         setStatus(true);
         ActionManager.ActionParams params = new ActionManager.ActionParams();
-        params.dataArr = new Object[1];
+        params.dataArr = new Object[2];
         params.dataArr[0] = getLabelId();
+        params.dataArr[1] = provider.id;
         params.data = goodsList;
         try {
             ActionManager.getInstance().performAction(ActionManager.Action.ADD_PURVEYANCE, params);
@@ -165,9 +168,11 @@ public class OrderingItem extends javax.swing.JPanel {
         employee.setText(n);
     }
     
+    /*
     public void setProviderName(String pn) {
         providerName.setText(pn);
     }
+*/
     
     public void setTotalCost(String c) {
         cost.setText(c);
@@ -186,6 +191,11 @@ public class OrderingItem extends javax.swing.JPanel {
         return Integer.parseInt(id.getText());
     }
 
+    public void setProvider(Provider p) {
+        provider = p;
+        providerName.setText(p.name);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel cost;
     private javax.swing.JLabel date;

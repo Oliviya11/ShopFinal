@@ -52,5 +52,10 @@ public class Goods {
         this.totalPrice = number * price;
         this.totalPriceInSmth = numberInSmth * price;
     }
-        
+    
+    public Goods(int id, String name, int numberInSmth) {
+        this.id = id;
+        this.name = name;
+        this.numberInSmth = numberInSmth;
+    }
 }
