@@ -558,7 +558,7 @@ public class MainWindow extends javax.swing.JFrame {
        purveyanceItem.setTotalPrice(purveyance.totalPrice);
        for (int i = 0; i < purveyance.goods.size(); ++i) {
             Goods goods = purveyance.goods.get(i);
-            purveyanceItem.createRowInTable(goods.name, goods.price, goods.number, goods.totalPrice);
+            purveyanceItem.createRowInTable(goods);
         }
        rightPanel.addPanel(purveyanceItem);
     }
@@ -618,7 +618,7 @@ public class MainWindow extends javax.swing.JFrame {
         orderingItem.setTotalCost(ordering.totalCost + "(грн)");
         for (int i = 0; i < ordering.goods.size(); ++i) {
             Goods goods = ordering.goods.get(i);
-            orderingItem.createRowInTable(goods.name, goods.price, goods.number, goods.totalPrice);
+            orderingItem.createRowInTable(goods);
         }
         rightPanel.addPanel(orderingItem);
     }

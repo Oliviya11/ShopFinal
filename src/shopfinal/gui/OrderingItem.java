@@ -5,7 +5,13 @@
  */
 package shopfinal.gui;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import shopfinal.managers.ActionManager;
+import shopfinal.models.Goods;
 
 /**
  *
@@ -13,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class OrderingItem extends javax.swing.JPanel {
     private DefaultTableModel  model;
+    private ArrayList<Goods> goodsList = new  ArrayList<Goods>();
     /**
      * Creates new form PurchaseItem
      */
@@ -125,6 +132,15 @@ public class OrderingItem extends javax.swing.JPanel {
 
     private void performOrderingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_performOrderingActionPerformed
         setStatus(true);
+        ActionManager.ActionParams params = new ActionManager.ActionParams();
+        params.dataArr = new Object[1];
+        params.dataArr[0] = getLabelId();
+        params.data = goodsList;
+        try {
+            ActionManager.getInstance().performAction(ActionManager.Action.ADD_PURVEYANCE, params);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(OrderingItem.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_performOrderingActionPerformed
 
     public void setLabelDate(String d) {
@@ -139,8 +155,9 @@ public class OrderingItem extends javax.swing.JPanel {
         weekDay.setText(day);
     }
 
-    public void createRowInTable(String name, double price, int number, double totalPrice) {
-        model.addRow(new Object[] { name, price, number, totalPrice});
+    public void createRowInTable(Goods goods) {
+        model.addRow(new Object[] { goods.name, goods.price, goods.number, goods.totalPrice});
+        goodsList.add(goods);
     }
     
     public void setEmployeeName(String n) {
@@ -162,6 +179,10 @@ public class OrderingItem extends javax.swing.JPanel {
         } else {
             status.setText("Не виконано");
         }
+    }
+    
+    public int getLabelId() {
+        return Integer.parseInt(id.getText());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

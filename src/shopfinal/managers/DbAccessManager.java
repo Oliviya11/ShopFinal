@@ -438,8 +438,6 @@ public class DbAccessManager {
             + DbResources.Number + "=" + goods.get(i).number + " where " +
              DbResources.GoodsId + "=" + goods.get(i).id;
             
-            System.out.println("sql: " + sql);
-            
             executSql(sql);
         }
     }
@@ -479,7 +477,7 @@ public class DbAccessManager {
     public void addItemToPurchaseGoods(Goods goods, int purchaseId) throws SQLException {
         String sql = "insert into " + DbResources.GoodsPurchases + " (" + DbResources.GoodsId + ", "
                 + DbResources.PurchaseId + ", " + DbResources.Number + ") values (" +
-                goods.id + ", " + purchaseId + ", " + goods.numberInPurchase + ")" ;
+                goods.id + ", " + purchaseId + ", " + goods.numberInSmth + ")" ;
         executSql(sql);
     }
     
@@ -499,13 +497,32 @@ public class DbAccessManager {
     private void addItemToGoodsOrderings(Goods goods, int orderingId) throws SQLException {
         String sql = "insert into " + DbResources.GoodsOrderings + " (" + DbResources.GoodsId + ", "
                 + DbResources.Price + ", " + DbResources.OrderingId + ", " + DbResources.Number + ")"
-                + " values (" + goods.id + ", " + goods.price + ", " + orderingId + ", " + goods.numberInPurchase + ")";
+                + " values (" + goods.id + ", " + goods.price + ", " + orderingId + ", " + goods.numberInSmth + ")";
         executSql(sql);
     }
     
     public void addItemsToGoodsOrderings(ArrayList<Goods> goods, int orderingId) throws SQLException {
         for (int i = 0; i < goods.size(); ++i) {
             addItemToGoodsOrderings(goods.get(i), orderingId);
+        }
+    }
+    
+    public int addPurveyances(int providerId) throws SQLException {
+        String sql = "insert into " + DbResources.Purveyances + " (" + DbResources.ProviderId + ") "
+                + "values (" + providerId + ")";
+        return executSqlWithId(sql);
+    }
+    
+    private void addItemIntoGoodsPurveyances(Goods goods, int purveyanceId) throws SQLException {
+        String sql = "insert into " + DbResources.GoodsPurveyances + " (" + DbResources.Number + ", "
+                + DbResources.GoodsId + ", " + DbResources.PurveyanceId +") " + "values ("
+                + goods.number + ", " + goods.id + ", " + purveyanceId + ")";
+        executSql(sql);        
+    }
+    
+    public void addItemsToGoodsPurveyances(ArrayList<Goods> goods, int purveyanceId) throws SQLException {
+        for (int i = 0; i < goods.size(); ++i) {
+            addItemIntoGoodsPurveyances(goods.get(i), purveyanceId);
         }
     }
 }

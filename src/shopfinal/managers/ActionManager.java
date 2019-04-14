@@ -35,7 +35,8 @@ public class ActionManager {
         GET_ALL_EMPLOYEES,
         GET_ALL_DEPARTMENTS,
         ADD_EMPLOYEE,
-        ADD_GOODS
+        ADD_GOODS,
+        ADD_PURVEYANCE
     }
 
     public class Result {
@@ -143,6 +144,12 @@ public class ActionManager {
                     if (params != null ) {
                         addOrdering(params);
                     }
+                    break;
+                case ADD_PURVEYANCE:
+                    if (params != null) {
+                        addPurveyance(params);
+                    }
+                    break;
                 default:
                     break;
             }
@@ -259,6 +266,13 @@ public class ActionManager {
         ArrayList<Goods> goods = (ArrayList<Goods>) params.data;
         int orderingId = db.addOrdering(date, providerId, employeeId);
         db.addItemsToGoodsOrderings(goods, orderingId);
+    }
+    
+    private void addPurveyance(ActionParams params) throws SQLException {
+        int providerId = (int) params.dataArr[0];
+         ArrayList<Goods> goods = (ArrayList<Goods>) params.data;
+         int purveyanceId = db.addPurveyances(providerId);
+         db.addItemsToGoodsPurveyances(goods, purveyanceId);
     }
 
     private void addPurchase(ActionParams params) throws SQLException {

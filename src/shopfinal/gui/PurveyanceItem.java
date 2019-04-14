@@ -7,6 +7,7 @@ package shopfinal.gui;
 
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import shopfinal.models.Goods;
 
 /**
  *
@@ -89,8 +90,8 @@ public class PurveyanceItem extends javax.swing.JPanel {
         id.setText(d);
     }
 
-    public void createRowInTable(String name, double price, int number, double totalPrice) {
-       model.addRow(new Object[] { name, price, number, totalPrice});
+    public void createRowInTable(Goods goods) {
+       model.addRow(new Object[] { goods.name, goods.number});
     }
     
     public void setTotalPrice(double price) {
