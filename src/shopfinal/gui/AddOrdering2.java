@@ -47,7 +47,7 @@ public class AddOrdering2 extends javax.swing.JPanel {
                 availableEmployees.addItem(e.pib);
             }
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AddOrdering.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddOrdering2.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -67,7 +67,7 @@ public class AddOrdering2 extends javax.swing.JPanel {
                 availableGoods.addItem(goodsName);
             }
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AddOrdering.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddOrdering2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -83,7 +83,7 @@ public class AddOrdering2 extends javax.swing.JPanel {
                 providersMap.put(provider.name, provider);
             }
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AddOrdering.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddOrdering2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -304,7 +304,7 @@ public class AddOrdering2 extends javax.swing.JPanel {
         try {
             ActionManager.getInstance().performAction(ActionManager.Action.ADD_ORDERING, params);
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AddOrdering.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddOrdering2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_performButtonActionPerformed
 
