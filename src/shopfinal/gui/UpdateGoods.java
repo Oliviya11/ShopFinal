@@ -39,7 +39,7 @@ public class UpdateGoods extends javax.swing.JPanel {
                 availableNames.addItem(g.name);
             }
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AddPurchase.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateGoods.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -38,7 +38,7 @@ public class FindGoodsByName extends javax.swing.JPanel {
                 availableNames.addItem(g.name);
             }
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AddPurchase.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FindGoodsByName.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

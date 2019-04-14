@@ -42,7 +42,7 @@ public class AddPurchase2 extends javax.swing.JPanel {
                 availableGoods.addItem(g.name);
             }
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AddPurchase.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddPurchase2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -204,7 +204,7 @@ public class AddPurchase2 extends javax.swing.JPanel {
         try {
             ActionManager.getInstance().performAction(ActionManager.Action.ADD_PURCHASE, params);
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AddPurchase.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddPurchase2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_performButtonActionPerformed
 
